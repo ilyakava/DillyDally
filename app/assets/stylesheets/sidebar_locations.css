@@ -1,6 +1,6 @@
 #map {
     position:absolute;
-    top: 52px;
+    top: 53px;
     bottom:0;
     left:0;
     right:40%;
@@ -10,7 +10,7 @@
     overflow-x:hidden;
     position:absolute;
     bottom:0;
-    top: 52px;
+    top: 53px;
     right:0;
     width:40%;
     min-width:400px;
@@ -25,7 +25,7 @@
 
 #side-bar > .searcharea > input {
     padding: 6px 6px;
-    width: 95%;
+    width: 65%;
     font-size: 15px;
 }
 

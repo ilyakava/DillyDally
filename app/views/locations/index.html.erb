@@ -7,6 +7,7 @@
 <div id="side-bar">
 	<div class="searcharea">
 		<input type="text" placeholder="Set Your Location...">
+		<button>Search!</button>
 	</div>
 
 	<ul class="tabs group">  
@@ -29,33 +30,93 @@
 				</li>
 				<li><a href="#">Detail View</a></li>
 			</ul>
-
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-
 		</li>
+
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+		<li>
+			<ul class="location">
+				<li><a href="#">Kava Coffee</a></li>
+				<li>Frequented</li>
+				<li>Tags
+					<dl class="group">
+						<dt>NO-WIFI</dt>
+						<dt>GREAT OUTDOOR SEATING</dt>
+						<dt>ALCOHOLIC DRINKS</dt>
+					</dl>
+				</li>
+				<li><a href="#">Detail View</a></li>
+			</ul>
+		</li>
+
 	</ul>
 	
 <!-- 		<label>
@@ -63,3 +124,18 @@
 		Only include overlapping Collections
 	</label> -->
 </div>
+
+<script type="text/javascript">
+	// mapbox text to location translator
+	var geocoder = L.mapbox.geocoder('ilyakavalerov.map-m06icghb');
+
+	$('.searcharea button').on('click', function (event) {
+		geocoder.query($(event.target).prev().val().toString(), reCenterMap);
+	})
+
+	// uses predefined map, assumes data format from geocoder
+	// recenters based on first result of geocoder
+	function reCenterMap(error, data) {
+		map.fitBounds(data.lbounds);
+	}
+</script>
