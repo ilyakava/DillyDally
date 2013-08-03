@@ -1,0 +1,88 @@
+html {
+    font-family: 'Lato', sans-serif;
+    background-color: white;
+}
+
+.group {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+nav{
+    width: 100%;
+    background-color: rgb(104,178,180);
+    border-bottom: 1px rgb(50,135,92) solid;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+nav > .global {
+    float: left;
+    padding-left: 120px;
+}
+
+nav > .global > li {
+    float: left;
+    border-right: rgb(50,135,92) 1px solid;
+    font-weight: 100;
+}
+
+nav > .global > li:hover {
+    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+}
+
+nav > .global > li:first-child {
+    border-left: rgb(50,135,92) 1px solid;
+    font-weight: 600;
+}
+
+nav > .global > li.search {
+    padding: 8px;
+
+}
+
+nav > .global > li.search > input {
+    float: left;
+    height: 27px;
+    padding: 2px;    
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+
+nav > .global > li.search > input:focus {
+   outline-color: rgb(58,   135,    89  );
+}
+
+
+nav > .global > li > a {
+    float: left;
+    color: white;
+    padding: 16px 16px;
+}
+
+nav > .user {
+    float: right;
+    padding-right: 30px;
+}
+
+nav > .user > li {
+    float: left;
+    border-left: rgb(50,135,92) 1px solid;
+    font-weight: 100;
+}
+
+nav > .user > li:hover {
+    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+}
+
+nav > .user > li:last-child {
+    border-right: rgb(50,135,92) 1px solid;
+}
+
+nav > .user > li > a {
+    float: left;
+    color: white;
+    padding: 16px;
+}

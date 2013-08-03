@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<%= render 'layouts/navbar', locals: { curr_controller: params[:controller] } %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
