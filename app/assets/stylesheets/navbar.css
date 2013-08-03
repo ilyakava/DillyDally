@@ -38,6 +38,18 @@ nav > .global > li:first-child {
     font-weight: 600;
 }
 
+/* current state of application will trigger hover like styling */
+
+nav > .global > li:nth-child(3).discovers {
+    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+}
+
+nav > .global > li:last-child.helps {
+    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+}
+
+/* end of current state modification */
+
 nav > .global > li.search {
     padding: 8px;
 
