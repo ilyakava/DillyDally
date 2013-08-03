@@ -1,32 +1,20 @@
-body {
-    min-width: 400px;
-}
-
-/* Tips from: http://alistapart.com/article/holygrail */
-
-#content {
-    padding-right: 400px; /* sidebar width*/
-    top: 52px;
-    position: absolute;
-    z-index: -1;
-}
-
-#map, #side-bar {
-    float: left;
-    position: relative;
-}
-
 #map {
-    width: 100%;
-    background-color: red;
-    content: "";
+    position:absolute;
+    top: 52px;
+    bottom:0;
+    left:0;
+    right:40%;
 }
 
 #side-bar {
-    width: 400px;
-    margin-right: -400px;
-    height: 100%;
-
+    overflow-x:hidden;
+    position:absolute;
+    bottom:0;
+    top: 52px;
+    right:0;
+    width:40%;
+    min-width:400px;
+    box-sizing: border-box;
     background-color: rgb(104,178,180);
 }
 
