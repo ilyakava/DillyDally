@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>DillyDally</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= render 'layouts/navbar', locals: { curr_controller: params[:controller] } %>
+<%= render 'layouts/navbar',
+						locals: { controller: params[:controller] } %>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
