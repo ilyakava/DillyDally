@@ -1,6 +1,6 @@
 Ilya Kavalerov
 
-MySpots
+Dilly Dally
 ===
 
 Typical first User experience
