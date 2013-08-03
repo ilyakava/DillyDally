@@ -1,29 +1,51 @@
-.side-bar {
-    position: absolute;
+body {
+    min-width: 400px;
+}
+
+/* Tips from: http://alistapart.com/article/holygrail */
+
+#content {
+    padding-right: 400px; /* sidebar width*/
     top: 52px;
-    right: 0px;
-    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+#map, #side-bar {
+    float: left;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    background-color: red;
+    content: "";
+}
+
+#side-bar {
     width: 400px;
-    postition: relative;
+    margin-right: -400px;
+    height: 100%;
+
     background-color: rgb(104,178,180);
 }
 
-.side-bar > .searcharea {
+#side-bar > .searcharea {
     padding: 6px 16px;
     border-bottom: rgb(50,135,92) 1px solid;
 }
 
-.side-bar > .searcharea > input {
+#side-bar > .searcharea > input {
     padding: 6px 6px;
     width: 95%;
     font-size: 15px;
 }
 
-.side-bar > .tabs {
+#side-bar > .tabs {
     font-size: 12px;
     width: 100%;
 }
-.side-bar > .tabs > li {
+#side-bar > .tabs > li {
     font-size: 14px;
     float: left;
     padding: 16px 7px;
@@ -31,42 +53,42 @@
     border-bottom: rgb(50,135,92) 1px solid;
 }
 
-.side-bar > .tabs > li:last-child {
+#side-bar > .tabs > li:last-child {
     padding: 16px 9px;
 
 }
 
-.side-bar > .tabs > li > a {
+#side-bar > .tabs > li > a {
     color: white;
 }
 
 
-.side-bar > .data-list {
+#side-bar > .data-list {
     width: 100%;
 }
 
-.side-bar > .data-list > li > .location {
+#side-bar > .data-list > li > .location {
     width: 100%;
     border-bottom: 1px rgb(58,   135, 89  ) solid;
     font-family: "Times New Roman", Times, serif;
 }
 
-.side-bar > .data-list > li > .location > li {
+#side-bar > .data-list > li > .location > li {
     padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-.side-bar > .data-list > li > .location > li > a {
+#side-bar > .data-list > li > .location > li > a {
     color: black;
 }
 
-.side-bar > .data-list > li > .location > li:first-child > a {
+#side-bar > .data-list > li > .location > li:first-child > a {
     font-size: 26px;
     color: white;
 }
 
-.side-bar > .data-list > li > .location > li > dl > dt {
+#side-bar > .data-list > li > .location > li > dl > dt {
     background-color: rgb(70,135,92);
     padding: 2px 2px;
     border-radius: 5px;
@@ -79,7 +101,7 @@
     color: white;
 }
 
-.side-bar > label {
+#side-bar > label {
     float: left;
     position: absolute;
     top: 505px;
