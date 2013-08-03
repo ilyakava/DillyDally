@@ -1,7 +1,7 @@
 DillyDally::Application.routes.draw do
   devise_for :users
-  resources :collections, only: [:index]
-  root to: 'collections#index'
+  resources :locations, only: [:index]
+  root to: 'locations#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

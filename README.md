@@ -19,8 +19,11 @@ By the end of this phase:
 
 ##Locations: Basic View
 * Search for a location
-	* see about location
-	* see hours
+	* Location model
+	* Goals:
+		* Display the locations on the map
+		* see about location
+		* see hours
 * Select location and save (To a misc collection, say "Searched Collections")
 * Save location
 	* mark as visited/not visited

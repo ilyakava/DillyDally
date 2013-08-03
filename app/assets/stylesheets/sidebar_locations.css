@@ -1,0 +1,88 @@
+.side-bar {
+    position: absolute;
+    top: 52px;
+    right: 0px;
+    height: 100%;
+    width: 400px;
+    postition: relative;
+    background-color: rgb(104,178,180);
+}
+
+.side-bar > .searcharea {
+    padding: 6px 16px;
+    border-bottom: rgb(50,135,92) 1px solid;
+}
+
+.side-bar > .searcharea > input {
+    padding: 6px 6px;
+    width: 95%;
+    font-size: 15px;
+}
+
+.side-bar > .tabs {
+    font-size: 12px;
+    width: 100%;
+}
+.side-bar > .tabs > li {
+    font-size: 14px;
+    float: left;
+    padding: 16px 7px;
+    border-left: rgb(50,135,92) 1px solid;
+    border-bottom: rgb(50,135,92) 1px solid;
+}
+
+.side-bar > .tabs > li:last-child {
+    padding: 16px 9px;
+
+}
+
+.side-bar > .tabs > li > a {
+    color: white;
+}
+
+
+.side-bar > .data-list {
+    width: 100%;
+}
+
+.side-bar > .data-list > li > .location {
+    width: 100%;
+    border-bottom: 1px rgb(58,   135, 89  ) solid;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.side-bar > .data-list > li > .location > li {
+    padding: 0px 5px;
+    font-size: 14px;
+    color: black;
+}
+
+.side-bar > .data-list > li > .location > li > a {
+    color: black;
+}
+
+.side-bar > .data-list > li > .location > li:first-child > a {
+    font-size: 26px;
+    color: white;
+}
+
+.side-bar > .data-list > li > .location > li > dl > dt {
+    background-color: rgb(70,135,92);
+    padding: 2px 2px;
+    border-radius: 5px;
+    float: left;
+    margin: 1px 3px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    
+    color: white;
+}
+
+.side-bar > label {
+    float: left;
+    position: absolute;
+    top: 505px;
+    right: 226px;
+    font-size: 14px;
+}

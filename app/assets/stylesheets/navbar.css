@@ -76,7 +76,7 @@ nav > .global > li > a {
 
 nav > .user {
     float: right;
-    padding-right: 30px;
+    padding-right: 0px;
 }
 
 nav > .user > li {
