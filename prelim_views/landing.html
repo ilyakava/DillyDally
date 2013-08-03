@@ -1,6 +1,7 @@
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<title>
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-	<div class="group nav-bar">
+	<nav class="group">
 		<ul class="global">
 			<li><a class="logo" href="#">MySpots</a></li>
 			<li class="search"><input type="text" placeholder="Search..."></li>
@@ -23,7 +24,7 @@
 			<li><a href="#">My Locations</a></li>
 			<li><a href="#">Sign Out</a></li>
 		</ul>
-	</div>
+	</nav>
 
 	<div class="content group">
 		<div class="main group">
@@ -38,11 +39,20 @@
 				</ul>
 				
 				<ul class="data-list">
-					<ul class="location">
-						<li><a href="#">Kava Coffee</a> : Visited 2 times</li>
-						<li>Tags: Cold, No-Wifi</li>
-						<li><a href="#">Detail View</a></li>
-					</ul>
+					<li>
+						<ul class="location">
+							<li><a href="#">Kava Coffee</a></li>
+							<li>Frequented</li>
+							<li>Tags
+								<dl class="group">
+									<dt>NO-WIFI</dt>
+									<dt>GREAT OUTDOOR SEATING</dt>
+									<dt>ALCOHOLIC DRINKS</dt>
+								</dl>
+							</li>
+							<li><a href="#">Detail View</a></li>
+						</ul>
+					</li>
 		<!-- 			<ul class="location">
 						<li><a href="#">Goldstein Gallery</a> : Visited 3 times</li>
 						<li>Tags: Cold, Generally cool</li>
@@ -77,6 +87,7 @@
 		<div class="bottom-bar">
 			<ul class="info">
 				<li><h3>First Weekend after Moving</h3><a href="#">click to edit</a></li>
+				<li>New York City</li>
 				<li>Created: Dec 4</li>
 				<li>Shared with 5 users</li>
 				<li>All locations have been visited, with 13 visits total</li>

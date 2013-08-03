@@ -1,6 +1,6 @@
 html {
     font-family: 'Lato', sans-serif;
-    background-color: rgb(237,237,237);
+    background-color: white;
 }
 
 .group {
@@ -9,7 +9,7 @@ html {
     display: table;
 }
 
-.nav-bar {
+nav{
     width: 100%;
     background-color: rgb(104,178,180);
     border-bottom: 1px rgb(50,135,92) solid;
@@ -18,71 +18,71 @@ html {
     bottom: 0;
 }
 
-.nav-bar > .global {
+nav > .global {
     float: left;
     padding-left: 120px;
 }
 
-.nav-bar > .global > li {
+nav > .global > li {
     float: left;
     padding: 12px;
     border-right: rgb(50,135,92) 1px solid;
     font-weight: 100;
 }
 
-.nav-bar > .global > li:hover {
+nav > .global > li:hover {
     box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
 }
 
-.nav-bar > .global > li:first-child {
+nav > .global > li:first-child {
     border-left: rgb(50,135,92) 1px solid;
     font-weight: 600;
 }
 
-.nav-bar > .global > li.search {
+nav > .global > li.search {
     padding: 9;
 
 }
 
-.nav-bar > .global > li.search > input {
+nav > .global > li.search > input {
     height: 27px;
     padding: 2px;    
     font-family: 'Lato', sans-serif;
     font-weight: 900;
 }
 
-.nav-bar > .global > li.search > input:focus {
+nav > .global > li.search > input:focus {
    outline-color: rgb(58,   135,    89  );
 }
 
 
-.nav-bar > .global > li > a {
-    color: rgb(237,237,232);
+nav > .global > li > a {
+    color: white;
 }
 
-.nav-bar > .user {
+nav > .user {
     float: right;
     padding-right: 30px;
 }
 
-.nav-bar > .user > li {
+nav > .user > li {
     float: left;
     padding: 12px;
     border-left: rgb(50,135,92) 1px solid;
     font-weight: 100;
 }
 
-.nav-bar > .user > li:hover {
+nav > .user > li:hover {
     box-shadow: 0px 0px 6px .5px rgb(45,89,95) inset;
 }
 
-.nav-bar > .user > li:last-child {
+nav > .user > li:last-child {
     border-right: rgb(50,135,92) 1px solid;
 }
 
-.nav-bar > .user > li > a {
+nav > .user > li > a {
     float: left;
-    color: rgb(237,237,232);
+    color: white;
 }
 
 .content {
@@ -129,31 +129,46 @@ html {
     width: 100%;
 }
 
-.content > .main > .side-bar > .data-list > .location {
+.content > .main > .side-bar > .data-list > li > .location {
     width: 100%;
     border-bottom: 1px rgb(58,   135, 89  ) solid;
+    font-family: "Times New Roman", Times, serif;
 }
 
-.content > .main > .side-bar > .data-list > .location > li {
-    padding: 5px 5px;
+.content > .main > .side-bar > .data-list > li > .location > li {
+    padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-.content > .main > .side-bar > .data-list > .location > li > a {
+.content > .main > .side-bar > .data-list > li > .location > li > a {
     color: black;
 }
 
-.content > .main > .side-bar > .data-list > .location > li:first-child > a {
-    font-size:25px;
+.content > .main > .side-bar > .data-list > li > .location > li:first-child > a {
+    font-size: 26px;
+    color: white;
+}
+
+.content > .main > .side-bar > .data-list > li > .location > li > dl > dt {
+    background-color: rgb(70,135,92);
+    padding: 2px 2px;
+    border-radius: 5px;
+    float: left;
+    margin: 1px 3px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    
     color: white;
 }
 
 .content > .main > .side-bar > label {
     float: left;
     position: absolute;
-    top: 490px;
-    right: 180px;
+    top: 505px;
+    right: 226px;
+    font-size: 14px;
 }
 
 .content > .bottom-bar {
@@ -164,12 +179,12 @@ html {
 
 .content > .bottom-bar > .info {
     padding: 10px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 
-
 .content > .bottom-bar > .info > li > h3 {
-    padding: 10px 0px;
+    padding: 0px 0px;
     font-weight: 900;
 }
 
@@ -179,5 +194,6 @@ html {
 }
 
 .content > .bottom-bar > .info > li {
-    padding: 4px 0px;
+    padding: 0px 0px;
+    font-size: 14px;
 }
