@@ -14,9 +14,9 @@
 		<li class="<%= location %>"><a href="#">My Locations</a></li>
 		<li>
 			<% if user_signed_in? %>
-				<a href="#">Sign Out</a>
+				<a href="<%= destroy_user_session_url %>">Sign Out</a>
 			<% else %>
-				<a href="#">Sign In</a>
+				<a href="<%= new_user_session_url %>">Sign In</a>
 			<% end %>
 		</li>
 	</ul>
