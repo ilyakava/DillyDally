@@ -15,12 +15,12 @@
     width:40%;
     min-width:400px;
     box-sizing: border-box;
-    background-color: rgb(104,178,180);
+    background-color: rgb(130,206,209);
 }
 
 #side-bar > .searcharea {
     padding: 6px 16px;
-    border-bottom: rgb(50,135,92) 1px solid;
+    border-bottom: rgb(26,79,81) 1px solid;
 }
 
 #side-bar > .searcharea > input {
@@ -37,8 +37,8 @@
     font-size: 14px;
     float: left;
     padding: 16px 7px;
-    border-left: rgb(50,135,92) 1px solid;
-    border-bottom: rgb(50,135,92) 1px solid;
+    border-left: rgb(26,79,81) 1px solid;
+    border-bottom: rgb(26,79,81) 1px solid;
 }
 
 #side-bar > .tabs > li:last-child {

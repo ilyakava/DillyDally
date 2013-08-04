@@ -11,8 +11,8 @@ html {
 
 nav{
     width: 100%;
-    background-color: rgb(104,178,180);
-    border-bottom: 1px rgb(50,135,92) solid;
+    background-color: rgb(130,206,209);
+    border-bottom: 1px rgb(26,79,81) solid;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -25,7 +25,7 @@ nav > .global {
 
 nav > .global > li {
     float: left;
-    border-right: rgb(50,135,92) 1px solid;
+    border-right: rgb(26,79,81) 1px solid;
     font-weight: 100;
 }
 
@@ -34,7 +34,7 @@ nav > .global > li:hover {
 }
 
 nav > .global > li:first-child {
-    border-left: rgb(50,135,92) 1px solid;
+    border-left: rgb(26,79,81) 1px solid;
     font-weight: 600;
 }
 
@@ -81,7 +81,7 @@ nav > .user {
 
 nav > .user > li {
     float: left;
-    border-left: rgb(50,135,92) 1px solid;
+    border-left: rgb(26,79,81) 1px solid;
     font-weight: 100;
 }
 
@@ -106,7 +106,7 @@ nav > .user > li:nth-child(3).locations {
 /* end of current state modification */
 
 nav > .user > li:last-child {
-    border-right: rgb(50,135,92) 1px solid;
+    border-right: rgb(26,79,81) 1px solid;
 }
 
 nav > .user > li > a {
