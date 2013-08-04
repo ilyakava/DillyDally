@@ -127,15 +127,24 @@
 
 <script type="text/javascript">
 	// mapbox text to location translator
-	var geocoder = L.mapbox.geocoder('ilyakavalerov.map-m06icghb');
+	// var geocoder2 = L.mapbox.geocoder('ilyakavalerov.map-m06icghb');
 
 	$('.searcharea button').on('click', function (event) {
-		geocoder.query($(event.target).prev().val().toString(), reCenterMap);
+		
+		var address = $(event.target).prev().val().toString();
+
+		var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
+
+		geocoder.query(address, reCenterMap);
+
+		// geocoder2.query($(event.target).prev().val().toString(), reCenterMap);
 	})
 
 	// uses predefined map, assumes data format from geocoder
 	// recenters based on first result of geocoder
-	function reCenterMap(error, data) {
-		map.fitBounds(data.lbounds);
+	function reCenterMap(lat, lng) {
+		console.log("in recenter");
+		var latLng = new L.LatLng(lat, lng)
+		map.setView(latLng, 15);
 	}
 </script>

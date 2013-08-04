@@ -16,3 +16,6 @@
 
 
 .DS_Store
+
+# Ignore sensitive data
+/app/assets/javascripts/sensitive_data.js
