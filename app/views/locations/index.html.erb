@@ -6,8 +6,11 @@
 
 <div id="side-bar">
 	<div class="searcharea">
-		<input type="text" placeholder="Set Your Location...">
-		<button>Search!</button>
+		<button>Find Me!</button>
+		<form>
+			<input type="text" placeholder="Set Your Location...">
+			<input type="submit">
+		</form>
 	</div>
 
 	<ul class="tabs group">  
@@ -126,8 +129,8 @@
 </div>
 
 <script type="text/javascript">
-	$('.searcharea button').on('click', function (event) {
-		
+	$('.searcharea form').find('input[type=submit]').on('click', function (event) {
+		event.preventDefault();
 		var address = $(event.target).prev().val().toString();
 
 		var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
@@ -140,4 +143,6 @@
 		// coordinates and zoom rating (higher # means more zoomed in)
 		map.setView(latLng, 15);
 	}
+
+
 </script>

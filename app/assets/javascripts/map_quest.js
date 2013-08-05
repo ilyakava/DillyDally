@@ -9,6 +9,7 @@ MapQuest = (function () {
       this.apiKey;
 
     // No commas allowed in address
+    // format help at: http://developer.mapquest.com/web/products/forums/-/message_boards/view_message/134944
     var request = "{location: {street: " +
       address.replace(/,/g, "") +
       "}, options: {thumbMaps: false} }";

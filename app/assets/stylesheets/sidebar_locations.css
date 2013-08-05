@@ -27,11 +27,32 @@
     background-color: rgb(130,206,209);
 }
 
-#side-bar > .searcharea > input {
+#side-bar > .searcharea > form > input[type="text"] {
     padding: 6px 6px;
-    width: 28%;
+    width: 58%;
     font-size: 15px;
     font-family: 'Lato', sans-serif;
+}
+
+#side-bar > .searcharea > form,
+#side-bar > .searcharea > button {
+    float: left;
+}
+
+#side-bar > .searcharea > form > input[type="submit"],
+#side-bar > .searcharea > button {
+    border: 1px rgb(187,187,187) solid;
+    border-radius: 2px;
+    background-color: #fff;
+    height: 26px;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+    height: 30px;
+    margin: 5px 2px;
+    color: black;
 }
 
 #side-bar > .tabs {
