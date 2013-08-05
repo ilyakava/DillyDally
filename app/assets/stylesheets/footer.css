@@ -1,0 +1,14 @@
+footer {
+    background-color:rgb(130,206,209);
+	position:absolute;
+    bottom: 0px;
+    font-size:small;
+    left: 0px;
+    opacity: 0.8;
+    padding: 1px;
+}
+
+footer > p > a {
+    color: white;
+    padding: 0px 5px;
+}
