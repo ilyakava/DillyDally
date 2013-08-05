@@ -19,7 +19,7 @@ DD.Views.Locations = Backbone.View.extend({
     var displayResults = function (mqObjArray) {
       var recenterLoc = new DD.Collections.Locations();
 
-      // parses array of mapquest objects
+      // parses array of mapquest objects into BB
       _(mqObjArray).each(function (locObj) {
         recenterLoc.add({
           test: "hoo",
@@ -38,18 +38,18 @@ DD.Views.Locations = Backbone.View.extend({
       });
       that.$el.find('.data-list').replaceWith(locList);
 
+      // sets map center to coord of 1st result
       // coordinates and zoom rating (higher # means more zoomed in)
-      // map.setView(latLng, 15);
+      window.loc = recenterLoc;
+      var firstResult = recenterLoc.first().get("latLng");
+      var latLng = new L.LatLng(firstResult.lat, firstResult.lng);
+      map.setView(latLng, 15);
     };
 
     var address = $(event.target).prev().val().toString();
     var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
 
-    // will take a callback that:
-    // makes a collection of location objects
-    // displays those collection objects in sidebar
-    // recenters the map on the 1st object
-    // callback arg gets array of mapquest objs
+    // above callback arg gets array of mapquest objs
     geocoder.query(address, displayResults);
   }
 });
