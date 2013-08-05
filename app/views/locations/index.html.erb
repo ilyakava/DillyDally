@@ -1,6 +1,6 @@
 <div id="map"></div>
 <script type='text/javascript'>
-	var map = L.mapbox.map('map', 'ilyakavalerov.map-m06icghb');
+	var map = L.mapbox.map('map', API.MapBox.key() );
 </script>
 
 
@@ -126,7 +126,6 @@
 </div>
 
 <script type="text/javascript">
-
 	$('.searcharea button').on('click', function (event) {
 		
 		var address = $(event.target).prev().val().toString();
@@ -136,11 +135,9 @@
 		geocoder.query(address, reCenterMap);
 	})
 
-	// uses predefined map, assumes data format from geocoder
-	// recenters based on first result of geocoder
 	function reCenterMap(lat, lng) {
-		console.log("in recenter");
 		var latLng = new L.LatLng(lat, lng)
+		// coordinates and zoom rating (higher # means more zoomed in)
 		map.setView(latLng, 15);
 	}
 </script>
