@@ -21,10 +21,20 @@ DD.Views.Locations = Backbone.View.extend({
   recenterMapResult: function () {
     var that = this;
     console.log("Kaaa!");
-    // console.log($(event.target));
     var clickId = parseInt($(event.target).attr('id'), 10);
-    window.SR = that.searchResults;
     that.moveMap(that.searchResults.findWhere({'myId':clickId}));
+    // Visually distinguish active location
+    that.indentResult(clickId);
+  },
+
+  indentResult: function (myId) {
+    $('p.location').each(function (location) {
+      if (this.id == myId) {
+        $(this).addClass("map-center");
+      } else {
+        $(this).removeClass("map-center");
+      }
+    });
   },
 
   recenterMapForm: function () {
@@ -60,6 +70,7 @@ DD.Views.Locations = Backbone.View.extend({
       // coordinates and zoom rating (higher # means more zoomed in)
       var firstResult = recenterLoc.first();
       that.moveMap(firstResult);
+      that.indentResult(1);
     };
 
     // grab clicked DOM element

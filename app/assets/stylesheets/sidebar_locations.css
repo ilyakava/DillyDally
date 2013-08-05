@@ -143,6 +143,10 @@
     cursor: pointer;
 }
 
+#side-bar .data-list > li > p.location.map-center {
+    background-color: rgb(26, 80, 82);
+}
+
 #side-bar .data-list > li > .location > li {
     padding: 0px 5px;
     font-size: 14px;
