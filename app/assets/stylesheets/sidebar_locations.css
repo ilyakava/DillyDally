@@ -119,7 +119,10 @@
 #side-bar .data-list > li > .location {
     width: 100%;
     border-bottom: 1px rgb(26,79,81) solid;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 10px;
 }
 
 #side-bar .data-list > li > .location > li {

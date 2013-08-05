@@ -16,12 +16,13 @@ DD.Views.Locations = Backbone.View.extend({
     var that = this;
     console.log("in BB view!");
 
-    var reCenterMap = function (mqObjArray) {
+    var displayResults = function (mqObjArray) {
       var recenterLoc = new DD.Collections.Locations();
 
-      // gets array of mapquest objects
+      // parses array of mapquest objects
       _(mqObjArray).each(function (locObj) {
         recenterLoc.add({
+          test: "hoo",
           country: locObj.adminArea1,
           state: locObj.adminArea3,
           city: locObj.adminArea5,
@@ -31,7 +32,10 @@ DD.Views.Locations = Backbone.View.extend({
         });
       });
 
-      var locList = JST['locations/list']();
+      // display locations
+      var locList = JST['locations/address_list']({
+        locations: recenterLoc
+      });
       that.$el.find('.data-list').replaceWith(locList);
 
       // coordinates and zoom rating (higher # means more zoomed in)
@@ -46,6 +50,6 @@ DD.Views.Locations = Backbone.View.extend({
     // displays those collection objects in sidebar
     // recenters the map on the 1st object
     // callback arg gets array of mapquest objs
-    geocoder.query(address, reCenterMap);
+    geocoder.query(address, displayResults);
   }
 });

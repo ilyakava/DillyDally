@@ -1,0 +1,13 @@
+<ul class="data-list">
+	<% locations.each(function (location) { %>
+		<li>
+			<p class="location">
+				<%= location.get("street") %>
+				<%= (location.city) ? location.get("city") + ", " : "" %>
+				<%= location.get("state") %>
+				<%= (location.zipcode) ? location.get("zipcode") + ", ": "" %>
+				<%= location.get("country") %>
+			</p>
+		</li>
+	<% }); %>
+</ul>
