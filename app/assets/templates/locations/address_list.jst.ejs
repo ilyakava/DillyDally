@@ -2,7 +2,7 @@
 	<li><h3>Did you mean?</h3></li>
 	<% locations.each(function (location) { %>
 		<li>
-			<p class="location">
+			<p id="<%= location.get("myId") %>" class="location">
 				<%= location.get("street") %>
 				<%= (location.city) ? location.get("city") + ", " : "" %>
 				<%= location.get("state") %>
