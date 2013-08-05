@@ -4,7 +4,10 @@ window.DD = {
   Views: {},
   Routers: {},
   initialize: function(callback) {
+    
     console.log('Hello from Backbone!');
+    // callback contains info of what router to call
+    // router contains info of what kind of sidebar to generate
     callback();
   }
 };
@@ -12,3 +15,4 @@ window.DD = {
 $(document).ready(function(){
   // DD.initialize();
 });
+

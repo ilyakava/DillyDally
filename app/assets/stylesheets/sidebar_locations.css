@@ -39,25 +39,32 @@
     background-color: rgb(130,206,209);
 }
 
-.searcharea > form > input[type="text"] {
+.searcharea > input[type="text"] {
     padding: 6px 6px;
     width: 58%;
     font-size: 15px;
     font-family: 'Lato', sans-serif;
 }
 
-.searcharea > form,
 .searcharea > button {
     float: left;
 }
 
-#side-bar .searcharea {
+#side-bar .searcharea.recenter {
+     position: fixed;
+     top: 52px;
+     border-left: none;
+     width: 37%;
+     z-index: 10;
+}
+
+#side-bar .searcharea.new-locations {
      position: relative;
-     top: 50px;
+     top: 105px;
      border-left: none;
 }
 
-.searcharea > form > input[type="submit"],
+.searcharea > input[type="submit"],
 .searcharea > button {
     border: 1px rgb(187,187,187) solid;
     border-radius: 2px;
@@ -77,7 +84,7 @@
     font-size: 12px;
     width: 39%;
     position: fixed;
-    top: 52px;
+    top: 105px;
     background-color: rgb(130,206,209);
     overflow-x: hidden;
     z-index: 10;

@@ -1,16 +1,4 @@
-<div id="map">
-	<div class="map-position-control-container">
-		<div class="leaflet-top leaflet-right">
-			<div class="searcharea group recenter">
-				<button>Find Me!</button>
-				<form>
-					<input type="text" placeholder="Recenter Map...">
-					<input type="submit">
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+<div id="map"></div>
 <script type='text/javascript'>
 	var map = L.mapbox.map('map', API.MapBox.key() );
 </script>
@@ -129,6 +117,8 @@
 
 <script type="application/javascript">
 	$(function () {
+		// where to render recenter map searchbar
+		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
 			new DD.Routers.Locations($('#side-bar'));
 			Backbone.history.start();
@@ -137,23 +127,4 @@
 
 </script>
 
-<script type="text/javascript">
-	
 
-	$('.recenter form').find('input[type=submit]').on('click', function (event) {
-		event.preventDefault();
-		var address = $(event.target).prev().val().toString();
-
-		var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
-
-		geocoder.query(address, reCenterMap);
-	})
-
-	function reCenterMap(lat, lng) {
-		var latLng = new L.LatLng(lat, lng)
-		// coordinates and zoom rating (higher # means more zoomed in)
-		map.setView(latLng, 15);
-	}
-
-
-</script>
