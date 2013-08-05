@@ -41,11 +41,11 @@ nav > .global > li:first-child {
 /* current state of application will trigger hover like styling */
 
 nav > .global > li:nth-child(3).discovers {
-    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+    background-color: rgb(26, 80, 82);
 }
 
 nav > .global > li:last-child.helps {
-    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+    background-color: rgb(26, 80, 82);
 }
 
 /* end of current state modification */
@@ -93,15 +93,15 @@ nav > .user > li:hover {
 /* current state of application will trigger hover like styling */
 
 nav > .user > li:first-child.friends {
-    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+    background-color: rgb(26, 80, 82);
 }
 
 nav > .user > li:nth-child(2).collections {
-    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+    background-color: rgb(26, 80, 82);
 }
 
 nav > .user > li:nth-child(3).locations {
-    box-shadow: 0px 0px 6px 0px rgb(45,89,95) inset;
+    background-color: rgb(26, 80, 82);
 }
 
 /* end of current state modification */
