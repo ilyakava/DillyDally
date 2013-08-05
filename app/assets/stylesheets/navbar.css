@@ -60,11 +60,12 @@ nav > .global > li.search > input {
     height: 27px;
     padding: 2px;    
     font-family: 'Lato', sans-serif;
+    font-size: 15px;
     font-weight: 900;
 }
 
 nav > .global > li.search > input:focus {
-   outline-color: rgb(58,   135,    89  );
+   /*outline-color: rgb(58,   135,    89  );*/
 }
 
 
