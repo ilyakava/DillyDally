@@ -16,28 +16,36 @@
     min-width:400px;
     box-sizing: border-box;
     background-color: rgb(130,206,209);
+    border-left: 1px rgb(26,79,81) solid;
 }
 
 #side-bar > .searcharea {
     padding: 6px 16px;
+    width: 100%;
     border-bottom: rgb(26,79,81) 1px solid;
+    position: fixed;
+    background-color: rgb(130,206,209);
 }
 
 #side-bar > .searcharea > input {
     padding: 6px 6px;
-    width: 65%;
+    width: 28%;
     font-size: 15px;
+    font-family: 'Lato', sans-serif;
 }
 
 #side-bar > .tabs {
     font-size: 12px;
     width: 100%;
+    position: fixed;
+    top: 103px;
+    background-color: rgb(130,206,209);
 }
 #side-bar > .tabs > li {
     font-size: 14px;
     float: left;
     padding: 16px 7px;
-    border-left: rgb(26,79,81) 1px solid;
+    border-right: rgb(26,79,81) 1px solid;
     border-bottom: rgb(26,79,81) 1px solid;
 }
 
@@ -55,9 +63,14 @@
     width: 100%;
 }
 
+#side-bar > .data-list > li:first-child {
+    padding-top: 110px;
+}
+
+
 #side-bar > .data-list > li > .location {
     width: 100%;
-    border-bottom: 1px rgb(58,   135, 89  ) solid;
+    border-bottom: 1px rgb(26,79,81) solid;
     font-family: "Times New Roman", Times, serif;
 }
 
