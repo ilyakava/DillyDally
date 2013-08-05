@@ -1,0 +1,1 @@
+DD.Models.Location = Backbone.Model.extend({});

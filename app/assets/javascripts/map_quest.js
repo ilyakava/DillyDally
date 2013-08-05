@@ -20,6 +20,18 @@ MapQuest = (function () {
       type: 'POST',
       data: {json: request },
       success: function (response) {
+        // Relevant properties of each location obj:
+        // adminArea1 = Country
+        // adminArea3 = State
+        // adminArea5 = City
+        // postalCode
+        // street
+        // latLng (has .lng and .lat attributes)
+        var locationList = response.results[0].locations;
+
+        callback(locationList);
+        // return locationList;
+
         // object with .lng and .lat attributes
         var latLng = response.results[0].locations[0].latLng;
         callback( latLng.lat, latLng.lng );

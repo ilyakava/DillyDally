@@ -6,6 +6,17 @@
     right:40%;
 }
 
+.group {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.map-position-control-container {
+    top: 0;
+    right: 0;
+}
+
 #side-bar {
     overflow-x:hidden;
     position:absolute;
@@ -19,28 +30,28 @@
     border-left: 1px rgb(26,79,81) solid;
 }
 
-#side-bar > .searcharea {
+.searcharea {
     padding: 6px 16px;
     width: 100%;
     border-bottom: rgb(26,79,81) 1px solid;
-    position: fixed;
+    border-left: rgb(26,79,81) 1px solid;
     background-color: rgb(130,206,209);
 }
 
-#side-bar > .searcharea > form > input[type="text"] {
+.searcharea > form > input[type="text"] {
     padding: 6px 6px;
     width: 58%;
     font-size: 15px;
     font-family: 'Lato', sans-serif;
 }
 
-#side-bar > .searcharea > form,
-#side-bar > .searcharea > button {
+.searcharea > form,
+.searcharea > button {
     float: left;
 }
 
-#side-bar > .searcharea > form > input[type="submit"],
-#side-bar > .searcharea > button {
+.searcharea > form > input[type="submit"],
+.searcharea > button {
     border: 1px rgb(187,187,187) solid;
     border-radius: 2px;
     background-color: #fff;
@@ -57,10 +68,11 @@
 
 #side-bar > .tabs {
     font-size: 12px;
-    width: 100%;
+    width: 39%;
     position: fixed;
-    top: 103px;
+    top: 52px;
     background-color: rgb(130,206,209);
+    overflow-x: hidden;
 }
 #side-bar > .tabs > li {
     font-size: 14px;

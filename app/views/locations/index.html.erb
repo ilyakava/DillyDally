@@ -1,17 +1,23 @@
-<div id="map"></div>
+<div id="map">
+	<div class="map-position-control-container">
+		<div class="leaflet-top leaflet-right">
+			<div class="searcharea group">
+				<button>Find Me!</button>
+				<form>
+					<input type="text" placeholder="Set Your Location...">
+					<input type="submit">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <script type='text/javascript'>
 	var map = L.mapbox.map('map', API.MapBox.key() );
 </script>
 
 
 <div id="side-bar">
-	<div class="searcharea">
-		<button>Find Me!</button>
-		<form>
-			<input type="text" placeholder="Set Your Location...">
-			<input type="submit">
-		</form>
-	</div>
+	
 
 	<ul class="tabs group">  
 		<li><a href="#">Locations</a></li>

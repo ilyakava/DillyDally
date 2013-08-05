@@ -1,13 +1,13 @@
-window.DillyDally = {
+window.DD = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    console.log('Hello from Backbone!');
   }
 };
 
 $(document).ready(function(){
-  DillyDally.initialize();
+  // DD.initialize();
 });
