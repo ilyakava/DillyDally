@@ -78,6 +78,7 @@
     height: 30px;
     margin: 5px 2px;
     color: black;
+    cursor: pointer;
 }
 
 #side-bar .tabs {
@@ -139,6 +140,7 @@
     font-weight: 300;
     padding: 10px;
     color: white;
+    cursor: pointer;
 }
 
 #side-bar .data-list > li > .location > li {
