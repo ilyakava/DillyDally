@@ -51,6 +51,12 @@
     float: left;
 }
 
+#side-bar .searcharea {
+     position: relative;
+     top: 50px;
+     border-left: none;
+}
+
 .searcharea > form > input[type="submit"],
 .searcharea > button {
     border: 1px rgb(187,187,187) solid;
@@ -67,15 +73,16 @@
     color: black;
 }
 
-#side-bar > .tabs {
+#side-bar .tabs {
     font-size: 12px;
     width: 39%;
     position: fixed;
     top: 52px;
     background-color: rgb(130,206,209);
     overflow-x: hidden;
+    z-index: 10;
 }
-#side-bar > .tabs > li {
+#side-bar .tabs > li {
     font-size: 14px;
     float: left;
     padding: 16px 7px;
@@ -83,47 +90,47 @@
     border-bottom: rgb(26,79,81) 1px solid;
 }
 
-#side-bar > .tabs > li:last-child {
+#side-bar .tabs > li:last-child {
     padding: 16px 9px;
 
 }
 
-#side-bar > .tabs > li > a {
+#side-bar .tabs > li > a {
     color: white;
 }
 
 
-#side-bar > .data-list {
+#side-bar .data-list {
     width: 100%;
 }
 
-#side-bar > .data-list > li:first-child {
+#side-bar .data-list > li:first-child {
     padding-top: 110px;
 }
 
 
-#side-bar > .data-list > li > .location {
+#side-bar .data-list > li > .location {
     width: 100%;
     border-bottom: 1px rgb(26,79,81) solid;
     font-family: "Times New Roman", Times, serif;
 }
 
-#side-bar > .data-list > li > .location > li {
+#side-bar .data-list > li > .location > li {
     padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-#side-bar > .data-list > li > .location > li > a {
+#side-bar .data-list > li > .location > li > a {
     color: black;
 }
 
-#side-bar > .data-list > li > .location > li:first-child > a {
+#side-bar .data-list > li > .location > li:first-child > a {
     font-size: 26px;
     color: white;
 }
 
-#side-bar > .data-list > li > .location > li > dl > dt {
+#side-bar .data-list > li > .location > li > dl > dt {
     background-color: rgb(70,135,92);
     padding: 2px 2px;
     border-radius: 5px;
@@ -136,7 +143,7 @@
     color: white;
 }
 
-#side-bar > label {
+#side-bar label {
     float: left;
     position: absolute;
     top: 505px;

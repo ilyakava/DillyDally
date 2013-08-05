@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'devise'
 gem 'backbone-on-rails'
+gem 'ejs'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

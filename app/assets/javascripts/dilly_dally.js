@@ -3,8 +3,9 @@ window.DD = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function(callback) {
     console.log('Hello from Backbone!');
+    callback();
   }
 };
 

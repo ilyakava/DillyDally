@@ -1,7 +1,7 @@
 <div id="map">
 	<div class="map-position-control-container">
 		<div class="leaflet-top leaflet-right">
-			<div class="searcharea group">
+			<div class="searcharea group recenter">
 				<button>Find Me!</button>
 				<form>
 					<input type="text" placeholder="Recenter Map...">
@@ -17,13 +17,6 @@
 
 
 <div id="side-bar">
-	
-
-	<ul class="tabs group">  
-		<li><a href="#">Locations</a></li>
-		<li><a href="#">Other Collections</a></li>
-		<li><a href="#">Add a Location</a></li>
-	</ul>
 	
 	<ul class="data-list">
 		<li>
@@ -134,8 +127,20 @@
 	</label> -->
 </div>
 
+<script type="application/javascript">
+	$(function () {
+		window.DD.initialize(function () {
+			new DD.Routers.Locations($('#side-bar'));
+			Backbone.history.start();
+		})
+	});
+
+</script>
+
 <script type="text/javascript">
-	$('.searcharea form').find('input[type=submit]').on('click', function (event) {
+	
+
+	$('.recenter form').find('input[type=submit]').on('click', function (event) {
 		event.preventDefault();
 		var address = $(event.target).prev().val().toString();
 
