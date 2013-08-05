@@ -12,6 +12,11 @@ DD.Views.Locations = Backbone.View.extend({
     return that;
   },
 
+  moveMap: function (locModel) {
+    var latLng = new L.LatLng(locModel.lat, locModel.lng);
+    map.setView(latLng, 15);
+  },
+
   recenterMap: function () {
     var that = this;
     console.log("in BB view!");
@@ -40,10 +45,8 @@ DD.Views.Locations = Backbone.View.extend({
 
       // sets map center to coord of 1st result
       // coordinates and zoom rating (higher # means more zoomed in)
-      window.loc = recenterLoc;
       var firstResult = recenterLoc.first().get("latLng");
-      var latLng = new L.LatLng(firstResult.lat, firstResult.lng);
-      map.setView(latLng, 15);
+      that.moveMap(firstResult);
     };
 
     var address = $(event.target).prev().val().toString();
