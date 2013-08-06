@@ -146,6 +146,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   devise
+  ejs
   jbuilder (~> 1.2)
   jquery-rails
   letter_opener

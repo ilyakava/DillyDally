@@ -19,10 +19,17 @@ DD.Routers.Locations = Backbone.Router.extend({
 
   recenterBySearch: function () {
     var that = this;
+
+    // unbinds events
+    // http://stackoverflow.com/questions/6831362/backbone-js-view-cant-unbind-events-properly?rq=1
+    if (that.activeView) { that.activeView.cancel(); }
+
     // triggered by a click in the head view
     // renders into data-list element
     var recenterResults = new DD.Views.RecenterResults(that.$contentEl);
     recenterResults.render();
     console.log("recenter search method/view finished");
+
+    that.activeView = recenterResults;
   }
 });

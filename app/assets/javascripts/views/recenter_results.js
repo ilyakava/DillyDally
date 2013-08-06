@@ -1,12 +1,13 @@
 DD.Views.RecenterResults = Backbone.View.extend({
-  events: {
-    "click p.location": "centerFromList"
-    // "click button#recenter": "render"
-  },
 
   initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
     this.checkTabs();
+  },
+
+  events: {
+    "click p.location": "centerFromList"
+    // "click button#recenter": "render"
   },
 
   modifyDOM: function () {
@@ -61,12 +62,18 @@ DD.Views.RecenterResults = Backbone.View.extend({
     }
   },
 
+  cancel: function () {
+    console.log("cancelling...");
+    $(this.el).undelegate('p.location', 'click');
+  },
+
   render: function () {
     var that = this;
 
     var displayResults = function (mqObjArray) {
       console.log("display results method starts");
 
+      if (recenterLocs) { console.log("collection exists already"); }
       var recenterLocs = new DD.Collections.Locations();
 
       // parses array of mapquest objects into BB collection
@@ -98,6 +105,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
       that.moveMap(recenterLocs.first());
       that.indentResult(1);
       console.log("display results method finished");
+      console.log(that.searchResults);
     };
 
     // grab searchbar element
