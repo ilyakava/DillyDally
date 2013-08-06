@@ -103,6 +103,7 @@ By the end of this phase:
 	* ranking by comments/ratings
 * Have app recommend locations - "locations like this"
 * Have app map out an itinerary based on locations and open hours
+* Add support for routes, not just collections
 
 ---
 
