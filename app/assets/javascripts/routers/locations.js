@@ -10,7 +10,8 @@ DD.Routers.Locations = Backbone.Router.extend({
 
   routes: {
     "" : "index",
-    "recenter-by-search": "recenterBySearch"
+    "recenter-by-search": "recenterBySearch",
+    "search-nearby": "searchNearby"
   },
 
   index: function () {
@@ -31,5 +32,15 @@ DD.Routers.Locations = Backbone.Router.extend({
     console.log("recenter search method/view finished");
 
     that.activeView = recenterResults;
+  },
+
+  searchNearby: function () {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    var newLocationSearch = new DD.Views.LocationSearch(that.$contentEl);
+    newLocationSearch.render();
+
+    that.activeView = newLocationSearch;
   }
 });
