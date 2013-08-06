@@ -108,6 +108,9 @@
 		</li>
 
 	</ul>
+
+	<!-- placeholder to use with replaceWith() -->
+	<ul class="data-list"></ul>
 	
 <!-- 		<label>
 		<input type="checkbox" value="checked">	
@@ -120,7 +123,7 @@
 		// where to render recenter map searchbar
 		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
-			new DD.Routers.Locations($('#side-bar'));
+			new DD.Routers.Locations($('#side-bar'), $('.data-list'));
 			Backbone.history.start();
 		})
 	});

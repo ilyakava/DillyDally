@@ -1,16 +1,27 @@
 DD.Routers.Locations = Backbone.Router.extend({
-  initialize: function ($rootEl) {
-    this.$rootEl = $rootEl;
+  initialize: function ($headEl, $contentEl) {
+    this.$headEl = $headEl;
+    this.$contentEl = $contentEl;
+    
+    // render head of searchbar (tabs and recenter searchbar)
+    var searchbarHead = new DD.Views.LocationsHead();
+    this.$headEl.html(searchbarHead.render().$el);
   },
 
   routes: {
-    "" : "index"
+    "" : "index",
+    "recenter-by-search": "recenterBySearch"
   },
 
   index: function () {
-    // render tabs and map-center search bar
+    // should show your spots in data-list
+  },
+
+  recenterBySearch: function () {
+    // triggered by a click in the head view
+    // renders into data-list element
     var basicView = new DD.Views.Locations();
-    this.$rootEl.html(basicView.render().$el);
-    console.log("index triggered");
+    this.$contentEl.html(basicView.render().$el);
+    console.log("recenter search method triggered");
   }
 });
