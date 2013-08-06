@@ -18,6 +18,12 @@ DD.Views.LocationSearch = Backbone.View.extend({
 
   searchNearby: function () {
     var searchPhrase = $(event.target).prev().val();
-    console.log(searchPhrase);
+
+    // var mapCenter = map.getCenter();
+    var tempLat = 40.72264044368007;
+    var tempLng = -73.99240493774414;
+    
+    var placeSearcher = new Google.Places( API.Google.key() );
+    placeSearcher.query(tempLat, tempLng, searchPhrase);
   }
 });
