@@ -5,6 +5,9 @@ DD.Views.Locations = Backbone.View.extend({
   },
 
   render: function () {
+    // initial render contains no data yet
+    // later, add display of user's locations near current
+    // location, i.e. default center/location detection
     var that = this;
     var renderedContent = JST['locations/index']();
     
@@ -13,14 +16,17 @@ DD.Views.Locations = Backbone.View.extend({
   },
 
   moveMap: function (locModel) {
+    // expects BB location object
     var latLng = locModel.get("latLng");
+    // Leaflet method
     latLng = new L.LatLng(latLng.lat, latLng.lng);
+    // coordinates and zoom rating (higher # means more zoomed in)
     map.setView(latLng, 15);
   },
 
   recenterMapResult: function () {
+    // only triggered when user clicks on address_list view
     var that = this;
-    console.log("Kaaa!");
     var clickId = parseInt($(event.target).attr('id'), 10);
     that.moveMap(that.searchResults.findWhere({'myId':clickId}));
     // Visually distinguish active location
@@ -39,16 +45,15 @@ DD.Views.Locations = Backbone.View.extend({
 
   recenterMapForm: function () {
     var that = this;
-    console.log("in BB view!");
 
     var displayResults = function (mqObjArray) {
-      var recenterLoc = new DD.Collections.Locations();
+      var recenterLocs = new DD.Collections.Locations();
 
-      // parses array of mapquest objects into BB
+      // parses array of mapquest objects into BB collection
       var index = 0;
       _(mqObjArray).each(function (locObj) {
         index++;
-        recenterLoc.add({
+        recenterLocs.add({
           myId: index,
           country: locObj.adminArea1,
           state: locObj.adminArea3,
@@ -59,17 +64,16 @@ DD.Views.Locations = Backbone.View.extend({
         });
       });
 
-      // display and save locations
+      // render locations from BB collection
       var locListView = JST['locations/address_list']({
-        locations: recenterLoc
+        locations: recenterLocs
       });
       that.$el.find('.data-list').replaceWith(locListView);
-      that.searchResults = recenterLoc;
+      // save BB collection for future use, w/o persisting
+      that.searchResults = recenterLocs;
 
-      // sets map center to coord of 1st result
-      // coordinates and zoom rating (higher # means more zoomed in)
-      var firstResult = recenterLoc.first();
-      that.moveMap(firstResult);
+      // sets map center to latLng of 1st result
+      that.moveMap(recenterLocs.first());
       that.indentResult(1);
     };
 
