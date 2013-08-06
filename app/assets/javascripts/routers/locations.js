@@ -8,10 +8,9 @@ DD.Routers.Locations = Backbone.Router.extend({
   },
 
   index: function () {
+    // render tabs and map-center search bar
     var basicView = new DD.Views.Locations();
     this.$rootEl.html(basicView.render().$el);
     console.log("index triggered");
-    // render tabs
-    // render basic view
   }
 });
