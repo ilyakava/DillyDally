@@ -5,6 +5,7 @@ DD.Views.LocationsHead = Backbone.View.extend({
 
   didYouMean: function () {
     console.log("triggered didYouMean search method");
+    Backbone.history.navigate("#/");
     Backbone.history.navigate("#/recenter-by-search");
   },
 

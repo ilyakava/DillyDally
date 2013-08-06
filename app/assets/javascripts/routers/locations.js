@@ -18,10 +18,11 @@ DD.Routers.Locations = Backbone.Router.extend({
   },
 
   recenterBySearch: function () {
+    var that = this;
     // triggered by a click in the head view
     // renders into data-list element
-    var recenterResults = new DD.Views.RecenterResults();
-    this.$contentEl.html(recenterResults.render().$el);
+    var recenterResults = new DD.Views.RecenterResults(that.$contentEl);
+    recenterResults.render();
     console.log("recenter search method/view finished");
   }
 });

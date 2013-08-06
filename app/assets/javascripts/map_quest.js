@@ -29,10 +29,10 @@ MapQuest = (function () {
         // latLng (has .lng and .lat attributes)
         var locationList = response.results[0].locations;
 
-        callback(locationList);
         console.log("mapquest geocode success: " +
           locationList.length + " results."
         );
+        callback(locationList);
         // return locationList <- should I?? 
       },
       error: function (err) {

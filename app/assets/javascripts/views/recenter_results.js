@@ -1,15 +1,19 @@
 DD.Views.RecenterResults = Backbone.View.extend({
   events: {
     "click p.location": "centerFromList"
-    // "click button#recenter": "centerFromSearch"
+    // "click button#recenter": "render"
   },
 
-  initialize: function () {
+  initialize: function ($rootEl) {
+    this.$rootEl = $rootEl;
     this.checkTabs();
-    this.centerFromSearch();
   },
 
-  render: function () {
+  modifyDOM: function () {
+
+  },
+
+  OLDrender: function () {
     // initial render contains no data yet.
     // later, add display of user's locations near current
     // location, i.e. default center/location detection
@@ -49,6 +53,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
   },
 
   checkTabs: function () {
+    // reaches outside of its own view
     if (!$('#didumean').length) {
       $('ul.tabs').append('<li><a id="didumean"'+
         'href="#">Did You Mean?</a></li>'
@@ -56,10 +61,12 @@ DD.Views.RecenterResults = Backbone.View.extend({
     }
   },
 
-  centerFromSearch: function () {
+  render: function () {
     var that = this;
 
     var displayResults = function (mqObjArray) {
+      console.log("display results method starts");
+
       var recenterLocs = new DD.Collections.Locations();
 
       // parses array of mapquest objects into BB collection
@@ -81,7 +88,9 @@ DD.Views.RecenterResults = Backbone.View.extend({
       var locListView = JST['locations/address_list']({
         locations: recenterLocs
       });
-      that.$el.find('.data-list').replaceWith(locListView);
+      // Modify DOM
+      that.$el.html(locListView);
+      $('.data-list').replaceWith(that.$el);
       // save BB collection for future use, w/o persisting
       that.searchResults = recenterLocs;
 
@@ -90,9 +99,6 @@ DD.Views.RecenterResults = Backbone.View.extend({
       that.indentResult(1);
       console.log("display results method finished");
     };
-
-    // OLD: grab clicked DOM element
-    // OLD: var address = $(event.target).prev().val().toString();
 
     // grab searchbar element
     var address = $('.recenter input[type=text]').val().toString();
@@ -104,5 +110,6 @@ DD.Views.RecenterResults = Backbone.View.extend({
     geocoder.query(address, displayResults);
     // ensures a "did you mean" **tab** is rendered
     that.checkTabs();
+    return this;
   }
 });
