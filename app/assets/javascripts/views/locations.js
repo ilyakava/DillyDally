@@ -43,6 +43,14 @@ DD.Views.Locations = Backbone.View.extend({
     });
   },
 
+  checkTabs: function () {
+    if (!$('#didumean').length) {
+      $('ul.tabs').append('<li><a id="didumean"'+
+        'href="#">Did You Mean?</a></li>'
+      );
+    }
+  },
+
   centerFromSearch: function () {
     var that = this;
 
@@ -79,10 +87,12 @@ DD.Views.Locations = Backbone.View.extend({
 
     // grab clicked DOM element
     var address = $(event.target).prev().val().toString();
-    // my method
+    // method to instantiate my interface with mapquest
     var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
 
-    // above callback arg gets array of mapquest objs
+    // above callback arg recieves array of mapquest objs
     geocoder.query(address, displayResults);
+    // ensures a "did you mean" **tab** is rendered
+    that.checkTabs();
   }
 });
