@@ -1,7 +1,12 @@
-DD.Views.Locations = Backbone.View.extend({
+DD.Views.RecenterResults = Backbone.View.extend({
   events: {
-    "click button#recenter": "centerFromSearch",
     "click p.location": "centerFromList"
+    // "click button#recenter": "centerFromSearch"
+  },
+
+  initialize: function () {
+    this.checkTabs();
+    this.centerFromSearch();
   },
 
   render: function () {
@@ -83,10 +88,15 @@ DD.Views.Locations = Backbone.View.extend({
       // sets map center to latLng of 1st result
       that.moveMap(recenterLocs.first());
       that.indentResult(1);
+      console.log("display results method finished");
     };
 
-    // grab clicked DOM element
-    var address = $(event.target).prev().val().toString();
+    // OLD: grab clicked DOM element
+    // OLD: var address = $(event.target).prev().val().toString();
+
+    // grab searchbar element
+    var address = $('.recenter input[type=text]').val().toString();
+
     // method to instantiate my interface with mapquest
     var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
 

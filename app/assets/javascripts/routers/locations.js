@@ -20,8 +20,8 @@ DD.Routers.Locations = Backbone.Router.extend({
   recenterBySearch: function () {
     // triggered by a click in the head view
     // renders into data-list element
-    var basicView = new DD.Views.Locations();
-    this.$contentEl.html(basicView.render().$el);
-    console.log("recenter search method triggered");
+    var recenterResults = new DD.Views.RecenterResults();
+    this.$contentEl.html(recenterResults.render().$el);
+    console.log("recenter search method/view finished");
   }
 });
