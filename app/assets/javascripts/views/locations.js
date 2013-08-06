@@ -1,11 +1,11 @@
 DD.Views.Locations = Backbone.View.extend({
   events: {
-    "click button#recenter": "recenterMapForm",
-    "click p.location": "recenterMapResult"
+    "click button#recenter": "centerFromSearch",
+    "click p.location": "centerFromList"
   },
 
   render: function () {
-    // initial render contains no data yet
+    // initial render contains no data yet.
     // later, add display of user's locations near current
     // location, i.e. default center/location detection
     var that = this;
@@ -24,7 +24,7 @@ DD.Views.Locations = Backbone.View.extend({
     map.setView(latLng, 15);
   },
 
-  recenterMapResult: function () {
+  centerFromList: function () {
     // only triggered when user clicks on address_list view
     var that = this;
     var clickId = parseInt($(event.target).attr('id'), 10);
@@ -43,7 +43,7 @@ DD.Views.Locations = Backbone.View.extend({
     });
   },
 
-  recenterMapForm: function () {
+  centerFromSearch: function () {
     var that = this;
 
     var displayResults = function (mqObjArray) {
