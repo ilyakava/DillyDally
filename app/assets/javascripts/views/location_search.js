@@ -21,17 +21,21 @@ DD.Views.LocationSearch = Backbone.View.extend({
     window.th = that.$el;
     that.$el.html(renderedContent);
     $('.data-list').replaceWith(that.$el);
+    return that;
   },
 
   updateDisplay: function () {
     var that = this;
     console.log("rendering non-initial nearby search view");
-    
-    var renderedContent = JST['locations/nearby_search']({
-      collection: that.collection
+
+    // clear destination of old search locations
+    that.$el.find('.data-list').html("");
+
+    that.collection.each(function (location) {
+      singleLocation = new DD.Views.NearbyResult( {model: location} );
+      that.$el.find('.data-list').append(singleLocation.render().$el);
     });
 
-    that.$el.find('.data-list').replaceWith(renderedContent);
     $('.data-list').html(that.$el.find('.data-list').html());
   },
 

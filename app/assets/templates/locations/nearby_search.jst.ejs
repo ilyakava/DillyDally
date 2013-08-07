@@ -1,18 +1,10 @@
-<div class="data-list">
-	<% collection.each(function (location) { %>
-		<li>
-			<ul class="location">
-				<li><a href="#"><%= location.get("name") %></a></li>
-				<li><%= location.get("address") %></li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-	<% }) %>
-</div>
+<li><a href="#"><%= location.get("name") %></a></li>
+<li><%= location.get("address") %></li>
+<li>Tags
+	<dl class="group">
+		<dt>NO-WIFI</dt>
+		<dt>GREAT OUTDOOR SEATING</dt>
+		<dt>ALCOHOLIC DRINKS</dt>
+	</dl>
+</li>
+<li><a href="#">Detail View</a></li>		
