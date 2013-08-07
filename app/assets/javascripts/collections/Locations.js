@@ -1,5 +1,6 @@
 DD.Collections.Locations = Backbone.Collection.extend({
   model: DD.Models.Location,
+  url: '/locations',
 
   parseMapQuest: function (mqObjArray) {
     var that = this;
