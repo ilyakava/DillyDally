@@ -12,7 +12,7 @@ Typical first User experience
 	* Mark a location as visited
 		* Create a comment on a location
 * Search for locations nearby, or in areas, with keywords
-	* See google results, alongside other MySpots users' locations
+	* See google results, alongside other DillyDally users' locations
 * Add some locations to your map, marked as unvisited
 * save the map
 * allow/disallow other users to see the map/collection

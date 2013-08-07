@@ -15,7 +15,7 @@ DD.Routers.Locations = Backbone.Router.extend({
   },
 
   index: function () {
-    // should show your spots in data-list
+    // should show your locations in data-list
   },
 
   recenterBySearch: function () {

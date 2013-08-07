@@ -91,7 +91,7 @@ By the end of this phase:
 ---
 
 #Functional-Phase III
-* by the end of this phase, an additional view showing any MySpots user's collections on the map will be availible
+* by the end of this phase, an additional view showing any DillyDally user's collections on the map will be availible
 
 ---
 
