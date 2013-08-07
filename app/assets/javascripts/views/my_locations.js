@@ -7,9 +7,17 @@ DD.Views.MyLocations = Backbone.View.extend({
     that.$el.find('.data-list').html("");
 
     that.collection.each(function (location) {
-      singleLocation = new DD.Views.NearbyResult( {model: location} );
-      that.$el.find('.data-list').append(singleLocation.render().$el);
+      singleLocation = new DD.Views.DBLocation( {model: location} );
+      that.$el.append(singleLocation.render().$el);
+
+      window.el = that.$el;
+      console.log(that.$el);
     });
     return this;
+  },
+
+  cancel: function () {
+    // will get called
   }
+
 });

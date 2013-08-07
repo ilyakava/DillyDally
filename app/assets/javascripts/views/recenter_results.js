@@ -27,9 +27,10 @@ DD.Views.RecenterResults = Backbone.View.extend({
 
   moveMap: function (locModel) {
     // expects BB location object
-    var latLng = locModel.get("latLng");
+    var lng = locModel.get("lng");
+    var lat = locModel.get("lat");
     // Leaflet method
-    latLng = new L.LatLng(latLng.lat, latLng.lng);
+    latLng = new L.LatLng(lat, lng);
     // coordinates and zoom rating (higher # means more zoomed in)
     map.setView(latLng, 15);
   },

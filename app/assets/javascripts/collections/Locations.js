@@ -12,7 +12,8 @@ DD.Collections.Locations = Backbone.Collection.extend({
         address: locObj.street + " " + locObj.adminArea5 + " " +
           locObj.adminArea3 + " " + locObj.postalCode +
           ", " + locObj.adminArea1,
-        latLng: locObj.latLng
+        lat: locObj.latLng.lat,
+        lng: locObj.latLng.lng,
         // check mapquest.js for description of MQ objects
       });
     });
@@ -28,7 +29,8 @@ DD.Collections.Locations = Backbone.Collection.extend({
         address: locObj.vicinity,
         name: locObj.name,
         categories: locObj.types,
-        latLng: locObj.geometry.location
+        lat: locObj.geometry.location.lat,
+        lng: locObj.geometry.location.lng
       });
     });
   }

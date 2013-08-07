@@ -9,111 +9,10 @@
 
 <div id="side-bar">
 	
-	<ul class="data-list">
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="location">
-				<li><a href="#">Kava Coffee</a></li>
-				<li>Frequented</li>
-				<li>Tags
-					<dl class="group">
-						<dt>NO-WIFI</dt>
-						<dt>GREAT OUTDOOR SEATING</dt>
-						<dt>ALCOHOLIC DRINKS</dt>
-					</dl>
-				</li>
-				<li><a href="#">Detail View</a></li>
-			</ul>
-		</li>
-
-	</ul>
+	<ul class="data-list"></ul>
 
 	<!-- placeholder to use with replaceWith() -->
-	<ul class="data-list"></ul>
+	<ul id="data-list"></ul>
 	
 <!-- 		<label>
 		<input type="checkbox" value="checked">	
@@ -128,7 +27,7 @@
 		window.DD.initialize(function () {
 			var locations = ($('#bootstrapped-locations').html());
 
-			new DD.Routers.Locations($('#side-bar'), $('.data-list'), locations);
+			new DD.Routers.Locations($('#side-bar'), $('#data-list'), locations);
 			Backbone.history.start();
 		})
 	});

@@ -24,19 +24,22 @@ DD.Routers.Locations = Backbone.Router.extend({
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-
-
     var allMyLocations = new DD.Views.MyLocations({
       $rootEl: that.$contentEl,
-      collection: that.bootstrappedData
+      collection: new DD.Collections.Locations(that.bootstrappedData)
     });
-
-    allMyLocations.collection.fetch({success: function (response) {
-      // console.log(allMyLocations.collection);
-      that.$contentEl.html(allMyLocations.render().$el.html());
-    }});
-    
-    (that.firstLoad ? that.firstLoad = false : allMyLocations.fetch() );
+ 
+    if (that.firstLoad) {
+      window.magic = that.$contentEl;
+      that.firstLoad = false;
+      that.$contentEl.html(allMyLocations.render().$el);
+    } else {
+      allMyLocations.collection.fetch({success: function (response) {
+        // console.log(allMyLocations.collection);
+        // that.$contentEl.html(allMyLocations.render().$el);
+        $('#data-list').html(allMyLocations.render().$el);
+      }});
+    }
     
     console.log("rendering user locations");
     that.activeView = allMyLocations;

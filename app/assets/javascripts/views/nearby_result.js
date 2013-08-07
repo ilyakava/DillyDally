@@ -8,10 +8,7 @@ DD.Views.NearbyResult = Backbone.View.extend({
   saveModel: function () {
     var that = this;
     console.log("saving a location model to DB");
-    this.model.save({
-      "lat": that.model.get("latLng").lat,
-      "lng": that.model.get("latLng").lng
-    });
+    this.model.save();
   },
 
   render: function () {
