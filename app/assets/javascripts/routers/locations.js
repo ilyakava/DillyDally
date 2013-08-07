@@ -1,21 +1,41 @@
 DD.Routers.Locations = Backbone.Router.extend({
-  initialize: function ($headEl, $contentEl) {
+  initialize: function ($headEl, $contentEl, locationsData) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
+
+    this.bootstrappedData = locationsData;
+    this.firstLoad = true;
     
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.LocationsHead();
     this.$headEl.html(searchbarHead.render().$el);
+
+    // needs to Launch myLocations view
   },
 
   routes: {
-    "" : "index",
+    "" : "myLocations",
     "recenter-by-search": "recenterBySearch",
     "search-nearby": "searchNearby"
   },
 
-  index: function () {
+  myLocations: function () {
     // should show your locations in data-list
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+
+
+    var allMyLocations = new DD.Views.MyLocations({
+      $rootEl: that.$contentEl,
+      collection: (that.firstLoad ? that.bootstrappedData : new DD.Collections.Locations())
+    });
+
+    (that.firstLoad ? that.firstLoad = false : allMyLocations.fetch() );
+    
+    that.$contentEl.html(allMyLocations.render().$el.html());
+    console.log("rendering user locations");
+    that.activeView = allMyLocations;
   },
 
   recenterBySearch: function () {

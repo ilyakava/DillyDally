@@ -3,6 +3,9 @@
 	var map = L.mapbox.map('map', "l") // API.MapBox.key() );
 </script>
 
+<script type="application/javascript" id="bootstrapped-locations">
+	<%= @locations.to_json.html_safe %>
+</script>
 
 <div id="side-bar">
 	
@@ -123,7 +126,9 @@
 		// where to render recenter map searchbar
 		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
-			new DD.Routers.Locations($('#side-bar'), $('.data-list'));
+			var locations = ($('#bootstrapped-locations').html());
+
+			new DD.Routers.Locations($('#side-bar'), $('.data-list'), locations);
 			Backbone.history.start();
 		})
 	});

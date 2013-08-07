@@ -1,17 +1,17 @@
-<% location = controller.class.to_s.sub("Controller","").downcase %>
+<% curr_page = controller.class.to_s.sub("Controller","").downcase %>
 
 <nav class="group">
 	<ul class="global">
 		<li><a class="logo" href="#">DillyDally</a></li>
 		<li class="search"><input type="text" placeholder="Search..."></li>
-		<li class="<%= location %>"><a href="#">Discover</a></li>
-		<li class="<%= location %>"><a href="#">Help</a></li>
+		<li class="<%= curr_page %>"><a href="#">Discover</a></li>
+		<li class="<%= curr_page %>"><a href="#">Help</a></li>
 	</ul>
 
 	<ul class="user">
-		<li class="<%= location %>"><a href="#">My Friends</a></li>
-		<li class="<%= location %>"><a href="#">My Collections</a></li>
-		<li class="<%= location %>"><a href="<%= locations_url %>">My Locations</a></li>
+		<li class="<%= curr_page %>"><a href="#">My Friends</a></li>
+		<li class="<%= curr_page %>"><a href="#">My Collections</a></li>
+		<li class="<%= curr_page %>"><%= link_to "My Locations",locations_url %></li>
 		<li>
 			<% if user_signed_in? %>
 				<a href="<%= destroy_user_session_url %>">Sign Out</a>
