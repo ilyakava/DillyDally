@@ -1,7 +1,11 @@
 DillyDally::Application.routes.draw do
   devise_for :users
-  resources :locations, only: [:index]
   root to: 'locations#index'
+  resources :locations, only: [:index]
+
+  # Makes google api calls
+  resources :places, only: :index
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

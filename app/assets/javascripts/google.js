@@ -5,26 +5,25 @@ Google = (function () {
   };
 
   Places.prototype.query = function (lat, lng, keywordStr, callback) {
-    var url = 'https://maps.googleapis.com/maps/api/place/search/json';
     var data = {
       location: lat + "," + lng,
-      // radius: myMap.getRadius(),
-      radius: 500,
-      types: keywordStr.replace(/,/g, "").split(" "),
+      radius: ( $('.leaflet-layer').length ? myMap.getRadius() : 500),
+      keyword: keywordStr.replace(/,/g, "").replace(/\s/g, "+"),
       sensor: false,
       key: this.apiKey
     };
 
     $.ajax({
-      url: url,
-      data: data,
-      crossDomain: true,
+      url: '/places',
+      type: 'GET',
       dataType: "json",
+      data: data,
       success: function (response) {
+        // callback(response);
         console.log(response);
       },
       error: function (err) {
-        console.log("google places request failed");
+        console.log("google places Ajax to RAILS delegation failed");
       }
     });
   };
