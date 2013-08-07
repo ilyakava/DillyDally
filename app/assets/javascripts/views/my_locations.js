@@ -4,15 +4,18 @@ DD.Views.MyLocations = Backbone.View.extend({
   render: function () {
     var that = this;
 
-    that.$el.find('.data-list').html("");
+    // that.$el.html('<ul id="data-list"></ul>');
 
     that.collection.each(function (location) {
       singleLocation = new DD.Views.DBLocation( {model: location} );
       that.$el.append(singleLocation.render().$el);
 
-      window.el = that.$el;
-      console.log(that.$el);
+      console.log("rendering a view for a saved location");
     });
+    window.el = that.$el;
+    console.log(that.collection);
+    // Modify DOM
+    $('.data-list').html(that.$el);
     return this;
   },
 

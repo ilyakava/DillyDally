@@ -25,19 +25,19 @@ DD.Routers.Locations = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     var allMyLocations = new DD.Views.MyLocations({
-      $rootEl: that.$contentEl,
+      // $rootEl: that.$contentEl,
       collection: new DD.Collections.Locations(that.bootstrappedData)
     });
  
     if (that.firstLoad) {
-      window.magic = that.$contentEl;
+      // window.magic = that.$contentEl;
       that.firstLoad = false;
-      that.$contentEl.html(allMyLocations.render().$el);
+      allMyLocations.render();
     } else {
       allMyLocations.collection.fetch({success: function (response) {
         // console.log(allMyLocations.collection);
         // that.$contentEl.html(allMyLocations.render().$el);
-        $('#data-list').html(allMyLocations.render().$el);
+        allMyLocations.render();
       }});
     }
     
