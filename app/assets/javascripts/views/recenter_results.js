@@ -57,7 +57,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
     // reaches outside of its own view
     if (!$('#didumean').length) {
       $('ul.tabs').append('<li><a id="didumean"'+
-        'href="#">Did You Mean?</a></li>'
+        'href="#/recenter-by-search">Did You Mean?</a></li>'
       );
     }
   },
@@ -77,19 +77,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
       var recenterLocs = new DD.Collections.Locations();
 
       // parses array of mapquest objects into BB collection
-      var index = 0;
-      _(mqObjArray).each(function (locObj) {
-        index++;
-        recenterLocs.add({
-          myId: index,
-          country: locObj.adminArea1,
-          state: locObj.adminArea3,
-          city: locObj.adminArea5,
-          zipcode: locObj.postalCode,
-          street: locObj.street,
-          latLng: locObj.latLng
-        });
-      });
+      recenterLocs.parseMapQuest(mqObjArray);
 
       // render locations from BB collection
       var locListView = JST['locations/address_list']({

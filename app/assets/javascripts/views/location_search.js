@@ -10,10 +10,14 @@ DD.Views.LocationSearch = Backbone.View.extend({
   render: function () {
     var that = this;
     
-    var renderedContent = JST['locations/search_header']();
+    var renderedContent = JST['locations/nearby_search']();
     
     that.$el.html(renderedContent);
     $('.data-list').replaceWith(that.$el);
+  },
+
+  cancel: function () {
+    // will get called sometime
   },
 
   searchNearby: function () {
