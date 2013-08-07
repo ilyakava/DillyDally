@@ -22,11 +22,15 @@
 <%= render 'layouts/navbar',
 						locals: { controller: params[:controller] } %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<%= yield %>
+<% if params[:controller].match(/devise/) %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="devise"><%= yield %></div>
+<% else %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+<% end -%>
 
-<%= render 'layouts/footer' %>
 </body>
 </html>

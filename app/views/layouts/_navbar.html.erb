@@ -11,7 +11,7 @@
 	<ul class="user">
 		<li class="<%= location %>"><a href="#">My Friends</a></li>
 		<li class="<%= location %>"><a href="#">My Collections</a></li>
-		<li class="<%= location %>"><a href="#">My Locations</a></li>
+		<li class="<%= location %>"><a href="<%= locations_url %>">My Locations</a></li>
 		<li>
 			<% if user_signed_in? %>
 				<a href="<%= destroy_user_session_url %>">Sign Out</a>
