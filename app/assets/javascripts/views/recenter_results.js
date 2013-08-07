@@ -63,7 +63,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
   },
 
   cancel: function () {
-    console.log("cancelling...");
+    console.log("cancelling RecenterResults View...");
     $(this.el).undelegate('p.location', 'click');
   },
 
@@ -73,7 +73,6 @@ DD.Views.RecenterResults = Backbone.View.extend({
     var displayResults = function (mqObjArray) {
       console.log("display results method starts");
 
-      if (recenterLocs) { console.log("collection exists already"); }
       var recenterLocs = new DD.Collections.Locations();
 
       // parses array of mapquest objects into BB collection
@@ -92,6 +91,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
       // sets map center to latLng of 1st result
       that.moveMap(recenterLocs.first());
       that.indentResult(1);
+
       console.log("display results method finished");
       console.log(that.searchResults);
     };

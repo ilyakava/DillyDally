@@ -8,17 +8,27 @@ DD.Collections.Locations = Backbone.Collection.extend({
       index++;
       that.add({
         myId: index,
-        country: locObj.adminArea1,
-        state: locObj.adminArea3,
-        city: locObj.adminArea5,
-        zipcode: locObj.postalCode,
-        street: locObj.street,
+        address: locObj.street + " " + locObj.adminArea5 + " " +
+          locObj.adminArea3 + " " + locObj.postalCode +
+          ", " + locObj.adminArea1,
         latLng: locObj.latLng
+        // check mapquest.js for description of MQ objects
       });
     });
   },
 
-  parseGooglePlaces: function () {
-    console.log("hi");
+  parseGooglePlaces: function (gpObjArray) {
+    var that = this;
+    var index = 0;
+    _(gpObjArray).each(function (locObj) {
+      index++;
+      that.add({
+        myId: index,
+        address: locObj.vicinity,
+        name: locObj.name,
+        categories: locObj.types,
+        latLng: locObj.geometry.location
+      });
+    });
   }
 });

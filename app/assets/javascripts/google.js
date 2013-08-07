@@ -19,8 +19,7 @@ Google = (function () {
       dataType: "json",
       data: data,
       success: function (response) {
-        // callback(response);
-        window.res = response;
+        callback(response);
         console.log(response);
       },
       error: function (err) {
