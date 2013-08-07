@@ -36,7 +36,8 @@ DD.Views.LocationSearch = Backbone.View.extend({
       that.$el.find('.data-list').append(singleLocation.render().$el);
     });
 
-    $('.data-list').html(that.$el.find('.data-list').html());
+    // LESSON: element is already on the DOM, live updates
+    // $('.data-list').html(that.$el.find('.data-list').html());
   },
 
   cancel: function () {

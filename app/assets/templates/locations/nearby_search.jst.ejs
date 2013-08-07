@@ -1,10 +1,13 @@
-<li><a href="#"><%= location.get("name") %></a></li>
-<li><%= location.get("address") %></li>
-<li>Tags
-	<dl class="group">
-		<dt>NO-WIFI</dt>
-		<dt>GREAT OUTDOOR SEATING</dt>
-		<dt>ALCOHOLIC DRINKS</dt>
-	</dl>
-</li>
-<li><a href="#">Detail View</a></li>		
+<ul class="location">
+	<li><a href="#"><%= location.get("name") %></a></li>
+	<li><%= location.get("address") %></li>
+	<li>Tags
+		<dl class="group">
+			<dt>NO-WIFI</dt>
+			<dt>GREAT OUTDOOR SEATING</dt>
+			<dt>ALCOHOLIC DRINKS</dt>
+		</dl>
+	</li>
+	<li><a href="#">Detail View</a></li>
+	<li><button class="persist">Save this Spot!</button></li>
+</ul>

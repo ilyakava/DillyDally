@@ -1,7 +1,7 @@
 DillyDally::Application.routes.draw do
   devise_for :users
   root to: 'locations#index'
-  resources :locations, only: [:index]
+  resources :locations, only: [:index, :create]
 
   # Makes google api calls
   resources :places, only: :index
