@@ -4,11 +4,7 @@ DD.Views.NearbyResult = Backbone.View.extend({
   events: {
     "click button.persist": "saveModel"
   },
-
-  tellmestuff: function () {
-    alert("you clicked!");
-  },
-
+  
   saveModel: function () {
     console.log("saving a location model to DB");
     this.model.save();
@@ -20,7 +16,6 @@ DD.Views.NearbyResult = Backbone.View.extend({
     var renderedLocation = JST['locations/nearby_search']({location: that.model});
 
     that.$el.html(renderedLocation);
-    console.log(that.$el.find("button.persist"));
 
     return that;
   }
