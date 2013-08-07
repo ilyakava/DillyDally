@@ -14,9 +14,9 @@ DD.Views.LocationSearch = Backbone.View.extend({
 
   render: function () {
     var that = this;
+    console.log("rendering nearby-search view initial time");
     
     var renderedContent = JST['locations/nearby_search_header']();
-    console.log("rendering nearby-search view initial time");
 
     window.th = that.$el;
     that.$el.html(renderedContent);
@@ -25,12 +25,14 @@ DD.Views.LocationSearch = Backbone.View.extend({
 
   updateDisplay: function () {
     var that = this;
-    
-    var renderedContent = JST['locations/nearby_search']();
     console.log("rendering non-initial nearby search view");
+    
+    var renderedContent = JST['locations/nearby_search']({
+      collection: that.collection
+    });
 
     that.$el.find('.data-list').replaceWith(renderedContent);
-    $('.data-list').html(that.$el.find('.data-list'));
+    $('.data-list').html(that.$el.find('.data-list').html());
   },
 
   cancel: function () {
