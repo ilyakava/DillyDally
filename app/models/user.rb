@@ -29,4 +29,6 @@ class User < ActiveRecord::Base
   has_many :locations, through: :user_locations
 
   has_many :created_locations, class_name: 'Location', foreign_key: :creator
+
+  has_many :comments
 end
