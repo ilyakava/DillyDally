@@ -10,5 +10,9 @@
 		</dl>
 	</li>
 	<li><a href="#">Detail View</a></li>
-	<li><button class="persist">Save this Location!</button></li>
+	<% if (_(userSavedData).findWhere({lat: location.get("lat")})) { %>
+		<%= "<li>You've Already Saved this Location</li>" %>
+	<% } else { %>
+		<%= '<li><button class="persist">Save this Location!</button></li>' %>
+	<% } %>
 </ul>

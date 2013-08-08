@@ -14,7 +14,10 @@ DD.Views.NearbyResult = Backbone.View.extend({
   render: function () {
     var that = this;
 
-    var renderedLocation = JST['locations/nearby_search']({location: that.model});
+    var renderedLocation = JST['locations/nearby_search']({
+      location: that.model,
+      userSavedData: that.collection
+    });
 
     that.$el.html(renderedLocation);
 

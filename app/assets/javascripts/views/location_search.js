@@ -1,11 +1,10 @@
 DD.Views.LocationSearch = Backbone.View.extend({
 
-  initialize: function ($contentEl) {
+  initialize: function ($contentEl, userSavedData) {
     var that = this;
     this.$contentEl = $contentEl;
     this.collection = new DD.Collections.Locations();
-
-    // this.listenTo(that.collection, "add change", that.render);
+    this.userSavedData = userSavedData;
   },
 
   events: {
@@ -18,9 +17,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
     
     var renderedContent = JST['locations/nearby_search_header']();
 
-    // window.th = that.$el; LOOK HERE kkop
     that.$el.html(renderedContent);
-    // $('.data-list').replaceWith(that.$el);
     return that;
   },
 
@@ -32,16 +29,16 @@ DD.Views.LocationSearch = Backbone.View.extend({
     that.$el.find('ul.nearby-search-results').html("");
 
     that.collection.each(function (location) {
-      singleLocation = new DD.Views.NearbyResult( {model: location} );
+      singleLocation = new DD.Views.NearbyResult({
+        model: location,
+        collection: that.userSavedData
+      });
       that.$el.find('ul.nearby-search-results').append(singleLocation.render().$el);
     });
 
     if (!that.collection.length) {
       that.$el.find('ul.nearby-search-results').append('<li>No Results Found</li>');
     }
-
-    // LESSON: element is already on the DOM, live updates
-    // $('.data-list').html(that.$el.find('.data-list').html());
   },
 
   cancel: function () {
