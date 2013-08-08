@@ -72,7 +72,11 @@ DD.Views.RecenterResults = Backbone.View.extend({
         locations: recenterLocs
       });
 
-      that.$el.html(locListView);
+      if (!recenterLocs.length) {
+        that.$el.html("<li><h3>Sorry, I couldn't find that location...</h3></li>");
+      } else {
+        that.$el.html(locListView);
+      }
       that.$contentEl.html(that.$el);
 
       // save BB collection for future use in indenting, w/o persisting
