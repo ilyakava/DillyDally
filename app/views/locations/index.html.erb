@@ -9,10 +9,9 @@
 
 <div id="side-bar">
 	
-	<ul class="data-list"></ul>
+	<div id="side-bar-navigation"></div>
 
-	<!-- placeholder to use with replaceWith() -->
-	<ul id="data-list"></ul>
+	<div id="data-list"></div>
 	
 <!-- 		<label>
 		<input type="checkbox" value="checked">	
@@ -27,7 +26,7 @@
 		window.DD.initialize(function () {
 			var locations = ($('#bootstrapped-locations').html());
 
-			new DD.Routers.Locations($('#side-bar'), $('#data-list'), locations);
+			new DD.Routers.Locations($('#side-bar-navigation'), $('#data-list'), locations);
 			Backbone.history.start();
 		})
 	});

@@ -1,4 +1,5 @@
 DD.Views.MyLocations = Backbone.View.extend({
+  tagName: 'ul',
   collection: DD.Collections.Locations,
 
   render: function () {
@@ -12,15 +13,14 @@ DD.Views.MyLocations = Backbone.View.extend({
 
       console.log("rendering a view for a saved location");
     });
-    window.el = that.$el;
-    console.log(that.collection);
-    // Modify DOM
-    $('.data-list').html(that.$el);
+    // window.el = that.$el;
+    // console.log(that.collection);
     return this;
   },
 
   cancel: function () {
-    // will get called
-  }
+    console.log("cancelling MyLocations View...");
+    // no events to cancel yet
+  },
 
 });

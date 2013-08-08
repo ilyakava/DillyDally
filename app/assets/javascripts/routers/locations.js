@@ -24,41 +24,42 @@ DD.Routers.Locations = Backbone.Router.extend({
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var allMyLocations = new DD.Views.MyLocations({
+    var MyLocationsView = new DD.Views.MyLocations({
       // $rootEl: that.$contentEl,
       collection: new DD.Collections.Locations(that.bootstrappedData)
     });
+    console.log("Collection has " + MyLocationsView.collection.length + " things in it");
  
     if (that.firstLoad) {
       // window.magic = that.$contentEl;
+      that.$contentEl.html(MyLocationsView.render().$el);
       that.firstLoad = false;
-      allMyLocations.render();
     } else {
-      allMyLocations.collection.fetch({success: function (response) {
-        // console.log(allMyLocations.collection);
-        // that.$contentEl.html(allMyLocations.render().$el);
-        allMyLocations.render();
+      MyLocationsView.collection.fetch({success: function (response) {
+        // console.log(MyLocationsView.collection);
+        // that.$contentEl.html(MyLocationsView.render().$el);
+        that.$contentEl.html(MyLocationsView.render().$el);
       }});
     }
     
-    console.log("rendering user locations");
-    that.activeView = allMyLocations;
+    // console.log("rendering user locations");
+    that.activeView = MyLocationsView;
   },
 
   recenterBySearch: function () {
+    // this method is triggered by a click in the head view
     var that = this;
 
     // unbinds events
     // http://stackoverflow.com/questions/6831362/backbone-js-view-cant-unbind-events-properly?rq=1
     if (that.activeView) { that.activeView.cancel(); }
 
-    // triggered by a click in the head view
-    // renders into data-list element
-    var recenterResults = new DD.Views.RecenterResults(that.$contentEl);
-    recenterResults.render();
+    // generates its own collection from search phrase in $headEl
+    var recenterResultsView = new DD.Views.RecenterResults(that.$headEl);
+    that.$contentEl.html(recenterResultsView.render().$el);
     console.log("recenter search method/view finished");
 
-    that.activeView = recenterResults;
+    that.activeView = recenterResultsView;
   },
 
   searchNearby: function () {

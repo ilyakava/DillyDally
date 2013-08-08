@@ -1,10 +1,11 @@
 DD.Views.LocationsHead = Backbone.View.extend({
+
   events: {
     "click button#recenter": "didYouMean"
   },
 
   didYouMean: function () {
-    console.log("triggered didYouMean search method");
+    console.log("triggered map recenter search method");
     Backbone.history.navigate("#/");
     Backbone.history.navigate("#/recenter-by-search");
   },

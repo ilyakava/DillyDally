@@ -1,5 +1,6 @@
 DD.Views.DBLocation = Backbone.View.extend({
   tagName: 'li',
+  className: 'location',
 
   render: function () {
     var that = this;

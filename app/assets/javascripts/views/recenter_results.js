@@ -1,8 +1,8 @@
 DD.Views.RecenterResults = Backbone.View.extend({
+  tagName: 'ul',
 
-  initialize: function ($rootEl) {
-    this.$rootEl = $rootEl;
-    this.checkTabs();
+  initialize: function ($headEl) {
+    this.checkTabs($headEl);
   },
 
   events: {
@@ -54,10 +54,10 @@ DD.Views.RecenterResults = Backbone.View.extend({
     });
   },
 
-  checkTabs: function () {
+  checkTabs: function ($headEl) {
     // reaches outside of its own view
-    if (!$('#didumean').length) {
-      $('ul.tabs').append('<li><a id="didumean"'+
+    if (!($headEl.find('#didyoumean').length)) {
+      $headEl.append('<li><a id="didyoumean"'+
         'href="#/recenter-by-search">Did You Mean?</a></li>'
       );
     }
@@ -79,13 +79,13 @@ DD.Views.RecenterResults = Backbone.View.extend({
       // parses array of mapquest objects into BB collection
       recenterLocs.parseMapQuest(mqObjArray);
 
+      that.$el.append('<li><h3>Were You Searching For?</h3></li>');
       // render locations from BB collection
-      var locListView = JST['locations/address_list']({
-        locations: recenterLocs
+      recenterLocs.each(function (location) {
+        var addressView = new DD.Views.Address({model: location});
+        that.$el.append(addressView.render().$el);
       });
-      // Modify DOM
-      that.$el.html(locListView);
-      $('.data-list').replaceWith(that.$el);
+
       // save BB collection for future use, w/o persisting
       that.searchResults = recenterLocs;
 
@@ -97,7 +97,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
       console.log(that.searchResults);
     };
 
-    // grab searchbar element
+    // grab searchbar element off the DOM
     var address = $('.recenter input[type=text]').val().toString();
 
     // method to instantiate my interface with mapquest

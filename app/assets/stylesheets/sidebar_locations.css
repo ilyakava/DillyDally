@@ -108,15 +108,15 @@
 }
 
 
-#side-bar .data-list {
+#side-bar #data-list {
     width: 100%;
 }
 
-#side-bar .data-list > li:first-child {
+#side-bar #data-list > ul > li:first-child {
     padding-top: 110px;
 }
 
-#side-bar .data-list > li > h3 {
+#side-bar #data-list > ul > li > h3 {
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     
@@ -132,7 +132,7 @@
 
 }
 
-#side-bar .data-list > li > .location {
+#side-bar #data-list > ul > li > .location {
     width: 100%;
     border-top: 1px rgb(26,79,81) solid;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -143,26 +143,26 @@
     cursor: pointer;
 }
 
-#side-bar .data-list > li > p.location.map-center {
+#side-bar #data-list > ul > li > p.location.map-center {
     background-color: rgb(26, 80, 82);
 }
 
-#side-bar .data-list > li > .location > li {
+#side-bar #data-list > ul > li > .location > li {
     padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-#side-bar .data-list > li > .location > li > a {
+#side-bar #data-list > ul > li > .location > li > a {
     color: black;
 }
 
-#side-bar .data-list > li > .location > li:first-child > a {
+#side-bar #data-list > ul > li > .location > li:first-child > a {
     font-size: 26px;
     color: white;
 }
 
-#side-bar .data-list > li > .location > li > dl > dt {
+#side-bar #data-list > ul > li > .location > li > dl > dt {
     background-color: rgb(70,135,92);
     padding: 2px 2px;
     border-radius: 5px;
