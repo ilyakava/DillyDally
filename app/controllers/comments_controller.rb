@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.create!(params[:comment])
+		@comment.update_attribute(:user_id, current_user.id)
 
 		respond_to do |format|
 			format.json { render json: @comment }

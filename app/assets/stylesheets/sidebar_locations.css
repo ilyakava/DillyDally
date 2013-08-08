@@ -217,10 +217,12 @@
     color: white;
 }
 
-#side-bar label {
+
+/* From a checkbox from a while ago */
+/*#side-bar label {
     float: left;
     position: absolute;
     top: 505px;
     right: 226px;
     font-size: 14px;
-}
+}*/

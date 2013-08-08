@@ -8,7 +8,10 @@ DD.Views.DBLocation = Backbone.View.extend({
 
   addComment: function () {
     var that = this;
-    $('<li>Comment</li>').insertAfter(that.$el.find('button.add-comment').parent());
+    var commentFormView = new DD.Views.CommentForm({
+      model: that.model
+    });
+    that.$el.find('button.add-comment').parent().append(commentFormView.render().$el);
   },
 
   render: function () {
