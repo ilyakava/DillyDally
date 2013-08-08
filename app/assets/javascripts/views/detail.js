@@ -1,4 +1,5 @@
 DD.Views.Detail = Backbone.View.extend({
+
   initialize: function ($headEl, $contentEl, model) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
@@ -9,7 +10,7 @@ DD.Views.Detail = Backbone.View.extend({
     var that = this;
 
     var showPage = JST['locations/show']({
-      model: that.model
+      location: that.model
     });
 
     that.$contentEl.html(showPage);
@@ -29,7 +30,8 @@ DD.Views.Detail = Backbone.View.extend({
     }
   },
 
-  close: function () {
+  cancel: function () {
+    this.insertTab(false);
     // remove tab and clear events
   }
 

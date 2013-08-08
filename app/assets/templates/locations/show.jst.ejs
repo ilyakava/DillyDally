@@ -1,6 +1,14 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<ul class="location">
+	<li><h3>About: <%= location.get("name") %></h3></li>
+
+	<li><%= location.get("address") %></li>
+	<li class="categories">Categories:
+		<dl class="group">
+			<% _(location.get("categories")).each(function (category) { %>
+				<dt><%= _(category).humanize() %></dt>
+			<% }) %>
+		</dl>
+	</li>
+	<li><button class="add-comment">Add a Comment</button></li>
+	<% window.loc = location %>
+</ul>
