@@ -59,9 +59,8 @@ DD.Views.RecenterResults = Backbone.View.extend({
   checkTabs: function () {
     var that = this;
     // reaches outside of its own view
-    console.log("checkTabs, first time = true " + !(that.$headEl.find('#didyoumean').length));
     if (!(that.$headEl.find('#didyoumean').length)) {
-      that.$headEl.append('<li><a id="didyoumean"'+
+      that.$headEl.find('ul.tabs').append('<li><a id="didyoumean"'+
         'href="#/recenter-by-search">Did You Mean?</a></li>'
       );
     }
