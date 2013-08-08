@@ -13,6 +13,7 @@ class LocationsController < ApplicationController
 
 	def create
 		@location = Location.find_or_create_by(params[:location])
+		@location.assign_categories_for
 		if @location
 			@userlocation = UserLocation.create(
 				user_id: current_user.id,

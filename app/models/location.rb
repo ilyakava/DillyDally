@@ -20,4 +20,13 @@ class Location < ActiveRecord::Base
 	has_many :location_categories
 	has_many :categories, through: :location_categories
 
+	def assign_categories_for
+		params[:location][:categories].each do |category_name|
+			category = Category.find_or_create_by(name: category_name)
+			LocationCategory.create!(
+				location_id: self.id,
+				category_id: category.id
+			)
+		end
+	end
 end
