@@ -67,9 +67,9 @@ DD.Routers.Locations = Backbone.Router.extend({
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var newLocationSearch = new DD.Views.LocationSearch(that.$contentEl);
-    newLocationSearch.render();
+    var locationSearchView = new DD.Views.LocationSearch(that.$contentEl);
+    that.$contentEl.html(locationSearchView.render().$el);
 
-    that.activeView = newLocationSearch;
+    that.activeView = locationSearchView;
   }
 });

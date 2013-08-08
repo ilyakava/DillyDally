@@ -1,8 +1,8 @@
 DD.Views.LocationSearch = Backbone.View.extend({
 
-  initialize: function ($rootEl) {
+  initialize: function ($contentEl) {
     var that = this;
-    this.$rootEl = $rootEl;
+    this.$contentEl = $contentEl;
     this.collection = new DD.Collections.Locations();
 
     // this.listenTo(that.collection, "add change", that.render);
@@ -18,9 +18,9 @@ DD.Views.LocationSearch = Backbone.View.extend({
     
     var renderedContent = JST['locations/nearby_search_header']();
 
-    window.th = that.$el;
+    // window.th = that.$el;
     that.$el.html(renderedContent);
-    $('.data-list').replaceWith(that.$el);
+    // $('.data-list').replaceWith(that.$el);
     return that;
   },
 
