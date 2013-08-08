@@ -2,11 +2,11 @@
 	<li><a href="#"><%= location.get("name") %></a></li>
 	<li><%= location.get("address") %></li>
 	<% window.near = location %>
-	<li>Tags
+	<li class="categories">Categories:
 		<dl class="group">
-			<dt>NO-WIFI</dt>
-			<dt>GREAT OUTDOOR SEATING</dt>
-			<dt>ALCOHOLIC DRINKS</dt>
+		<% _(location.get("categories")).each(function (category) { %>
+				<dt><%= category %></dt>
+			<% }) %>
 		</dl>
 	</li>
 	<li><a href="#">Detail View</a></li>

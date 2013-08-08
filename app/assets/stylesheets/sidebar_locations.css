@@ -206,14 +206,15 @@
 }
 
 #side-bar #data-list ul.nearby-search-results > li > ul.location > li > dl > dt {
-    background-color: rgb(70,135,92);
-    padding: 2px 2px;
+    /* This is a category */
+    background-color: rgb(26, 79, 82 );
+    padding: 3px 6px;
     border-radius: 5px;
     float: left;
     margin: 1px 3px;
     font-family: 'Lato', sans-serif;
     font-weight: 900;
-    font-size: 11px; 
+    font-size: 13px; 
     color: white;
 }
 
