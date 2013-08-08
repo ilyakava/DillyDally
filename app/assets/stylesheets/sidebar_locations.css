@@ -132,7 +132,8 @@
 
 }
 
-#side-bar #data-list > ul > li > .location {
+
+#side-bar #data-list > ul > .location {
     width: 100%;
     border-top: 1px rgb(26,79,81) solid;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -143,26 +144,53 @@
     cursor: pointer;
 }
 
-#side-bar #data-list > ul > li > p.location.map-center {
-    background-color: rgb(26, 80, 82);
+/* Exclusive to Did you mean search results */
+/*---------------------------------------------------------*/
+
+#side-bar #data-list > ul > li > p.location {
+    padding: 5px;
+    border-top: solid 1px rgb(26,79,81);
 }
 
-#side-bar #data-list > ul > li > .location > li {
+#side-bar #data-list > ul > li > p.location.map-center {
+    background-color: rgb(26, 80, 82);
+    color: white;
+}
+
+/* YOUR locations exclusive */
+/*---------------------------------------------------------*/
+
+#side-bar #data-list > ul > .location > li {
     padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-#side-bar #data-list > ul > li > .location > li > a {
+#side-bar #data-list > ul > .location > li > a {
     color: black;
 }
 
-#side-bar #data-list > ul > li > .location > li:first-child > a {
+#side-bar #data-list > ul > .location > li:first-child > a {
     font-size: 26px;
     color: white;
 }
 
-#side-bar #data-list > ul > li > .location > li > dl > dt {
+/* Search Nearby exclusive */
+/*---------------------------------------------------------*/
+
+#side-bar #data-list ul.nearby-search-results > li > ul.location {
+    border-bottom: 1px rgb(26,79,81) solid;
+}
+
+#side-bar #data-list ul.nearby-search-results > li:first-child {
+    padding-top: 110px;
+}
+
+#side-bar #data-list ul.nearby-search-results > li > ul.location > li > a {
+    color: white;
+}
+
+#side-bar #data-list ul.nearby-search-results > li > ul.location > li > dl > dt {
     background-color: rgb(70,135,92);
     padding: 2px 2px;
     border-radius: 5px;
@@ -170,8 +198,7 @@
     margin: 1px 3px;
     font-family: 'Lato', sans-serif;
     font-weight: 900;
-    font-size: 11px;
-    
+    font-size: 11px; 
     color: white;
 }
 
