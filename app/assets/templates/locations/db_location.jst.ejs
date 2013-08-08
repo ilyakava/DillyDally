@@ -7,7 +7,7 @@
 	<li class="categories">Categories:
 		<dl class="group">
 			<% _(location.get("categories")).each(function (category) { %>
-				<dt><%= category %></dt>
+				<dt><%= _(category).humanize() %></dt>
 			<% }) %>
 		</dl>
 	</li>

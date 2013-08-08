@@ -4,8 +4,8 @@
 	<% window.near = location %>
 	<li class="categories">Categories:
 		<dl class="group">
-		<% _(location.get("categories")).each(function (category) { %>
-				<dt><%= category %></dt>
+			<% _(location.get("categories")).each(function (category) { %>
+				<dt><%= _(category).humanize() %></dt>
 			<% }) %>
 		</dl>
 	</li>
