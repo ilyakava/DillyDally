@@ -114,7 +114,6 @@
 
 #side-bar #data-list > ul > li:first-child {
     padding-top: 110px;
-    color: rgb(26, 79, 82 );
 }
 
 #side-bar #data-list > ul > li > h3 {
@@ -141,7 +140,7 @@
     font-size: 16px;
     font-weight: 300;
     padding: 10px;
-    color: white;
+    color: rgb(26, 79, 82 );
     cursor: pointer;
 }
 
