@@ -29,12 +29,16 @@ DD.Views.LocationSearch = Backbone.View.extend({
     console.log("rendering non-initial nearby search view");
 
     // clear destination of old search locations
-    that.$el.find('.data-list').html("");
+    that.$el.find('ul.nearby-search-results').html("");
 
     that.collection.each(function (location) {
       singleLocation = new DD.Views.NearbyResult( {model: location} );
-      that.$el.find('.data-list').append(singleLocation.render().$el);
+      that.$el.find('ul.nearby-search-results').append(singleLocation.render().$el);
     });
+
+    if (!that.collection.length) {
+      that.$el.find('ul.nearby-search-results').append('<li>No Results Found</li>');
+    }
 
     // LESSON: element is already on the DOM, live updates
     // $('.data-list').html(that.$el.find('.data-list').html());
