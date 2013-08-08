@@ -18,7 +18,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
     
     var renderedContent = JST['locations/nearby_search_header']();
 
-    // window.th = that.$el;
+    // window.th = that.$el; LOOK HERE kkop
     that.$el.html(renderedContent);
     // $('.data-list').replaceWith(that.$el);
     return that;
