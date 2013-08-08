@@ -4,6 +4,13 @@
 <ul>
 	<li><%= location.get("name") %></li>
 	<li><%= location.get("address") %></li>
-	<li><%= location.get("categories") %></li>
+	<li class="categories">Categories:
+		<dl class="group">
+			<% _(location.get("categories")).each(function (category) { %>
+				<dt><%= category %></dt>
+			<% }) %>
+		</dl>
+	</li>
+	<li><button class="add-comment">Add a Comment</button></li>
 	<% window.loc = location %>
 </ul>

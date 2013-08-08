@@ -176,6 +176,20 @@
     color: white;
 }
 
+
+#side-bar #data-list li.location > ul > li.categories > dl > dt {
+    /* This is a category */
+    background-color: rgb(26, 79, 82 );
+    padding: 3px 6px;
+    border-radius: 5px;
+    float: left;
+    margin: 1px 3px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 13px; 
+    color: white;
+}
+
 /* Search Nearby exclusive */
 /*---------------------------------------------------------*/
 
