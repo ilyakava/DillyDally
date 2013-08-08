@@ -1,8 +1,9 @@
 DD.Views.RecenterResults = Backbone.View.extend({
   tagName: 'ul',
 
-  initialize: function ($headEl) {
-    this.checkTabs($headEl);
+  initialize: function ($headEl, $contentEl) {
+    this.$headEl = $headEl;
+    this.$contentEl = $contentEl;
   },
 
   events: {
@@ -29,6 +30,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
     // expects BB location object
     var lng = locModel.get("lng");
     var lat = locModel.get("lat");
+    console.log("moving map to: " + lat + ", " + lng);
     // Leaflet method
     latLng = new L.LatLng(lat, lng);
     // coordinates and zoom rating (higher # means more zoomed in)
@@ -54,10 +56,12 @@ DD.Views.RecenterResults = Backbone.View.extend({
     });
   },
 
-  checkTabs: function ($headEl) {
+  checkTabs: function () {
+    var that = this;
     // reaches outside of its own view
-    if (!($headEl.find('#didyoumean').length)) {
-      $headEl.append('<li><a id="didyoumean"'+
+    console.log("checkTabs, first time = true " + !(that.$headEl.find('#didyoumean').length));
+    if (!(that.$headEl.find('#didyoumean').length)) {
+      that.$headEl.append('<li><a id="didyoumean"'+
         'href="#/recenter-by-search">Did You Mean?</a></li>'
       );
     }
@@ -79,14 +83,15 @@ DD.Views.RecenterResults = Backbone.View.extend({
       // parses array of mapquest objects into BB collection
       recenterLocs.parseMapQuest(mqObjArray);
 
-      that.$el.append('<li><h3>Were You Searching For?</h3></li>');
       // render locations from BB collection
-      recenterLocs.each(function (location) {
-        var addressView = new DD.Views.Address({model: location});
-        that.$el.append(addressView.render().$el);
+      var locListView = JST['locations/address_list']({
+        locations: recenterLocs
       });
 
-      // save BB collection for future use, w/o persisting
+      that.$el.html(locListView);
+      that.$contentEl.html(that.$el);
+
+      // save BB collection for future use in indenting, w/o persisting
       that.searchResults = recenterLocs;
 
       // sets map center to latLng of 1st result
@@ -94,7 +99,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
       that.indentResult(1);
 
       console.log("display results method finished");
-      console.log(that.searchResults);
+      // console.log(that.searchResults);
     };
 
     // grab searchbar element off the DOM

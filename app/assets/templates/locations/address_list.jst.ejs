@@ -1,10 +1,8 @@
-<ul class="data-list">
-	<li><h3>Were You Searching For?</h3></li>
-	<% locations.each(function (location) { %>
-		<li>
-			<p id="<%= location.get("myId") %>" class="location">
-				<%= location.get("address") %>
-			</p>
-		</li>
-	<% }); %>
-</ul>
+<li><h3>Did you mean?</h3></li>
+<% locations.each(function (location) { %>
+	<li>
+		<p id="<%= location.get("myId") %>" class="location">
+			<%= location.get("address") %>
+		</p>
+	</li>
+<% }); %>
