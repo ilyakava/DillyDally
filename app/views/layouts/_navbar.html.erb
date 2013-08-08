@@ -6,6 +6,7 @@
 		<li class="search"><input type="text" placeholder="Search..."></li>
 		<li class="<%= curr_page %>"><a href="#">Discover</a></li>
 		<li class="<%= curr_page %>"><a href="#">Help</a></li>
+		<li class="alpha-testing <%= curr_page %>"><a href="#">Feedback</a></li>
 	</ul>
 
 	<ul class="user">
@@ -14,9 +15,9 @@
 		<li class="<%= curr_page %>"><%= link_to "My Locations",locations_url %></li>
 		<li>
 			<% if user_signed_in? %>
-				<a href="<%= destroy_user_session_url %>">Sign Out</a>
+				<%= link_to "Sign Out", destroy_user_session_url %>
 			<% else %>
-				<a href="<%= new_user_session_url %>">Sign In</a>
+				<%= link_to "Sign In", new_user_session_url %>
 			<% end %>
 		</li>
 	</ul>

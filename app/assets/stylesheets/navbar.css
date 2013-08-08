@@ -38,17 +38,26 @@ nav > .global > li:first-child {
     font-weight: 600;
 }
 
+nav > .global > li:nth-child(5).alpha-testing {
+    background-color: rgb(156,55,49);
+}
+
 /* current state of application will trigger hover like styling */
 
 nav > .global > li:nth-child(3).discovers {
     background-color: rgb(26, 80, 82);
 }
 
-nav > .global > li:last-child.helps {
+nav > .global > li:nth-child(4).helps {
     background-color: rgb(26, 80, 82);
 }
 
+nav > .global > li:nth-child(5).feedbacks {
+    background-color: rgb(156,91,83);
+}
+
 /* end of current state modification */
+
 
 nav > .global > li.search {
     padding: 8px;
