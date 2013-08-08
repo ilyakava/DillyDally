@@ -114,6 +114,7 @@
 
 #side-bar #data-list > ul > li:first-child {
     padding-top: 110px;
+    color: rgb(26, 79, 82 );
 }
 
 #side-bar #data-list > ul > li > h3 {
