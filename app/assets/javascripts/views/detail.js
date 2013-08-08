@@ -17,14 +17,17 @@ DD.Views.Detail = Backbone.View.extend({
   },
 
   insertTab: function (boolean) {
+    var html = '<li><a id="detail-view"' +
+      'href="#/detail-view/' + this.model.get('id') +
+      '"' + '>Location Details</a></li>';
+
     if (boolean) {
-      this.$headEl.find('ul.tabs').append('<li><a id="detail-view"' +
-        'href="#/detail-view/' + this.model.get('id') + '>Location Details</a></li>'
-      );
+      this.$headEl.find('ul.tabs').append(html);
     } else {
+      console.log("Removing detail view tab");
       this.$headEl.find('#detail-view').parent().replaceWith("");
     }
-  }, 
+  },
 
   close: function () {
     // remove tab and clear events
