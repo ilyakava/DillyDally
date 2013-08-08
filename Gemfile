@@ -22,6 +22,7 @@ gem 'devise'
 gem 'backbone-on-rails'
 gem 'ejs'
 gem 'rest-client'
+gem 'annotate', ">=2.5.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

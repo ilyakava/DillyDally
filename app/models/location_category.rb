@@ -1,18 +1,20 @@
 # == Schema Information
 #
-# Table name: user_locations
+# Table name: location_categories
 #
 #  id          :integer          not null, primary key
-#  user_id     :integer
 #  location_id :integer
+#  category_id :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
-class UserLocation < ActiveRecord::Base
-	attr_accessible :user_id, :location_id
+class LocationCategory < ActiveRecord::Base
 
-	belongs_to :user
+	attr_accessible :location_id, :category_id
+
 	belongs_to :location
+	belongs_to :category
+
 
 end

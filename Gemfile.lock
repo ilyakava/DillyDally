@@ -26,6 +26,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    annotate (2.5.0)
+      rake
     arel (4.0.0)
     atomic (1.1.12)
     backbone-on-rails (1.0.0.0)
@@ -145,6 +147,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate (>= 2.5.0)
   backbone-on-rails
   better_errors
   binding_of_caller
