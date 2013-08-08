@@ -14,11 +14,26 @@ DD.Routers.Locations = Backbone.Router.extend({
   routes: {
     "" : "myLocations",
     "recenter-by-search": "recenterBySearch",
-    "search-nearby": "searchNearby"
+    "search-nearby": "searchNearby",
+    "detail-view/:id": "detailView"
+  },
+
+  detailView: function (id) {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    console.log(that.userSavedData);
+    var model = that.userSavedData.get(id);
+
+    var locationDetailView = new DD.Views.Detail(that.$headEl, that.$contentEl, model);
+    locationDetailView.render();
+
+    that.activeView = locationDetailView;
   },
 
   myLocations: function () {
     var that = this;
+
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.MyLocations({
@@ -28,9 +43,11 @@ DD.Routers.Locations = Backbone.Router.extend({
     if (that.firstLoad) {
       that.$contentEl.html(MyLocationsView.render().$el);
       that.firstLoad = false;
+      this.userSavedData = MyLocationsView.collection;
     } else {
       MyLocationsView.collection.fetch({success: function (response) {
         that.$contentEl.html(MyLocationsView.render().$el);
+        this.userSavedData = MyLocationsView.collection;
       }});
     }
     
