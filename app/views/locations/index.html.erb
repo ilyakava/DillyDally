@@ -4,7 +4,7 @@
 </script>
 
 <script type="application/javascript" id="bootstrapped-locations">
-	<%= @locations.to_json.html_safe %>
+	<%= @locations.to_json(methods: :categories_as_array).html_safe %>
 </script>
 
 <div id="side-bar">
@@ -24,7 +24,7 @@
 		// where to render recenter map searchbar
 		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
-			var locations = ($('#bootstrapped-locations').html());
+			var locations = JSON.parse($('#bootstrapped-locations').html());
 
 			new DD.Routers.Locations($('#side-bar-navigation'), $('#data-list'), locations);
 			Backbone.history.start();
