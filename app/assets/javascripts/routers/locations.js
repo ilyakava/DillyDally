@@ -20,6 +20,8 @@ DD.Routers.Locations = Backbone.Router.extend({
   },
 
   myLocations: function () {
+    // BOOTSTRAPPING IS MESSED UP, THEREFORE:
+    this.firstLoad = false;
     // should show your locations in data-list
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
