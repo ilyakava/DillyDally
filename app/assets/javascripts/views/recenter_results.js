@@ -11,21 +11,6 @@ DD.Views.RecenterResults = Backbone.View.extend({
     // "click button#recenter": "render"
   },
 
-  modifyDOM: function () {
-
-  },
-
-  OLDrender: function () {
-    // initial render contains no data yet.
-    // later, add display of user's locations near current
-    // location, i.e. default center/location detection
-    var that = this;
-    var renderedContent = JST['locations/index']();
-    
-    that.$el.html(renderedContent);
-    return that;
-  },
-
   moveMap: function (locModel) {
     // expects BB location object
     var lng = locModel.get("lng");

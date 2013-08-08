@@ -25,10 +25,10 @@ DD.Routers.Locations = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.MyLocations({
-      // $rootEl: that.$contentEl,
       collection: new DD.Collections.Locations(that.bootstrappedData)
     });
     console.log("Collection has " + MyLocationsView.collection.length + " things in it");
+    console.log(MyLocationsView.collection);
  
     if (that.firstLoad) {
       // window.magic = that.$contentEl;
