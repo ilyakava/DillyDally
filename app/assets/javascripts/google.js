@@ -20,7 +20,7 @@ Google = (function () {
       data: data,
       success: function (response) {
         callback(response);
-        console.log(response);
+        // console.log(response);
       },
       error: function (err) {
         console.log("google places Ajax to RAILS delegation failed");
