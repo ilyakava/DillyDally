@@ -45,10 +45,12 @@ DD.Routers.Locations = Backbone.Router.extend({
       that.$contentEl.html(MyLocationsView.render().$el);
       that.firstLoad = false;
       this.userSavedData = MyLocationsView.collection;
+      markerManager.collection(that.userSavedData);
     } else {
       MyLocationsView.collection.fetch({success: function (response) {
         that.$contentEl.html(MyLocationsView.render().$el);
         this.userSavedData = MyLocationsView.collection;
+        markerManager.collection(that.userSavedData);
       }});
     }
     
