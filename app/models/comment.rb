@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :location
 
-	def author_name
+	def author_email
 		self.user.email
 	end
 

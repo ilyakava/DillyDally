@@ -13,7 +13,7 @@
 	<ul class="comment-display">
 		<% (location.get("comments")).each(function (comment) { %>
 			<li><%= comment.get("body") %></li>
-			<li>By: <%= comment.get("author_name") %> at <%= comment.get("updated_at") %></li>
+			<li>By: <%= comment.get("author_email") %> at <%= comment.get("updated_at") %></li>
 		<% }) %>
 	</ul>
 </li>
