@@ -14,7 +14,6 @@ DD.Views.NearbyResult = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    console.log("ridner");
 
     var renderedLocation = JST['locations/nearby_search']({
       location: that.model,
