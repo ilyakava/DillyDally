@@ -10,10 +10,14 @@
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
   <![endif]-->
 	<!-- Mapbox stuff end -->
-  
+
+  <script type="text/javascript">
+    // window.cafe_icon = <%#= image_path  %>
+  </script>
+
   <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   
 
   <%= csrf_meta_tags %>

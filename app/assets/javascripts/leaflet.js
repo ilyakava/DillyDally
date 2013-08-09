@@ -16,7 +16,7 @@ myMap = (function () {
     // Leaflet method
     latLng = new L.LatLng(lat, lng);
     // coordinates and zoom rating (higher # means more zoomed in)
-    map.setView(latLng, 15);
+    map.setView(latLng, 16);
   };
 
   var MarkerManager = function () {
@@ -63,7 +63,15 @@ myMap = (function () {
       var title = locModel.get("name");
       
       var marker = L.marker(new L.LatLng(lat, lng), {
-        icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+        icon: L.mapbox.marker.icon({
+          "iconUrl": "/maki_icons/cafe-24.svg",
+          // "iconUrl": "http://placekitten.com/50/50",
+          "iconSize": [50, 50],
+          "iconAnchor": [25, 25],
+          "popupAnchor": [0, -25]
+          // 'marker-symbol': 'post',
+          // 'marker-color': '0044FF',
+        }),
         title: title
       });
       marker.bindPopup(title);
