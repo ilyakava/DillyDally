@@ -19,3 +19,5 @@
 
 # Ignore sensitive data
 /app/assets/javascripts/sensitive_data.js
+# Ignore application configuration
+/config/application.yml

@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'protected_attributes'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -23,6 +22,7 @@ gem 'backbone-on-rails'
 gem 'ejs'
 gem 'rest-client'
 gem 'annotate', ">=2.5.0"
+gem "figaro"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,7 +38,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+ruby "1.9.3"
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
 group :development do
+	gem 'sqlite3'
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'letter_opener'

@@ -1,0 +1,24 @@
+API = (function () {
+
+  var MapQuest = function () {};
+  MapQuest.prototype.key = function () {
+    return "<%= ENV["MAPQUEST_KEY"] %>";
+  };
+
+  var MapBox = function () {};
+  MapBox.prototype.key = function () {
+    return "<%= ENV["MAPBOX_MAP"] %>";
+  };
+
+  var Google = function () {};
+  Google.prototype.key = function () {
+    return "<%= ENV["GOOGLE_KEY"] %>";
+  };
+
+  return {
+    MapQuest: new MapQuest(),
+    MapBox: new MapBox(),
+    Google: new Google()
+  };
+
+})();
