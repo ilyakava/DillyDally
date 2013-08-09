@@ -6,7 +6,7 @@
 <script type="application/javascript" id="bootstrapped-locations">
 	<%= @locations.to_json(
 				methods: :categories_as_array,
-				include: :comments
+				include: { comments: { methods: :author_name } }
 			).html_safe %>
 			
 </script>

@@ -8,5 +8,14 @@
 		<% }) %>
 	</dl>
 </li>
+<li><h3>Comments:</h3></li>
+<li>
+	<ul class="comment-display">
+		<% (location.get("comments")).each(function (comment) { %>
+			<li><%= comment.get("body") %></li>
+			<li>By: <%= comment.get("author_name") %> at <%= comment.get("updated_at") %></li>
+		<% }) %>
+	</ul>
+</li>
 <li><button class="add-comment">Add a Comment</button></li>
 <% window.detail = location %>

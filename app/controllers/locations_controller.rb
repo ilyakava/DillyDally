@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
 		respond_to do |format|
 			format.json { render json: @locations.to_json(
 				methods: :categories_as_array,
-				include: :comments
+				include: { comments: { methods: :author_name } }
 			)}
 			format.html { render :index }
 		end
