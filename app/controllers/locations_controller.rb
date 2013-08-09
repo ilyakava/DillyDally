@@ -5,9 +5,10 @@ class LocationsController < ApplicationController
 	def index
 		@locations = current_user.locations.includes(:categories, :comments)
 		
+		
 		respond_to do |format|
 			format.json { render json: @locations.to_json(
-				methods: :categories_as_array,
+				methods: [:finder_email, :categories_as_array],
 				include: { comments: { methods: :author_name } }
 			)}
 			format.html { render :index }
