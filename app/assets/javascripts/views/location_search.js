@@ -50,9 +50,9 @@ DD.Views.LocationSearch = Backbone.View.extend({
     var that = this;
     var searchPhrase = $(event.target).prev().val();
 
-    // var mapCenter = map.getCenter();
-    var tempLat = 40.72264044368007;
-    var tempLng = -73.99240493774414;
+    var mapCenter = map.getCenter();
+    // var tempLat = 40.72264044368007;
+    // var tempLng = -73.99240493774414;
 
     var makeCollection = function (gpObjArray) {
       var nearbyLocs = new DD.Collections.Locations();

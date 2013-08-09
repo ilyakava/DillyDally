@@ -15,7 +15,9 @@ DD.Views.RecenterResults = Backbone.View.extend({
     // only triggered when user clicks on address_list view
     var that = this;
     var clickId = parseInt($(event.target).attr('id'), 10);
-    myMap.moveMap(that.searchResults.findWhere({'myId':clickId}));
+    var target = that.searchResults.findWhere({'myId':clickId});
+    myMap.moveMap(target);
+    myMap.basicMarker(target);
     // Visually distinguish active location
     that.indentResult(clickId);
   },
