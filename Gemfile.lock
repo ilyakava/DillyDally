@@ -156,6 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   annotate (>= 2.5.0)
   backbone-on-rails
   better_errors

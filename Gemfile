@@ -21,6 +21,7 @@ gem 'devise'
 gem 'backbone-on-rails'
 gem 'ejs'
 gem 'rest-client'
+gem 'addressable'
 gem 'annotate', ">=2.5.0"
 gem "figaro"
 
