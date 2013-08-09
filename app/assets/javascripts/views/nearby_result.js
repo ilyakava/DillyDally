@@ -9,10 +9,12 @@ DD.Views.NearbyResult = Backbone.View.extend({
     var that = this;
     console.log("saving a location model to DB");
     this.model.save();
+    that.$el.find('button.persist').parent().html("You've Saved this Location");
   },
 
   render: function () {
     var that = this;
+    console.log("ridner");
 
     var renderedLocation = JST['locations/nearby_search']({
       location: that.model,
