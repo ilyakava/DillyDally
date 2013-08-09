@@ -5,6 +5,7 @@ DD.Routers.Locations = Backbone.Router.extend({
 
     this.userSavedData = new DD.Collections.Locations(locationsData);
     this.firstLoad = true;
+    window.markerManager = new myMap.MarkerManager();
     
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.LocationsHead();

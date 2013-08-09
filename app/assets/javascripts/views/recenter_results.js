@@ -17,7 +17,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
     var clickId = parseInt($(event.target).attr('id'), 10);
     var target = that.searchResults.findWhere({'myId':clickId});
     myMap.moveMap(target);
-    myMap.basicMarker(target);
+    markerManager.mapCenter(target);
     // Visually distinguish active location
     that.indentResult(clickId);
   },
@@ -74,7 +74,9 @@ DD.Views.RecenterResults = Backbone.View.extend({
       that.searchResults = recenterLocs;
 
       // sets map center to latLng of 1st result
-      myMap.moveMap(recenterLocs.first());
+      var target = recenterLocs.first();
+      myMap.moveMap(target);
+      markerManager.mapCenter(target);
       that.indentResult(1);
 
       console.log("display results method finished");

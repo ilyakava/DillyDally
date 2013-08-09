@@ -19,13 +19,23 @@ myMap = (function () {
     map.setView(latLng, 15);
   };
 
-  var basicMarker = function (locModel) {
+  var MarkerManager = function () {
+    this.currCenterMarker = null;
+  };
+
+  MarkerManager.prototype.mapCenter = function (locModel) {
+    var that = this;
+    if (this.currCenterMarker) {
+      map.removeLayer(that.currCenterMarker);
+    }
     // expects BB location object
+    // Best with global search results - i.e. map centering
     var lng = locModel.get("lng");
     var lat = locModel.get("lat");
+    var address = locModel.get("address");
     console.log("adding a basic marker at: " + lat + ", " + lng);
 
-    L.mapbox.markerLayer({
+    this.currCenterMarker = L.mapbox.markerLayer({
       type: 'Feature',
       geometry: {
         type: 'Point',
@@ -33,19 +43,22 @@ myMap = (function () {
         coordinates: [lng, lat]
       },
       properties: {
-        title: 'Test Point',
-        description: 'My first marker',
+        title: address,
+        description: 'Map Center',
         'marker-size': 'large',
-        'marker-color': '#f0a'
+        // my red color rgb(156, 56,  45)
+        'marker-color': '9C382D'
       }
-    }).addTo(map);
+    });
     // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/single-marker/
+    this.currCenterMarker.addTo(map);
   };
+
 
   return {
     getRadius: getRadius,
     moveMap: moveMap,
-    basicMarker: basicMarker
+    MarkerManager: MarkerManager
   };
 
 })();
