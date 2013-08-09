@@ -11,3 +11,9 @@ User.create(
 	password: "password",
 	password_confirmation: "password"
 )
+
+User.create(
+	email: "cat@aol.com",
+	password: "password",
+	password_confirmation: "password"
+)
