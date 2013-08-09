@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
     p "A"*40
     p params
 
-    api_call = Addressable::URI.new(
+    api_call = ::Addressable::URI.new(
       :scheme => "https",
       :host => "maps.googleapis.com",
       :path => "maps/api/place/nearbysearch/json",
