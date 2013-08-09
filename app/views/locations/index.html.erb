@@ -4,7 +4,11 @@
 </script>
 
 <script type="application/javascript" id="bootstrapped-locations">
-	<%= @locations.to_json(methods: :categories_as_array).html_safe %>
+	<%= @locations.to_json(
+				methods: :categories_as_array,
+				include: :comments
+			).html_safe %>
+			
 </script>
 
 <div id="side-bar">

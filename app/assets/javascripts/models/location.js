@@ -10,6 +10,10 @@ DD.Models.Location = Backbone.Model.extend({
 
   parse: function (response, options) {
     response["categories"] = response["categories_as_array"];
+
+    var commentCollection = new DD.Collections.Comments(response["comments"]);
+    response["comments"] = commentCollection;
+
     return response;
   }
 });

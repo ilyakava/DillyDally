@@ -3,10 +3,13 @@ class LocationsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@locations = current_user.locations.includes(:categories)
+		@locations = current_user.locations.includes(:categories, :comments)
 		
 		respond_to do |format|
-			format.json { render json: @locations.to_json(methods: :categories_as_array) }
+			format.json { render json: @locations.to_json(
+				methods: :categories_as_array,
+				include: :comments
+			)}
 			format.html { render :index }
 		end
 	end
