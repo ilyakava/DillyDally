@@ -21,6 +21,7 @@ myMap = (function () {
 
   var MarkerManager = function () {
     this.currCenterMarker = null;
+    this.collectionMarkers = null;
   };
 
   MarkerManager.prototype.mapCenter = function (locModel) {
@@ -54,6 +55,24 @@ myMap = (function () {
     this.currCenterMarker.addTo(map);
   };
 
+  MarkerManager.prototype.collection = function (locCollection) {
+    var markers = new L.MarkerClusterGroup();
+    locCollection.each(function (locModel) {
+      var lng = locModel.get("lng");
+      var lat = locModel.get("lat");
+      var title = locModel.get("name");
+      
+      var marker = L.marker(new L.LatLng(lat, lng), {
+        icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+        title: title
+      });
+      marker.bindPopup(title);
+      markers.addLayer(marker);
+    });
+    map.addLayer(markers);
+    this.collectionMarkers = markers;
+    // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/leaflet-markercluster/
+  };
 
   return {
     getRadius: getRadius,
