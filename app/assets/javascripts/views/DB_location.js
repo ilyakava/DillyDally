@@ -3,7 +3,8 @@ DD.Views.DBLocation = Backbone.View.extend({
   className: 'location',
 
   events: {
-    "click button.add-comment": "addComment"
+    "click button.add-comment": "addComment",
+    "click button.set-map-center": "centerMap"
   },
 
   addComment: function () {
@@ -25,5 +26,10 @@ DD.Views.DBLocation = Backbone.View.extend({
     that.$el.html(renderedLocation);
 
     return that;
+  },
+
+  centerMap: function () {
+    var that = this;
+    myMap.moveMap(that.model);
   }
 });
