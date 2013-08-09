@@ -12,6 +12,12 @@
 	<!-- Mapbox stuff end -->
 
   <script type="text/javascript">
+    window.API = {
+      MapQuest: "<%= ENV["MAPQUEST_KEY"] %>",
+      MapBox: "<%= ENV["MAPBOX_MAP"] %>",
+      Google: "<%= ENV["GOOGLE_KEY"] %>"
+    };
+
     // window.cafe_icon = <%#= image_path  %>
   </script>
 

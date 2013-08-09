@@ -64,7 +64,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
       that.updateDisplay();
     };
     
-    var placeSearcher = new Google.Places( API.Google.key() );
+    var placeSearcher = new Google.Places( API.Google );
     placeSearcher.query(tempLat, tempLng, searchPhrase, makeCollection);
   }
 });

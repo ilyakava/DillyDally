@@ -87,7 +87,7 @@ DD.Views.RecenterResults = Backbone.View.extend({
     var address = $('.recenter input[type=text]').val().toString();
 
     // method to instantiate my interface with mapquest
-    var geocoder = new MapQuest.Geocoder( API.MapQuest.key() );
+    var geocoder = new MapQuest.Geocoder( API.MapQuest );
 
     // above callback arg recieves array of mapquest objs
     geocoder.query(address, displayResults);
