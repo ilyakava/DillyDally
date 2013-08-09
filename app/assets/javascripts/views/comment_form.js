@@ -15,7 +15,12 @@ DD.Views.CommentForm = Backbone.View.extend({
       location_id: that.model.get('id')
     });
 
-    comment.save();
+    comment.save({}, {
+      success: function (model, response) {
+        console.log(response);
+        that.model.get('comments').add(response);
+      }
+    });
     that.hideForm();
   },
 
