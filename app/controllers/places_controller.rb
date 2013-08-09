@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 class PlacesController < ApplicationController
 
 	# All for making the google api call without JS
