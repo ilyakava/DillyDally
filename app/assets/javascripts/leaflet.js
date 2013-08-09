@@ -19,9 +19,33 @@ myMap = (function () {
     map.setView(latLng, 15);
   };
 
+  var basicMarker = function (locModel) {
+    // expects BB location object
+    var lng = locModel.get("lng");
+    var lat = locModel.get("lat");
+    console.log("adding a basic marker at: " + lat + ", " + lng);
+
+    L.mapbox.markerLayer({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        // notice coords are in long, lat here
+        coordinates: [lng, lat]
+      },
+      properties: {
+        title: 'Test Point',
+        description: 'My first marker',
+        'marker-size': 'large',
+        'marker-color': '#f0a'
+      }
+    }).addTo(map);
+    // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/single-marker/
+  };
+
   return {
     getRadius: getRadius,
-    moveMap: moveMap
+    moveMap: moveMap,
+    basicMarker: basicMarker
   };
 
 })();
