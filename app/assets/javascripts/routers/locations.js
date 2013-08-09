@@ -3,7 +3,7 @@ DD.Routers.Locations = Backbone.Router.extend({
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
 
-    this.userSavedData = locationsData;
+    this.userSavedData = new DD.Collections.Locations(locationsData);
     this.firstLoad = true;
     
     // render head of searchbar (tabs and recenter searchbar)
@@ -37,7 +37,7 @@ DD.Routers.Locations = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.MyLocations({
-      collection: new DD.Collections.Locations(that.userSavedData)
+      collection: that.userSavedData
     });
  
     if (that.firstLoad) {
