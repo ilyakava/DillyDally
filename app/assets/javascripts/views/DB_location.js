@@ -7,6 +7,7 @@ DD.Views.DBLocation = Backbone.View.extend({
   },
 
   addComment: function () {
+    console.log("Adding a comment for a listed location!");
     var that = this;
     var commentFormView = new DD.Views.CommentForm({
       model: that.model

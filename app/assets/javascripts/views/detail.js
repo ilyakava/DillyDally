@@ -1,9 +1,24 @@
 DD.Views.Detail = Backbone.View.extend({
+  tagName: 'ul',
+  className: 'location',
 
   initialize: function ($headEl, $contentEl, model) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
     this.model = model;
+  },
+
+  events: {
+    "click button.add-comment": "addComment"
+  },
+
+  addComment: function () {
+    console.log("adding a comment in the detail view!");
+    var that = this;
+    var commentFormView = new DD.Views.CommentForm({
+      model: that.model
+    });
+    that.$el.find('button.add-comment').parent().append(commentFormView.render().$el);
   },
 
   render: function () {
@@ -13,7 +28,8 @@ DD.Views.Detail = Backbone.View.extend({
       location: that.model
     });
 
-    that.$contentEl.html(showPage);
+    that.$el.html(showPage);
+    that.$contentEl.html(that.$el);
     that.insertTab(true);
   },
 
@@ -32,6 +48,8 @@ DD.Views.Detail = Backbone.View.extend({
 
   cancel: function () {
     this.insertTab(false);
+    $(this.el).undelegate("button.add-comment", "click");
+
     // remove tab and clear events
   }
 

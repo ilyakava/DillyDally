@@ -1,14 +1,12 @@
-<ul class="location">
-	<li><h3>About: <%= location.get("name") %></h3></li>
+<li><h3>About: <%= location.get("name") %></h3></li>
 
-	<li><%= location.get("address") %></li>
-	<li class="categories">Categories:
-		<dl class="group">
-			<% _(location.get("categories")).each(function (category) { %>
-				<dt><%= _(category).humanize() %></dt>
-			<% }) %>
-		</dl>
-	</li>
-	<li><button class="add-comment">Add a Comment</button></li>
-	<% window.loc = location %>
-</ul>
+<li><%= location.get("address") %></li>
+<li class="categories">Categories:
+	<dl class="group">
+		<% _(location.get("categories")).each(function (category) { %>
+			<dt><%= _(category).humanize() %></dt>
+		<% }) %>
+	</dl>
+</li>
+<li><button class="add-comment">Add a Comment</button></li>
+<% window.loc = location %>
