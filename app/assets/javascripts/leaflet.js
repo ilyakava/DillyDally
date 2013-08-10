@@ -70,9 +70,12 @@ myMap = (function () {
           title: title,
           icon: new L.icon ({
             "iconUrl": Icons.cafe,
-            "iconSize": [25, 15],
+            "iconSize": [50, 50 ],
             "iconAnchor": [25, 25],
-            "popupAnchor": [0, -25]
+            "shadowUrl": Icons.cafeBG,
+            "shadowSize": [60, 60],
+            "shadowAnchor": [30,30],
+            "popupAnchor": [0, 0]
           })
         }
       );
