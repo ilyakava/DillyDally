@@ -55,30 +55,90 @@ myMap = (function () {
     this.currCenterMarker.addTo(map);
   };
 
+  // var iconRankingHash = {
+  //   "art_gallery" :
+  //   "bakery" :
+  //   "bank" :
+  //   "bar" :
+  //   "bicycle_store" :
+  //   "book_store" :
+  //   "university" :
+  //   "library" :
+  //   "bus_station" :
+  //   "cafe" :
+  //   "campground" :
+  //   "cemetery" :
+  //   "church" :
+  //   "clothing_store" :
+  //   "convenience_store" :
+  //   "department_store" :
+  //   "electronics_store" :
+  //   "shoe_store" :
+  //   "shopping_mall" :
+  //   "pet_store" :
+  //   "food" :
+  //   "meal_delivery" :
+  //   "meal_takeaway" :
+  //   "furniture_store" :
+  //   "store" :
+  //   "gas_station" :
+  //   "gym" :
+  //   "hair_care" :
+  //   "beauty_salon" :
+  //   "health" :
+  //   "hindu_temple" :
+  //   "jewelry_store" :
+  //   "laundry" :
+  //   "movie_rental" :
+  //   "movie_theater" :
+  //   "museum" :
+  //   "night_club" :
+  //   "park" :
+  //   "parking" :
+  //   "pharmacy" :
+  //   "post_office" :
+  //   "spa" :
+  //   "stadium" :
+  //   "subway_station" :
+  //   "train_station" :
+  //   "zoo" :
+  // };
+  // var iconFileHash = {
+
+  // }
+  
+
+  MarkerManager.prototype.makeMarker = function (locModel) {
+    var lng = locModel.get("lng");
+    var lat = locModel.get("lat");
+    var title = locModel.get("name");
+    // L.marker takes LatLng obj and has options title and icon
+    // the icon option takes a L.icon object
+    return L.marker(
+      new L.LatLng(lat, lng),
+      {
+        title: title,
+        icon: new L.icon ({
+          // in the future will call method to choose marker from categories
+          "iconUrl": Icons.general,
+          "iconSize": [26, 26 ],
+          "iconAnchor": [13, 13],
+          "popupAnchor": [0, -13]
+          // "shadowUrl": Icons.cafeBG,
+          // "shadowSize": [60, 60],
+          // "shadowAnchor": [30,30],
+        })
+      }
+    );
+  };
+
   MarkerManager.prototype.collection = function (locCollection) {
+    var that = this;
     var markers = new L.MarkerClusterGroup();
     locCollection.each(function (locModel) {
-      var lng = locModel.get("lng");
-      var lat = locModel.get("lat");
       var title = locModel.get("name");
-      
-      // L.marker takes LatLng obj and has options title and icon
-      // the icon option takes a L.icon object
-      var marker = L.marker(
-        new L.LatLng(lat, lng),
-        {
-          title: title,
-          icon: new L.icon ({
-            "iconUrl": Icons.cafe,
-            "iconSize": [50, 50 ],
-            "iconAnchor": [25, 25],
-            "shadowUrl": Icons.cafeBG,
-            "shadowSize": [60, 60],
-            "shadowAnchor": [30,30],
-            "popupAnchor": [0, 0]
-          })
-        }
-      );
+
+      var marker = that.makeMarker(locModel);
       marker.bindPopup(title);
       markers.addLayer(marker);
     });
