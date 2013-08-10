@@ -1,6 +1,6 @@
 DD.Views.LocationSearch = Backbone.View.extend({
 
-  initialize: function ($contentEl, userSavedData) {
+  initialize: function ($contentEl, userSavedData, markerManager) {
     var that = this;
     this.$contentEl = $contentEl;
     this.collection = new DD.Collections.Locations();
@@ -62,6 +62,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
 
       that.collection = nearbyLocs;
       that.updateDisplay();
+      markerManager.nearby(that.collection);
     };
     
     var placeSearcher = new Google.Places( API.Google );

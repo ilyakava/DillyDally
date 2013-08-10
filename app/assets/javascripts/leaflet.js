@@ -1,6 +1,7 @@
 myMap = (function () {
 
   var getRadius = function () {
+    console.log("getting radius from the map on the page!");
     var mapBounds = map.getBounds();
     var degreeRadius = Math.abs(mapBounds.getCenter().lat) -
       Math.abs(mapBounds.getNorthEast().lat);
