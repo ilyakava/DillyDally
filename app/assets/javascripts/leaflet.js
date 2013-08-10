@@ -19,9 +19,12 @@ myMap = (function () {
     map.setView(latLng, 16);
   };
 
+
+
   var MarkerManager = function () {
     this.currCenterMarker = null;
-    this.collectionMarkers = null;
+    this.nearbyMarkers = null;
+    this.myLocationsMarkers = null;
   };
 
   MarkerManager.prototype.mapCenter = function (locModel) {
@@ -53,6 +56,61 @@ myMap = (function () {
     });
     // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/single-marker/
     this.currCenterMarker.addTo(map);
+  };
+
+  MarkerManager.prototype.makeMarker = function (locModel) {
+    var lng = locModel.get("lng");
+    var lat = locModel.get("lat");
+    var title = locModel.get("name");
+    // L.marker takes LatLng obj and has options title and icon
+    // the icon option takes a L.icon object
+    return L.marker(
+      new L.LatLng(lat, lng),
+      {
+        title: title,
+        icon: new L.icon ({
+          // in the future will call method to choose marker from categories
+          "iconUrl": Icons.general,
+          "iconSize": [26, 26 ],
+          "iconAnchor": [13, 13],
+          "popupAnchor": [0, -13]
+          // "shadowUrl": Icons.cafeBG,
+          // "shadowSize": [60, 60],
+          // "shadowAnchor": [30,30],
+        })
+      }
+    );
+  };
+
+  MarkerManager.prototype.nearby = function (locCollection) {
+    var that = this;
+    if (this.nearbyMarkers) {
+      map.removeLayer(that.nearbyMarkers);
+    }
+    this.nearbyMarkers = this.collection(locCollection);
+  };
+
+  MarkerManager.prototype.myLocations = function (locCollection) {
+    var that = this;
+    if (this.myLocationsMarkers) {
+      map.removeLayer(that.myLocationsMarkers);
+    }
+    this.myLocationsMarkers = this.collection(locCollection);
+  };
+
+  MarkerManager.prototype.collection = function (locCollection) {
+    var that = this;
+    var markers = new L.MarkerClusterGroup();
+    locCollection.each(function (locModel) {
+      var title = locModel.get("name");
+
+      var marker = that.makeMarker(locModel);
+      marker.bindPopup(title);
+      markers.addLayer(marker);
+    });
+    map.addLayer(markers);
+    return markers;
+    // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/leaflet-markercluster/
   };
 
   // var iconRankingHash = {
@@ -106,46 +164,6 @@ myMap = (function () {
   // var iconFileHash = {
 
   // }
-  
-
-  MarkerManager.prototype.makeMarker = function (locModel) {
-    var lng = locModel.get("lng");
-    var lat = locModel.get("lat");
-    var title = locModel.get("name");
-    // L.marker takes LatLng obj and has options title and icon
-    // the icon option takes a L.icon object
-    return L.marker(
-      new L.LatLng(lat, lng),
-      {
-        title: title,
-        icon: new L.icon ({
-          // in the future will call method to choose marker from categories
-          "iconUrl": Icons.general,
-          "iconSize": [26, 26 ],
-          "iconAnchor": [13, 13],
-          "popupAnchor": [0, -13]
-          // "shadowUrl": Icons.cafeBG,
-          // "shadowSize": [60, 60],
-          // "shadowAnchor": [30,30],
-        })
-      }
-    );
-  };
-
-  MarkerManager.prototype.collection = function (locCollection) {
-    var that = this;
-    var markers = new L.MarkerClusterGroup();
-    locCollection.each(function (locModel) {
-      var title = locModel.get("name");
-
-      var marker = that.makeMarker(locModel);
-      marker.bindPopup(title);
-      markers.addLayer(marker);
-    });
-    map.addLayer(markers);
-    this.collectionMarkers = markers;
-    // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/leaflet-markercluster/
-  };
 
   return {
     getRadius: getRadius,
