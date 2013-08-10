@@ -64,7 +64,7 @@ myMap = (function () {
       
       var marker = L.marker(new L.LatLng(lat, lng), {
         icon: L.mapbox.marker.icon({
-          "iconUrl": "/maki_icons/cafe-24.svg",
+          "iconUrl": Icons.cafe,
           // "iconUrl": "http://placekitten.com/50/50",
           "iconSize": [50, 50],
           "iconAnchor": [25, 25],
