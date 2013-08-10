@@ -62,18 +62,20 @@ myMap = (function () {
       var lat = locModel.get("lat");
       var title = locModel.get("name");
       
-      var marker = L.marker(new L.LatLng(lat, lng), {
-        icon: L.mapbox.marker.icon({
-          "iconUrl": Icons.cafe,
-          // "iconUrl": "http://placekitten.com/50/50",
-          "iconSize": [50, 50],
-          "iconAnchor": [25, 25],
-          "popupAnchor": [0, -25]
-          // 'marker-symbol': 'post',
-          // 'marker-color': '0044FF',
-        }),
-        title: title
-      });
+      // L.marker takes LatLng obj and has options title and icon
+      // the icon option takes a L.icon object
+      var marker = L.marker(
+        new L.LatLng(lat, lng),
+        {
+          title: title,
+          icon: new L.icon ({
+            "iconUrl": Icons.cafe,
+            "iconSize": [25, 15],
+            "iconAnchor": [25, 25],
+            "popupAnchor": [0, -25]
+          })
+        }
+      );
       marker.bindPopup(title);
       markers.addLayer(marker);
     });
