@@ -38,18 +38,6 @@ class Location < ActiveRecord::Base
 		end
 	end
 
-	def visitor_emails
-		self.visitors.map { |active_rec_obj| active_rec_obj.email }
-	end
-
-	def num_savers
-		self.savers.count
-	end
-
-	def finder_email
-		self.creator.email
-	end
-
 	def categories_as_array
 		self.categories.map { |active_rec_obj| active_rec_obj.name }
 	end
