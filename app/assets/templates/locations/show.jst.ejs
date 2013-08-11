@@ -1,6 +1,19 @@
 <li><h3>About: <%= location.get("name") %></h3></li>
 <li>First added by: <%= location.get("finder_email") %></li>
 <li><%= location.get("address") %></li>
+<li>
+	<% if (!location.get("visited")) { %>
+		<%= 'I have not visited ' + location.get("name") + ' yet.' %>
+		<button class="visited-boolean">
+			No. I've been there before
+		</button>
+	<% } else { %>
+		<%= 'I have visited ' + location.get("name") + '.' %>
+		<button class="visited-boolean">
+			No. I've been there before
+		</button>
+	<% } %>	
+</li>
 <li class="categories">Categories:
 	<dl class="group">
 		<% _(location.get("categories")).each(function (category) { %>
