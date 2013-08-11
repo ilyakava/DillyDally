@@ -2,17 +2,17 @@
 <li>First added by: <%= location.get("finder_email") %></li>
 <li><%= location.get("address") %></li>
 <li>
-	<% if (_(location.get("visitor_emails")).findWhere(function (email) { %>
-		<% email === current_user.email %>
+	<% if ((location.get("visitors")).findWhere(function (user) { %>
+		<% user.id === current_user.id %>
 	<% })) { %>
-		<%= 'I have not visited ' + location.get("name") + ' yet.' %>
-		<button class="visited-boolean">
-			No. I've been here before.
-		</button>
-	<% } else { %>
 		<%= 'I have visited ' + location.get("name") + '.' %>
 		<button class="visited-boolean">
 			No. I've never been here.
+		</button>
+	<% } else { %>
+		<%= 'I have not visited ' + location.get("name") + ' yet.' %>
+		<button class="visited-boolean">
+			No. I've been here before.
 		</button>
 	<% } %>	
 </li>
