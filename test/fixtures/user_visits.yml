@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: user_locations
+# Table name: user_visits
 #
 #  id          :integer          not null, primary key
 #  user_id     :integer

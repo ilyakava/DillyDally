@@ -20,7 +20,13 @@ class Location < ActiveRecord::Base
 	has_many :location_categories
 	has_many :categories, through: :location_categories
 
+	has_many :user_locations
+	has_many :savers, through: :user_locations, source: :user
+
 	has_many :comments
+
+	has_many :user_visits
+	has_many :visitors, through: :user_visits, source: :user 
 
 	def assign_categories_for(category_array)
 		category_array.each do |category_name|
@@ -30,6 +36,14 @@ class Location < ActiveRecord::Base
 				category_id: category.id
 			)
 		end
+	end
+
+	def visitor_emails
+		self.visitors.map { |active_rec_obj| active_rec_obj.email }
+	end
+
+	def num_savers
+		self.savers.count
 	end
 
 	def finder_email

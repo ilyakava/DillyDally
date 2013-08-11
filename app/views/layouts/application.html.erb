@@ -18,6 +18,10 @@
       Google: "<%= ENV["GOOGLE_KEY"] %>"
     };
 
+    window.current_user = {
+      email: "<%= current_user.email %>"
+    }
+
     window.Icons = {
       "cafe": "<%= image_path('maki_icons/cafe-24.svg') %>",
       "general": "<%= image_path('maki_icons/cross-24.svg') %>"

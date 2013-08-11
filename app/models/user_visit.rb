@@ -1,24 +1,18 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: user_visits
 #
 #  id          :integer          not null, primary key
-#  body        :text
 #  user_id     :integer
+#  location_id :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#  location_id :integer
 #
 
-class Comment < ActiveRecord::Base
-
-	attr_accessible :body, :user_id, :location_id
+class UserVisit < ActiveRecord::Base
+	attr_accessible :user_id, :location_id
 
 	belongs_to :user
 	belongs_to :location
-
-	def author_email
-		self.user.email
-	end
-
+	
 end
