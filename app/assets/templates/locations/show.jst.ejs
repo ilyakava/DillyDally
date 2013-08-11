@@ -1,6 +1,9 @@
 <li><h3>About: <%= location.get("name") %></h3></li>
-<li>First added by: <%= location.get("finder_email") %></li>
+
+<li>First added by: <%= location.get("creator").get("email") %></li>
+
 <li><%= location.get("address") %></li>
+
 <li>
 	<% if ((location.get("visitors")).findWhere(function (user) { %>
 		<% user.id === current_user.id %>
@@ -16,6 +19,7 @@
 		</button>
 	<% } %>	
 </li>
+
 <li class="categories">Categories:
 	<dl class="group">
 		<% _(location.get("categories")).each(function (category) { %>
@@ -28,7 +32,10 @@
 	<ul class="comment-display">
 		<% (location.get("comments")).each(function (comment) { %>
 			<li><%= comment.get("body") %></li>
-			<li>By: <%= comment.get("author_email") %> at <%= comment.get("updated_at") %></li>
+			<li>
+				By: <%= comment.get("author").get("email") %> at 
+				<%= comment.get("updated_at") %>
+			</li>
 		<% }) %>
 	</ul>
 </li>

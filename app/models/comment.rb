@@ -14,11 +14,11 @@ class Comment < ActiveRecord::Base
 
 	attr_accessible :body, :user_id, :location_id
 
-	belongs_to :user
+	belongs_to :author, class_name: 'User', foreign_key: :user_id
 	belongs_to :location
 
 	def author_email
-		self.user.email
+		self.author.email
 	end
 
 end

@@ -11,7 +11,13 @@ DD.Models.Location = Backbone.Model.extend({
   parse: function (response, options) {
     response["categories"] = response["categories_as_array"];
 
+    response["creator"] = new DD.Models.User(response["creator"]);
+
     response["comments"] = new DD.Collections.Comments(response["comments"]);
+    (response["comments"]).each(function (comment) {
+      comment.set("author", new DD.Models.User(comment.get("author")));
+    });
+
     response["visitors"] = new DD.Collections.Users(response["visitors"]);
     response["savers"] = new DD.Collections.Users(response["savers"]);
 
