@@ -1,11 +1,14 @@
 <div id="map"></div>
 <script type='text/javascript'>
-	var map = L.mapbox.map('map', "a"); // API.MapBox );
+	// var map = L.mapbox.map('map', API.MapBox );
 </script>
 
 <script type="application/javascript" id="bootstrapped-locations">
-	<%= @json.html_safe %>
-			
+	<%= @locations_json.html_safe %>
+</script>
+
+<script type="application/javascript" id="bootstrapped-tag-choices">
+	<%= @tags_json.html_safe %>
 </script>
 
 <div id="side-bar">
