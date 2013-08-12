@@ -13,7 +13,7 @@
 #
 
 class Location < ActiveRecord::Base
-	attr_accessible :address, :lat, :lng, :name, :user_id
+	attr_accessible :address, :lat, :lng, :name, :user_id, :tag_ids
 
 	belongs_to :creator, class_name: 'User', foreign_key: :user_id
 

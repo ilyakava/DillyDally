@@ -1,0 +1,1 @@
+DD.Models.LocationTag = Backbone.Model.extend({});

@@ -1,11 +1,11 @@
-DD.Collections.UserTags = Backbone.Collection.extend({
-  model: DD.Models.UserTag,
-  url: '/user_tags',
+DD.Collections.LocationTags = Backbone.Collection.extend({
+  model: DD.Models.LocationTag,
+  url: '/location_tags',
 
-  parseForm: function (serializedArray, location_id) {
+  parseAndSaveForm: function (serializedArray, location_id) {
     var that = this;
     _(serializedArray).each(function (object) {
-      that.add({
+      that.create({
         location_id: location_id,
         tag_id: object["value"],
         user_id: current_user.id

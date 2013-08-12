@@ -2,10 +2,19 @@ DD.Views.TagForm = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    "click button.submit-tag": "addTag"
+    "click input[type=submit]": "addTags",
   },
 
-  addTag: function () {
+  addTags: function (event) {
+    var that = this;
+    event.preventDefault();
+
+    console.log("SUBMITTIN");
+    var formData = $(event.target).parent().serializeArray();
+    var locationTagCollection = new DD.Collections.LocationTags();
+    // pass in form with tag_ids, and also a location_id
+    locationTagCollection.parseAndSaveForm(formData, that.model.get("id"));
+
   },
 
   render: function () {
