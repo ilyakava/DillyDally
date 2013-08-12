@@ -57,9 +57,9 @@ DD.Views.Detail = Backbone.View.extend({
       location: that.model
     });
 
+    that.$contentEl.html(that.$el);
     that.$el.html(showPage);
     that.userVisitHelper();
-    that.$contentEl.html(that.$el);
     that.insertTab(true);
   },
 

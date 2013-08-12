@@ -5,17 +5,18 @@ DD.Views.UserVisitToggle = Backbone.View.extend({
   },
 
   deleteVisit: function () {
+    console.log("deleted a user_visit model");
     var that = this;
     var visit = (that.model.get("user_visits")).findWhere({"user_id": current_user.id});
     visit.destroy({
       url: 'user_visits/' + visit.get("id"),
       success: function () {
-        console.log("deleted a user_visit model");
       }
     });
   },
 
   createVisit: function () {
+    console.log("created a user_visit model");
     var that = this;
     var visit = new DD.Models.UserVisit({
       user_id: current_user.id,
@@ -23,7 +24,6 @@ DD.Views.UserVisitToggle = Backbone.View.extend({
     });
     visit.save({}, {
       success: function (model, response) {
-        console.log(response);
         that.model.get("user_visits").add(response);
       }
     });
@@ -42,8 +42,8 @@ DD.Views.UserVisitToggle = Backbone.View.extend({
 
   cancel: function () {
     console.log("Cancelling events for userVisit Toggle");
-    $(this.el).undelegate("button.have-not-visited", "click");
-    $(this.el).undelegate("button.have-visited", "click");
+    // $(this.el).undelegate("button.have-not-visited", "click");
+    // $(this.el).undelegate("button.have-visited", "click");
   }
 
 });
