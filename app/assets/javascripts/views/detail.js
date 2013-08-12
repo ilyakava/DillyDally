@@ -8,23 +8,18 @@ DD.Views.Detail = Backbone.View.extend({
     this.$contentEl = $contentEl;
     this.model = model;
 
-    // var renderCallback = that.cancel(that.render.bind(that));
-    // that.listenTo(that.model.get("user_visits"), "change", renderCallback);
-    // that.listenTo(that.model.get("user_visits"), "add", renderCallback);
-    // that.listenTo(that.model.get("user_visits"), "remove", renderCallback);
+    var renderCallback = function () {
+      that.cancel(that.render.bind(that));
+    };
+    that.listenTo(that.model.get("user_visits"), "change", renderCallback);
+    that.listenTo(that.model.get("user_visits"), "add", renderCallback);
+    that.listenTo(that.model.get("user_visits"), "remove", renderCallback);
   },
 
   events: {
     "click button.add-comment": "addComment",
-    "click button.uservisits": "delegateUserVisit"
-  },
-
-  delegateUserVisit: function () {
-    if ($(event.target).attr('class').match("have-not")) {
-      this.deleteVisit();
-    } else {
-      this.createVisit();
-    }
+    "click button.have-not-visited": "deleteVisit",
+    "click button.have-visited": "createVisit"
   },
 
   deleteVisit: function () {
@@ -34,7 +29,6 @@ DD.Views.Detail = Backbone.View.extend({
       url: 'user_visits/' + visit.get("id"),
       success: function () {
         console.log("deleted a user_visit model");
-        that.render();
       }
     });
   },
@@ -49,7 +43,6 @@ DD.Views.Detail = Backbone.View.extend({
       success: function (model, response) {
         console.log(response);
         that.model.get("user_visits").add(response);
-        that.render();
       }
     });
   },
@@ -65,7 +58,7 @@ DD.Views.Detail = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    console.log("RENDERING BABY!");
+    console.log("RENDERING!");
 
     var showPage = JST['locations/show']({
       location: that.model
