@@ -5,7 +5,6 @@
 <li><%= location.get("address") %></li>
 
 <li>
-
 	<% if ((location.get("user_visits")).findWhere( {"user_id": current_user.id} )) { %>
 		<%= 'I have visited ' + location.get("name") + '.' %>
 		<button class="uservisits have-not-visited">
@@ -18,6 +17,8 @@
 		</button>
 	<% } %>	
 </li>
+
+<li><button class="add-tag">Add a tag</button></li>
 
 <li class="categories">Categories:
 	<dl class="group">

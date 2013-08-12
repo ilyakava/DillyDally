@@ -19,7 +19,8 @@ DD.Views.Detail = Backbone.View.extend({
   events: {
     "click button.add-comment": "addComment",
     "click button.have-not-visited": "deleteVisit",
-    "click button.have-visited": "createVisit"
+    "click button.have-visited": "createVisit",
+    "click button.add-tag": "addTag"
   },
 
   deleteVisit: function () {
@@ -45,6 +46,14 @@ DD.Views.Detail = Backbone.View.extend({
         that.model.get("user_visits").add(response);
       }
     });
+  },
+
+  addTag: function () {
+    var that = this;
+    var tagFormView = new DD.Views.TagForm({
+      model: that.model
+    });
+    that.$el.find('button.add-tag').parent().append(tagFormView.render().$el);
   },
 
   addComment: function () {

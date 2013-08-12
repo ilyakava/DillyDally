@@ -17,3 +17,8 @@ User.create(
 	password: "password",
 	password_confirmation: "password"
 )
+
+tags = %w{no-wifi super-cold very-small open-late no-power-plugs}
+tags.each do |tag|
+	Tag.create(name: tag)
+end
