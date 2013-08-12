@@ -5,16 +5,16 @@
 <li><%= location.get("address") %></li>
 
 <li>
-	<% if ((location.get("visitors")).findWhere(function (user) { %>
-		<% user.id === current_user.id %>
+	<% if ((location.get("user_visits")).findWhere(function (userVisit) { %>
+		<% userVisit.get("user_id") === current_user.id; %>
 	<% })) { %>
 		<%= 'I have visited ' + location.get("name") + '.' %>
-		<button class="visited-boolean">
+		<button class="have-not-visited">
 			No. I've never been here.
 		</button>
 	<% } else { %>
 		<%= 'I have not visited ' + location.get("name") + ' yet.' %>
-		<button class="visited-boolean">
+		<button class="have-visited">
 			No. I've been here before.
 		</button>
 	<% } %>	

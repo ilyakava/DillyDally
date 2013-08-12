@@ -12,6 +12,7 @@ DD.Models.Location = Backbone.Model.extend({
     response["categories"] = response["categories_as_array"];
 
     response["creator"] = new DD.Models.User(response["creator"]);
+    response["savers"] = new DD.Collections.Users(response["savers"]);
 
     response["comments"] = new DD.Collections.Comments(response["comments"]);
     (response["comments"]).each(function (comment) {
@@ -19,8 +20,8 @@ DD.Models.Location = Backbone.Model.extend({
     });
 
     response["visitors"] = new DD.Collections.Users(response["visitors"]);
-    response["savers"] = new DD.Collections.Users(response["savers"]);
-
+    response["user_visits"] = new DD.Collections.UserVisits(response["user_visits"]);
+    
     return response;
   }
 });

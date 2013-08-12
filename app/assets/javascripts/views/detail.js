@@ -9,7 +9,28 @@ DD.Views.Detail = Backbone.View.extend({
   },
 
   events: {
-    "click button.add-comment": "addComment"
+    "click button.add-comment": "addComment",
+    "click button.have-not-visited": "deleteVisit",
+    "click button.have-visited": "createVisit"
+  },
+
+  deleteVisit: function () {
+    var that = this;
+    var visit = (that.model.get("user_visits")).findWhere(function (userVisit) {
+      userVisit.get("user_id") === current_user.id;
+    });
+    visit.destroy();
+  },
+
+  createVisit: function () {
+    var that = this;
+    var visit = new DD.Models.UserVisit({
+      user_id: current_user.id,
+      location_id: that.model.get("id")
+    });
+    visit.save({success: function (model, response) {
+      that.model.get("user_visits").add(response);
+    }});
   },
 
   addComment: function () {
@@ -38,7 +59,7 @@ DD.Views.Detail = Backbone.View.extend({
       'href="#/detail-view/' + this.model.get('id') +
       '"' + '>Location Details</a></li>';
 
-    if (boolean) {
+    if (boolean &! ($('#detail-view').length)) {
       this.$headEl.find('ul.tabs').append(html);
     } else {
       console.log("Removing detail view tab");

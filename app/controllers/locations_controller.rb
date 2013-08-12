@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
 		@locations = current_user.locations.includes(:categories, :comments)
 		@json = @locations.to_json(
 			methods: [:categories_as_array],
-			include: [{comments: { include: :author }}, :visitors, :savers, :creator]
+			include: [{comments: { include: :author }}, :user_visits, :visitors, :savers, :creator]
 		)
 
 		respond_to do |format|
