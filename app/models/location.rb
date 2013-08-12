@@ -26,7 +26,10 @@ class Location < ActiveRecord::Base
 	has_many :comments
 
 	has_many :user_visits
-	has_many :visitors, through: :user_visits, source: :user 
+	has_many :visitors, through: :user_visits, source: :user
+
+	has_many :location_tags
+	has_many :tags, through: :location_tags, source: :tag
 
 	def assign_categories_for(category_array)
 		category_array.each do |category_name|
