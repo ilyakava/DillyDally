@@ -3,21 +3,40 @@ DD.Views.Detail = Backbone.View.extend({
   className: 'location',
 
   initialize: function ($headEl, $contentEl, model) {
+    var that = this;
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
     this.model = model;
+
+    // var renderCallback = that.cancel(that.render.bind(that));
+    // that.listenTo(that.model.get("user_visits"), "change", renderCallback);
+    // that.listenTo(that.model.get("user_visits"), "add", renderCallback);
+    // that.listenTo(that.model.get("user_visits"), "remove", renderCallback);
   },
 
   events: {
     "click button.add-comment": "addComment",
-    "click button.have-not-visited": "deleteVisit",
-    "click button.have-visited": "createVisit"
+    "click button.uservisits": "delegateUserVisit"
+  },
+
+  delegateUserVisit: function () {
+    if ($(event.target).attr('class').match("have-not")) {
+      this.deleteVisit();
+    } else {
+      this.createVisit();
+    }
   },
 
   deleteVisit: function () {
     var that = this;
     var visit = (that.model.get("user_visits")).findWhere({"user_id": current_user.id});
-    visit.destroy({url: 'user_visits/' + visit.get("id")});
+    visit.destroy({
+      url: 'user_visits/' + visit.get("id"),
+      success: function () {
+        console.log("deleted a user_visit model");
+        that.render();
+      }
+    });
   },
 
   createVisit: function () {
@@ -30,6 +49,7 @@ DD.Views.Detail = Backbone.View.extend({
       success: function (model, response) {
         console.log(response);
         that.model.get("user_visits").add(response);
+        that.render();
       }
     });
   },
@@ -45,6 +65,7 @@ DD.Views.Detail = Backbone.View.extend({
 
   render: function () {
     var that = this;
+    console.log("RENDERING BABY!");
 
     var showPage = JST['locations/show']({
       location: that.model
@@ -62,16 +83,19 @@ DD.Views.Detail = Backbone.View.extend({
 
     if (boolean &! ($('#detail-view').length)) {
       this.$headEl.find('ul.tabs').append(html);
-    } else {
+    } else if (!boolean) {
       console.log("Removing detail view tab");
       this.$headEl.find('#detail-view').parent().replaceWith("");
     }
   },
 
-  cancel: function () {
+  cancel: function (callback) {
+    console.log("Cancelling events for detail location view");
     this.insertTab(false);
     $(this.el).undelegate("button.add-comment", "click");
-
+    $(this.el).undelegate("button.have-not-visited", "click");
+    $(this.el).undelegate("button.have-visited", "click");
+    callback();
     // remove tab and clear events
   }
 
