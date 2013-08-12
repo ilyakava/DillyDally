@@ -1,0 +1,11 @@
+<% if ((location.get("user_visits")).findWhere( {"user_id": current_user.id} )) { %>
+	<%= 'I have visited ' + location.get("name") + '.' %>
+	<button class="uservisits have-not-visited">
+		No. I've never been here.
+	</button>
+<% } else { %>
+	<%= 'I have not visited ' + location.get("name") + ' yet.' %>
+	<button class="uservisits have-visited">
+		No. I have been here before.
+	</button>
+<% } %>	

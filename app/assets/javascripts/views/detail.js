@@ -7,10 +7,9 @@ DD.Views.Detail = Backbone.View.extend({
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
     this.model = model;
+    this.lastUserVisitHelper = null;
 
-    var renderCallback = function () {
-      that.cancel(that.render.bind(that));
-    };
+    var renderCallback = that.render.bind(that);
     that.listenTo(that.model.get("user_visits"), "change", renderCallback);
     that.listenTo(that.model.get("user_visits"), "add", renderCallback);
     that.listenTo(that.model.get("user_visits"), "remove", renderCallback);
@@ -18,34 +17,7 @@ DD.Views.Detail = Backbone.View.extend({
 
   events: {
     "click button.add-comment": "addComment",
-    "click button.have-not-visited": "deleteVisit",
-    "click button.have-visited": "createVisit",
     "click button.add-tag": "addTag"
-  },
-
-  deleteVisit: function () {
-    var that = this;
-    var visit = (that.model.get("user_visits")).findWhere({"user_id": current_user.id});
-    visit.destroy({
-      url: 'user_visits/' + visit.get("id"),
-      success: function () {
-        console.log("deleted a user_visit model");
-      }
-    });
-  },
-
-  createVisit: function () {
-    var that = this;
-    var visit = new DD.Models.UserVisit({
-      user_id: current_user.id,
-      location_id: that.model.get("id")
-    });
-    visit.save({}, {
-      success: function (model, response) {
-        console.log(response);
-        that.model.get("user_visits").add(response);
-      }
-    });
   },
 
   addTag: function () {
@@ -65,8 +37,22 @@ DD.Views.Detail = Backbone.View.extend({
     that.$el.find('button.add-comment').parent().append(commentFormView.render().$el);
   },
 
+  userVisitHelper: function () {
+    var that = this;
+
+    var visitToggleView = new DD.Views.UserVisitToggle({
+      model: that.model
+    });
+
+    that.$el.find('.toggle-user-visit').html(visitToggleView.render().$el);
+    that.lastUserVisitHelper = visitToggleView;
+  },
+
   render: function () {
     var that = this;
+    if (that.lastUserVisitHelper) {
+      that.lastUserVisitHelper.cancel();
+    }
     console.log("RENDERING!");
 
     var showPage = JST['locations/show']({
@@ -74,6 +60,7 @@ DD.Views.Detail = Backbone.View.extend({
     });
 
     that.$el.html(showPage);
+    that.userVisitHelper();
     that.$contentEl.html(that.$el);
     that.insertTab(true);
   },
@@ -91,13 +78,10 @@ DD.Views.Detail = Backbone.View.extend({
     }
   },
 
-  cancel: function (callback) {
+  cancel: function () {
     console.log("Cancelling events for detail location view");
     this.insertTab(false);
     $(this.el).undelegate("button.add-comment", "click");
-    $(this.el).undelegate("button.have-not-visited", "click");
-    $(this.el).undelegate("button.have-visited", "click");
-    callback();
     // remove tab and clear events
   }
 
