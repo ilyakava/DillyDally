@@ -10,9 +10,7 @@ DD.Views.Detail = Backbone.View.extend({
     this.lastUserVisitHelper = null;
 
     var renderCallback = that.render.bind(that);
-    that.listenTo(that.model.get("user_visits"), "change", renderCallback);
-    that.listenTo(that.model.get("user_visits"), "add", renderCallback);
-    that.listenTo(that.model.get("user_visits"), "remove", renderCallback);
+    that.listenTo(that.model.get("user_visits"), "change add remove", renderCallback);
   },
 
   events: {
