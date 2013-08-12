@@ -38,12 +38,6 @@ DD.Views.UserVisitToggle = Backbone.View.extend({
 
     that.$el.html(toggleView);
     return that;
-  },
-
-  cancel: function () {
-    console.log("Cancelling events for userVisit Toggle");
-    // $(this.el).undelegate("button.have-not-visited", "click");
-    // $(this.el).undelegate("button.have-visited", "click");
   }
 
 });

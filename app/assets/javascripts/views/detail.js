@@ -7,7 +7,6 @@ DD.Views.Detail = Backbone.View.extend({
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
     this.model = model;
-    this.lastUserVisitHelper = null;
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model.get("user_visits"), "change add remove", renderCallback);
@@ -43,14 +42,10 @@ DD.Views.Detail = Backbone.View.extend({
     });
 
     that.$el.find('.toggle-user-visit').html(visitToggleView.render().$el);
-    that.lastUserVisitHelper = visitToggleView;
   },
 
   render: function () {
     var that = this;
-    if (that.lastUserVisitHelper) {
-      that.lastUserVisitHelper.cancel();
-    }
     console.log("RENDERING!");
 
     var showPage = JST['locations/show']({
