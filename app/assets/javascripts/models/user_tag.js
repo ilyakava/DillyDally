@@ -1,0 +1,1 @@
+DD.Models.UserTag = Backbone.Model.extend({});
