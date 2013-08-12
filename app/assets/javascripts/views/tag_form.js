@@ -3,17 +3,18 @@ DD.Views.TagForm = Backbone.View.extend({
 
   events: {
     "click input[type=submit]": "addTags",
+    "click button.remove-tag-form": "hideForm"
   },
 
   addTags: function (event) {
     var that = this;
     event.preventDefault();
 
-    console.log("SUBMITTIN");
     var formData = $(event.target).parent().serializeArray();
     var locationTagCollection = new DD.Collections.LocationTags();
     // pass in form with tag_ids, and also a location_id
     locationTagCollection.parseAndSaveForm(formData, that.model.get("id"));
+    this.hideForm();
 
   },
 
@@ -27,12 +28,18 @@ DD.Views.TagForm = Backbone.View.extend({
     });
 
     this.$el.html(form);
+    // Chosen plugin stuff
     this.$el.find("select[name=location\\[tag_ids\\]]").chosen({
       allow_single_deselect: true,
       no_results_text: "Press ENTER to add the tag:",
       width: "70%"
     });
-
     return this;
+  },
+
+  hideForm: function () {
+    $(this.el).undelegate('input[type=submit]', 'click');
+    $(this.el).undelegate('button.remove-tag-form', 'click');
+    this.$el.html("");
   }
 });

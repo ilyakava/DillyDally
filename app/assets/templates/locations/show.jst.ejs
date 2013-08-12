@@ -6,7 +6,14 @@
 
 <li class="toggle-user-visit"></li>
 
-<li><button class="add-tag">Add tags</button></li>
+<li class="tag-display">Tags:
+	<dl class="group">
+		<% (location.get("location_tags")).each(function (location_tag) { %>
+			<dt><%= location_tag.get("tag").get("name") %></dt>
+		<% }) %>
+	</dl>
+</li>
+<li><button class="add-tag">Add More Tags</button></li>
 
 <li class="categories">Categories:
 	<dl class="group">

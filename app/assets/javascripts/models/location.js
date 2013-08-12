@@ -21,6 +21,11 @@ DD.Models.Location = Backbone.Model.extend({
 
     response["visitors"] = new DD.Collections.Users(response["visitors"]);
     response["user_visits"] = new DD.Collections.UserVisits(response["user_visits"]);
+
+    response["location_tags"] = new DD.Collections.LocationTags(response["location_tags"]);
+    (response["location_tags"]).each(function (location_tag) {
+      location_tag.set("tag", new DD.Models.Tag(location_tag.get("tag")));
+    });
     
     return response;
   }

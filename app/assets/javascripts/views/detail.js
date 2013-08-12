@@ -24,7 +24,7 @@ DD.Views.Detail = Backbone.View.extend({
       model: that.model
     });
     that.$el.find('button.add-tag').parent().after(tagFormView.render().$el);
-    $(this.el).undelegate("button.add-tag", "click");
+    // $(this.el).undelegate("button.add-tag", "click");
   },
 
   addComment: function () {
