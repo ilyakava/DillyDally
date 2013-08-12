@@ -12,7 +12,7 @@
 
 class Comment < ActiveRecord::Base
 
-	attr_accessible :body, :user_id, :location_id
+	attr_accessible :body, :user_id, :location_id, :is_private
 
 	belongs_to :author, class_name: 'User', foreign_key: :user_id
 	belongs_to :location

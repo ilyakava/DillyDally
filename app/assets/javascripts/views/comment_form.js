@@ -9,9 +9,11 @@ DD.Views.CommentForm = Backbone.View.extend({
   newComment: function () {
     var that = this;
     window.submit = that;
+    console.log(!!that.$("input[name=comment\\[is_private\\]]:checked"));
 
     var comment = new DD.Models.Comment({
       body: that.$("textarea[name=comment\\[body\\]]").val(),
+      is_private: (!!that.$("input[name=comment\\[is_private\\]]:checked")),
       location_id: that.model.get('id')
     });
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130811022249) do
+ActiveRecord::Schema.define(version: 20130812135814) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20130811022249) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
+    t.boolean  "is_private"
   end
 
   create_table "location_categories", force: true do |t|
