@@ -23,7 +23,6 @@ DD.Routers.Locations = Backbone.Router.extend({
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    console.log(that.userSavedData);
     var model = that.userSavedData.get(id);
 
     var locationDetailView = new DD.Views.Detail(that.$headEl, that.$contentEl, model);

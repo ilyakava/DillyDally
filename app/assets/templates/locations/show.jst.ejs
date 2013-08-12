@@ -5,9 +5,8 @@
 <li><%= location.get("address") %></li>
 
 <li>
-	<% if ((location.get("user_visits")).findWhere(function (userVisit) { %>
-		<% userVisit.get("user_id") === current_user.id; %>
-	<% })) { %>
+
+	<% if ((location.get("user_visits")).findWhere( {"user_id": current_user.id} )) { %>
 		<%= 'I have visited ' + location.get("name") + '.' %>
 		<button class="have-not-visited">
 			No. I've never been here.
@@ -15,7 +14,7 @@
 	<% } else { %>
 		<%= 'I have not visited ' + location.get("name") + ' yet.' %>
 		<button class="have-visited">
-			No. I've been here before.
+			No. I have been here before.
 		</button>
 	<% } %>	
 </li>

@@ -16,9 +16,7 @@ DD.Views.Detail = Backbone.View.extend({
 
   deleteVisit: function () {
     var that = this;
-    var visit = (that.model.get("user_visits")).findWhere(function (userVisit) {
-      userVisit.get("user_id") === current_user.id;
-    });
+    var visit = (that.model.get("user_visits")).findWhere({"user_id": current_user.id});
     visit.destroy();
   },
 
@@ -28,9 +26,12 @@ DD.Views.Detail = Backbone.View.extend({
       user_id: current_user.id,
       location_id: that.model.get("id")
     });
-    visit.save({success: function (model, response) {
-      that.model.get("user_visits").add(response);
-    }});
+    visit.save({}, {
+      success: function (model, response) {
+        console.log(response);
+        that.model.get("user_visits").add(response);
+      }
+    });
   },
 
   addComment: function () {
