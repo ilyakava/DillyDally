@@ -11,7 +11,8 @@ DD.Views.TagForm = Backbone.View.extend({
     event.preventDefault();
 
     var formData = $(event.target).parent().serializeArray();
-    var locationTagCollection = new DD.Collections.LocationTags();
+    console.log(formData);
+    var locationTagCollection = that.model.get("location_tags");
     // pass in form with tag_ids, and also a location_id
     locationTagCollection.parseAndSaveForm(formData, that.model.get("id"));
     this.hideForm();
