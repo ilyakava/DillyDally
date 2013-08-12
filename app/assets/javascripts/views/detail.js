@@ -58,6 +58,7 @@ DD.Views.Detail = Backbone.View.extend({
     that.$el.html(showPage);
     that.userVisitHelper();
     that.insertTab(true);
+    that.delegateEvents();
   },
 
   insertTab: function (boolean) {
