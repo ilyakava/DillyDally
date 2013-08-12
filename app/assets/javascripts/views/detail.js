@@ -17,7 +17,7 @@ DD.Views.Detail = Backbone.View.extend({
   deleteVisit: function () {
     var that = this;
     var visit = (that.model.get("user_visits")).findWhere({"user_id": current_user.id});
-    visit.destroy();
+    visit.destroy({url: 'user_visits/' + visit.get("id")});
   },
 
   createVisit: function () {
