@@ -7,6 +7,8 @@ DillyDally::Application.routes.draw do
   resources :location_tags, only: [:destroy, :create]
   resources :tags, only: [:create]
 
+  resources :collections, only: [:index, :create]
+
   # Makes google api calls
   resources :places, only: :index
   
