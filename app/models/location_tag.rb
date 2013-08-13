@@ -5,4 +5,6 @@ class LocationTag < ActiveRecord::Base
 	belongs_to :tag
 	belongs_to :location
 
+	validates_uniqueness_of :tag_id, scope: :location_id
+
 end
