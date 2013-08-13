@@ -16,10 +16,11 @@ DD.Views.NewCollection = Backbone.View.extend({
     }).save({}, {
       success: function (model, response) {
         that.userSavedData.add(response);
-        // TODO
-        // Navigate to collection show page
-        // var target = 
-        // Backbone.history.navigate("#/recenter-by-search");
+        // Link to Navigate to collection show page
+        var targetUrl = 'collections/' + response["id"];
+        var html = '<li><a href="' + targetUrl + '">Click here to' +
+          ' add locations to your new Collection</a></li>';
+        $(event.target).parent().append(html);
       }
     });
   },

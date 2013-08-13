@@ -1,0 +1,40 @@
+<div id="map"></div>
+<script type='text/javascript'>
+	// var map = L.mapbox.map('map', API.MapBox );
+</script>
+
+<script type="application/javascript" id="bootstrapped-locations">
+	<%= @locations_json.html_safe %>
+</script>
+
+<script type="application/javascript" id="bootstrapped-tag-choices">
+	<%= @tags_json.html_safe %>
+</script>
+
+<div id="side-bar">
+	
+	<div id="side-bar-navigation"></div>
+
+	<div id="data-list"></div>
+	
+<!-- 		<label>
+		<input type="checkbox" value="checked">	
+		Only include overlapping Collections
+	</label> -->
+</div>
+
+<script type="application/javascript">
+	$(function () {
+		// where to render recenter map searchbar
+		// and what kind of sidebar-router to create
+		window.DD.initialize(function () {
+			var locations = JSON.parse($('#bootstrapped-locations').html());
+
+			new DD.Routers.Locations($('#side-bar-navigation'), $('#data-list'), locations);
+			Backbone.history.start();
+		})
+	});
+
+</script>
+
+
