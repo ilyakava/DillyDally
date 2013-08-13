@@ -33,4 +33,10 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_many :collections
+
+  has_many :friendships
+  has_many :friends, through: :friendships, source: :friend
+
+  has_many :reverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :followers, through: :friendships, source: :user
 end
