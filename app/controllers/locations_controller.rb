@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@locations = current_user.locations.includes(:categories, :comments)
+		@locations = current_user.locations.includes(:categories)
 		@locations_json = @locations.to_json(
 			methods: [:categories_as_array],
 			include: [{comments: { include: :author }}, {location_tags: { include: :tag }}, :user_visits, :visitors, :savers, :creator]
