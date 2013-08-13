@@ -16,22 +16,23 @@ DD.Routers.Collections = Backbone.Router.extend({
     "" : "myCollections",
     "recenter-by-search": "recenterBySearch",
     "search-nearby": "searchNearby",
-    "detail-view/:id": "locationList"
+    "detail-view/:id": "collectionLocationList"
   },
 
-  locationList: function (id) {
+  collectionLocationList: function (id) {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var collection = that.userSavedData.get(id).get("locations");
+    var locationsInCollection = that.userSavedData.get(id).get("locations");
 
-    var locationsListView = new DD.Views.MyLocations({
-      collection: collection
-    });
+    var locationsListView = new DD.Views.MyLocations(
+      locationsInCollection,
+      that.$headEl
+    );
 
     locationsListView.collection.fetch({success: function (response) {
       that.$contentEl.html(locationsListView.render().$el);
-      // this.userSavedData = MyLocationsView.collection;
+      // that.userSavedData = locationsListView.collection;
       // markerManager.myLocations(that.userSavedData);
     }});
     
