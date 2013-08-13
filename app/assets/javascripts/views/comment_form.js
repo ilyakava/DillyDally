@@ -14,13 +14,14 @@ DD.Views.CommentForm = Backbone.View.extend({
     var comment = new DD.Models.Comment({
       body: that.$("textarea[name=comment\\[body\\]]").val(),
       is_private: (!!that.$("input[name=comment\\[is_private\\]]").is(":checked")),
-      location_id: that.model.get('id')
+      location_id: that.model.get('id'),
     });
 
     comment.save({}, {
       success: function (model, response) {
         // console.log(response);
-        that.model.get('comments').add(response);
+        var comment = new DD.Models.Comment(response).parseAuthor();
+        that.model.get('comments').add(comment);
       }
     });
     that.hideForm();
