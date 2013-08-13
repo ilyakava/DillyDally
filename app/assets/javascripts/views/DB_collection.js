@@ -3,11 +3,12 @@ DD.Views.DBCollection = Backbone.View.extend({
   className: 'collection',
 
   events: {
-    "click button.add-comment": "addComment",
-    "click button.set-map-center": "centerMap"
+    // "click button.add-comment": "addComment",
+    // "click button.set-map-center": "centerMap"
   },
 
   addComment: function () {
+    // TODO
     console.log("Adding a comment for a listed location!");
     var that = this;
     var commentFormView = new DD.Views.CommentForm({
@@ -29,6 +30,7 @@ DD.Views.DBCollection = Backbone.View.extend({
   },
 
   centerMap: function () {
+    // TODO
     var that = this;
     myMap.moveMap(that.model);
   }
