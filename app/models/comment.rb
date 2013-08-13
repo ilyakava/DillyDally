@@ -8,6 +8,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  location_id :integer
+#  is_private  :boolean
 #
 
 class Comment < ActiveRecord::Base

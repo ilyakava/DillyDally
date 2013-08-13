@@ -31,6 +31,9 @@ class Location < ActiveRecord::Base
 	has_many :location_tags
 	has_many :tags, through: :location_tags, source: :tag
 
+	has_many :collection_locations
+	has_many :collections, through: :collection_locations, source: :collection
+
 	def assign_categories_for(category_array)
 		category_array.each do |category_name|
 			category = Category.find_or_create_by({name: category_name})
