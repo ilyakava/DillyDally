@@ -9,8 +9,9 @@ Project Outline
 
 #Functional-Phase I
 By the end of this phase:
+
 * users should be able to add locations either from the location page or the collection page
-* users should be able to see their collections, with location info and collection info like names, hours, comments, likes, notes
+* ~~users should be able to see their collections, with location info and collection info like names, hours, comments, likes, note~~
 * users are able to edit their location info's after having them in collections
 * users should be able to see other user's collections
 * users should be able to share collections
@@ -21,24 +22,25 @@ By the end of this phase:
 * Search for a location
 	* Location model
 	* Goals:
-		* have option to select area to search in
-		* search for locations
-		* Display the locations on the map
-		* see about location
-		* see hours
-		* add functionality to the ["find me" button](http://www.mapbox.com/mapbox.js/example/v1.0.0/geolocation/)
-* Select location and save (To a misc collection, say "Searched Collections")
-* Save location
-	* mark as visited/not visited
+		* ~~have option to select area to search in~~
+		* ~~search for locations~~
+		* ~~Display the locations on the map~~
+		* ~~see about location~~
+		* **see hours**
+		* **add functionality to the ["find me" button](http://www.mapbox.com/mapbox.js/example/v1.0.0/geolocation/)**
+* ~~Select location and save (To a misc collection, say "Searched Collections")~~
+* ~~Save location~~
+	* ~~mark as visited/not visited~~
 	* if visited
-		* Add category
-		* Checkbox characteristics
+		* ~~Add category~~
+		* ~~Checkbox characteristics~~
 		* like/not like/neutral
-		* Add comment
+		* ~~Add comment~~
 * See number of user visits
-* See user comments
+* ~~See user comments~~
 * Other
-	* see icons on the map (different color icons based on visited/unvisited/unseen)
+	* see icons on the map **(different color icons based on visited/unvisited/unseen)**
+	
 ###User page:
 * list user's saved locations
 * be able to get to user's page from Locations page
