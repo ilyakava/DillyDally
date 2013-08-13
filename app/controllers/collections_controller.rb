@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
 	def index
 		@collections = current_user.collections.includes(:locations)
 		@collections_json = @collections.to_json(
-			include: [:locations]
+			include: [{locations: { methods: :categories_as_array }}]
 		)
 
 		respond_to do |format|
