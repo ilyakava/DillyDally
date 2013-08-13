@@ -14,11 +14,12 @@ DD.Views.Detail = Backbone.View.extend({
   },
 
   events: {
-    "click button.add-comment": "addComment",
-    "click button.add-tag": "addTag"
+    "click button.add-comment": "openCommentForm",
+    "click button.add-tag": "openTagForm",
+    "click button.delete-tag": "destroyLocationTag"
   },
 
-  addTag: function () {
+  openTagForm: function () {
     console.log("openning addTag form!");
     var that = this;
     var tagFormView = new DD.Views.TagForm({
@@ -29,7 +30,7 @@ DD.Views.Detail = Backbone.View.extend({
     }
   },
 
-  addComment: function () {
+  openCommentForm: function () {
     console.log("adding a comment in the detail view!");
     var that = this;
     var commentFormView = new DD.Views.CommentForm({
@@ -74,6 +75,11 @@ DD.Views.Detail = Backbone.View.extend({
       console.log("Removing detail view tab");
       this.$headEl.find('#detail-view').parent().replaceWith("");
     }
+  },
+
+  destroyLocationTag: function (event) {
+    var locationTagId = $(event.target).attr('data-id');
+    this.model.get("location_tags").get(locationTagId).destroy();
   },
 
   cancel: function () {
