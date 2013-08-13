@@ -24,8 +24,9 @@ DD.Views.Detail = Backbone.View.extend({
     var tagFormView = new DD.Views.TagForm({
       model: that.model
     });
-    that.$el.find('button.add-tag').parent().after(tagFormView.render().$el);
-    // $(this.el).undelegate("button.add-tag", "click");
+    if (!this.$el.find("select[name=location\\[tag_ids\\]]").length) {
+      that.$el.find('button.add-tag').parent().after(tagFormView.render().$el);
+    }
   },
 
   addComment: function () {
@@ -38,6 +39,7 @@ DD.Views.Detail = Backbone.View.extend({
   },
 
   userVisitHelper: function () {
+    // Inserts the toggle
     var that = this;
 
     var visitToggleView = new DD.Views.UserVisitToggle({
@@ -49,7 +51,6 @@ DD.Views.Detail = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    console.log("RENDERING!");
 
     var showPage = JST['locations/show']({
       location: that.model
@@ -79,8 +80,5 @@ DD.Views.Detail = Backbone.View.extend({
     console.log("Cancelling events for detail location view");
     this.insertTab(false);
     $(this.el).undelegate("button.add-comment", "click");
-    // remove tab and clear events
   }
-
-
 });

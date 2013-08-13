@@ -13,10 +13,10 @@ DD.Views.TagForm = Backbone.View.extend({
     var formData = $(event.target).parent().serializeArray();
     console.log(formData);
     var locationTagCollection = that.model.get("location_tags");
-    // pass in form with tag_ids, and also a location_id
+    
+    // pass in form with tag_ids and tag names, and also a location_id
     locationTagCollection.parseAndSaveForm(formData, that.model.get("id"));
     this.hideForm();
-
   },
 
   render: function () {
@@ -27,14 +27,15 @@ DD.Views.TagForm = Backbone.View.extend({
     var form = JST['tags/form']({
       tagChoices: tagChoices
     });
-
     this.$el.html(form);
+
     // Chosen plugin stuff
     this.$el.find("select[name=location\\[tag_ids\\]]").chosen({
       allow_single_deselect: true,
       no_results_text: "Press ENTER to add the tag:",
       width: "70%"
     });
+
     return this;
   },
 
