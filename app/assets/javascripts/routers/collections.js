@@ -36,24 +36,24 @@ DD.Routers.Collections = Backbone.Router.extend({
 
     if (that.activeView) { that.activeView.cancel(); }
 
-    var MyLocationsView = new DD.Views.MyLocations({
+    var MyCollectionsView = new DD.Views.MyCollections({
       collection: that.userSavedData
     });
  
     if (that.firstLoad) {
-      that.$contentEl.html(MyLocationsView.render().$el);
+      that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
-      this.userSavedData = MyLocationsView.collection;
-      markerManager.myLocations(that.userSavedData);
+      this.userSavedData = MyCollectionsView.collection;
+      // markerManager.myLocations(that.userSavedData);
     } else {
-      MyLocationsView.collection.fetch({success: function (response) {
-        that.$contentEl.html(MyLocationsView.render().$el);
-        this.userSavedData = MyLocationsView.collection;
-        markerManager.myLocations(that.userSavedData);
+      MyCollectionsView.collection.fetch({success: function (response) {
+        that.$contentEl.html(MyCollectionsView.render().$el);
+        this.userSavedData = MyCollectionsView.collection;
+        // markerManager.myLocations(that.userSavedData);
       }});
     }
     
-    that.activeView = MyLocationsView;
+    that.activeView = MyCollectionsView;
   },
 
   recenterBySearch: function () {
