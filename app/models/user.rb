@@ -31,4 +31,6 @@ class User < ActiveRecord::Base
   has_many :created_locations, class_name: 'Location', foreign_key: :creator
 
   has_many :comments
+
+  has_many :collections
 end

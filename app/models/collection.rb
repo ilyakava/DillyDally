@@ -15,4 +15,6 @@ class Collection < ActiveRecord::Base
 	has_many :collection_locations
 	has_many :locations, through: :collection_locations, source: :location
 
+	belongs_to :user
+
 end
