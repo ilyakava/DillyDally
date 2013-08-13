@@ -1,4 +1,4 @@
-DD.Views.Detail = Backbone.View.extend({
+DD.Views.LocationDetail = Backbone.View.extend({
   tagName: 'ul',
   className: 'location',
 

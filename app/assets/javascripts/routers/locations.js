@@ -25,7 +25,7 @@ DD.Routers.Locations = Backbone.Router.extend({
 
     var model = that.userSavedData.get(id);
 
-    var locationDetailView = new DD.Views.Detail(that.$headEl, that.$contentEl, model);
+    var locationDetailView = new DD.Views.LocationDetail(that.$headEl, that.$contentEl, model);
     locationDetailView.render();
 
     that.activeView = locationDetailView;
