@@ -50,18 +50,12 @@ DD.Routers.Collections = Backbone.Router.extend({
     if (that.firstLoad) {
       that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
-      console.log("that.userSavedData");
-      console.log(that.userSavedData);
       that.userSavedData = MyCollectionsView.collection;
-      console.log("LATER that.userSavedData");
-      console.log(that.userSavedData);
       // markerManager.myLocations(that.userSavedData);
     } else {
       MyCollectionsView.collection.fetch({
         success: function () {
           that.userSavedData = MyCollectionsView.collection;
-          console.log("that.userSavedData");
-          console.log(that.userSavedData);
           that.$contentEl.html(MyCollectionsView.render().$el);
           // markerManager.myLocations(that.userSavedData);
         }
