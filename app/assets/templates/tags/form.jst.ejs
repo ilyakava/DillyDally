@@ -6,7 +6,12 @@
 	<% tagChoices.each(function (tag) { %>
 		<!-- Preparing for serializeArray(), which will preserve name+value -->
 		<!-- unfortunately, option tags don't take a name -->
-		<option value="<%= tag.get("id") %>|<%= tag.get("name") %>">
+		<option
+			value="<%= tag.get("id") %>|<%= tag.get("name") %>"
+			<% if (disabledChoices.findWhere({name: tag.get("name")})) { %>
+				<%= ' disabled="disabled"' %>
+			<% } %>
+			>
 			<%= tag.get("name") %>
 		</option>
 	<% }) %>

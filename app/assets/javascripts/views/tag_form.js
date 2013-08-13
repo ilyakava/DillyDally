@@ -2,12 +2,12 @@ DD.Views.TagForm = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    "click input[type=submit]": "addTags",
+    "click input[type=submit]": "saveTags",
     "click button.remove-tag-form": "hideForm",
-    "keyup input[type=text]": "createNewOption"
+    "keyup input[type=text].default": "createNewOption"
   },
 
-  addTags: function (event) {
+  saveTags: function (event) {
     var that = this;
     event.preventDefault();
 
@@ -21,12 +21,21 @@ DD.Views.TagForm = Backbone.View.extend({
   },
 
   render: function () {
+    var that = this;
     var tagChoices = new DD.Collections.Tags(
       JSON.parse($('#bootstrapped-tag-choices').html())
     );
+    var disabledChoices = new DD.Collections.Tags(
+      (that.model.get("location_tags")).map(
+        function (locationTag) {
+          return locationTag.get("tag");
+        }
+      )
+    );
     
     var form = JST['tags/form']({
-      tagChoices: tagChoices
+      tagChoices: tagChoices,
+      disabledChoices: disabledChoices
     });
     this.$el.html(form);
 
@@ -34,7 +43,9 @@ DD.Views.TagForm = Backbone.View.extend({
     this.$el.find("select[name=location\\[tag_ids\\]]").chosen({
       allow_single_deselect: true,
       no_results_text: "Hit ENTER to add the tag:",
-      width: "70%"
+      width: "70%",
+      search_contains: true,
+      placeholder_text_multiple: "Add Some Tags..."
     });
 
     return this;
