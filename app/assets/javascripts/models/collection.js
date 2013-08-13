@@ -1,4 +1,5 @@
 DD.Models.Collection = Backbone.Model.extend({
+  url: '/collections',
 
   initialize: function (response) {
     // prevent parsing of objs that are in right format

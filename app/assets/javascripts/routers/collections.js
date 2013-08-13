@@ -16,7 +16,8 @@ DD.Routers.Collections = Backbone.Router.extend({
     "" : "myCollections",
     "recenter-by-search": "recenterBySearch",
     "search-nearby": "searchNearby",
-    "detail-view/:id": "collectionLocationList"
+    "detail-view/:id": "collectionLocationList",
+    "new-collection": "newCollection"
   },
 
   collectionLocationList: function (id) {
@@ -91,5 +92,15 @@ DD.Routers.Collections = Backbone.Router.extend({
     that.$contentEl.html(locationSearchView.render().$el);
 
     that.activeView = locationSearchView;
+  },
+
+  newCollection: function () {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    var newCollectionView = new DD.Views.NewCollection(that.userSavedData);
+    that.$contentEl.html(newCollectionView.render().$el);
+
+    that.activeView = newCollectionView;
   }
 });

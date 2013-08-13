@@ -14,4 +14,14 @@ class CollectionsController < ApplicationController
 		end
 	end
 
+	def create
+		@collection = Collection.new(params[:collection])
+
+		if @collection.save
+			@collection.update_attribute(:user_id, current_user.id)
+			respond_to do |format|
+				format.json { render json: @collection }
+			end
+		end
+	end
 end
