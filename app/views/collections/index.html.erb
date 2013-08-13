@@ -24,9 +24,9 @@
 		// where to render recenter map searchbar
 		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
-			var locations = JSON.parse($('#bootstrapped-collections').html());
+			var collections = JSON.parse($('#bootstrapped-collections').html());
 
-			new DD.Routers.Collections($('#side-bar-navigation'), $('#data-list'), locations);
+			new DD.Routers.Collections($('#side-bar-navigation'), $('#data-list'), collections);
 			Backbone.history.start();
 		})
 	});
