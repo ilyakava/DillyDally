@@ -9,7 +9,13 @@
 <li class="tag-display">Tags:
 	<dl class="group">
 		<% (location.get("location_tags")).each(function (location_tag) { %>
-			<dt><%= location_tag.get("tag").get("name") %></dt>
+			<dt>
+				<% if (location_tag.get("user_id") == current_user.id) { %>
+					
+					<%= '<button id="' + location_tag.get("id") + '" class="delete-tag">X</button>' %>
+				<% } %>
+				<%= location_tag.get("tag").get("name") %>
+			</dt>
 		<% }) %>
 	</dl>
 </li>
