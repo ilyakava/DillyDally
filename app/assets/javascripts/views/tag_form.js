@@ -3,7 +3,8 @@ DD.Views.TagForm = Backbone.View.extend({
 
   events: {
     "click input[type=submit]": "addTags",
-    "click button.remove-tag-form": "hideForm"
+    "click button.remove-tag-form": "hideForm",
+    "keyup input[type=text]": "createNewOption"
   },
 
   addTags: function (event) {
@@ -29,10 +30,10 @@ DD.Views.TagForm = Backbone.View.extend({
     });
     this.$el.html(form);
 
-    // Chosen plugin stuff
+    // Chosen Harvest plugin stuff
     this.$el.find("select[name=location\\[tag_ids\\]]").chosen({
       allow_single_deselect: true,
-      no_results_text: "Press ENTER to add the tag:",
+      no_results_text: "Hit ENTER to add the tag:",
       width: "70%"
     });
 
@@ -43,5 +44,27 @@ DD.Views.TagForm = Backbone.View.extend({
     $(this.el).undelegate('input[type=submit]', 'click');
     $(this.el).undelegate('button.remove-tag-form', 'click');
     this.$el.html("");
+  },
+
+  createNewOption: function (event) {
+    var that = this;
+    var newOptionValue = $(event.target).val();
+    var isNewOption = !($('option').filter(function (tagOption) {
+      return $(tagOption).text() == newOptionValue;
+    })).length;
+    
+    if (event.keyCode === 13 && isNewOption && (newOptionValue.length > 0)) {
+      new DD.Models.Tag({name: newOptionValue}).save({}, {
+        success: function (model, response) {
+          var html = '<option value="' + response.id + '|' +
+            response.name + '"' + ' selected="selected"' + '>' +
+            response.name + '</option>';
+          var options = that.$el.find("select[name=location\\[tag_ids\\]]");
+          options.append(html);
+          options.trigger("chosen:updated");
+        }
+      });
+    }
+    console.log(event.keyCode);
   }
 });
