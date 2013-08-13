@@ -48,6 +48,7 @@ DD.Views.TagForm = Backbone.View.extend({
 
   createNewOption: function (event) {
     var that = this;
+    //Enable new subjects to be added to the options list
     var newOptionValue = $(event.target).val();
     var isNewOption = !($('option').filter(function (tagOption) {
       return $(tagOption).text() == newOptionValue;
@@ -59,12 +60,12 @@ DD.Views.TagForm = Backbone.View.extend({
           var html = '<option value="' + response.id + '|' +
             response.name + '"' + ' selected="selected"' + '>' +
             response.name + '</option>';
+            
           var options = that.$el.find("select[name=location\\[tag_ids\\]]");
           options.append(html);
           options.trigger("chosen:updated");
         }
       });
     }
-    console.log(event.keyCode);
   }
 });
