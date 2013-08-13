@@ -16,19 +16,26 @@ DD.Routers.Collections = Backbone.Router.extend({
     "" : "myCollections",
     "recenter-by-search": "recenterBySearch",
     "search-nearby": "searchNearby",
-    "detail-view/:id": "detailView"
+    "detail-view/:id": "locationList"
   },
 
-  detailView: function (id) {
+  locationList: function (id) {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var model = that.userSavedData.get(id);
+    var collection = that.userSavedData.get(id).get("locations");
 
-    var locationDetailView = new DD.Views.Detail(that.$headEl, that.$contentEl, model);
-    locationDetailView.render();
+    var locationsListView = new DD.Views.MyLocations({
+      collection: collection
+    });
 
-    that.activeView = locationDetailView;
+    locationsListView.collection.fetch({success: function (response) {
+      that.$contentEl.html(locationsListView.render().$el);
+      // this.userSavedData = MyLocationsView.collection;
+      // markerManager.myLocations(that.userSavedData);
+    }});
+    
+    that.activeView = locationsListView;
   },
 
   myCollections: function () {
@@ -43,14 +50,22 @@ DD.Routers.Collections = Backbone.Router.extend({
     if (that.firstLoad) {
       that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
-      this.userSavedData = MyCollectionsView.collection;
+      console.log("that.userSavedData");
+      console.log(that.userSavedData);
+      that.userSavedData = MyCollectionsView.collection;
+      console.log("LATER that.userSavedData");
+      console.log(that.userSavedData);
       // markerManager.myLocations(that.userSavedData);
     } else {
-      MyCollectionsView.collection.fetch({success: function (response) {
-        that.$contentEl.html(MyCollectionsView.render().$el);
-        this.userSavedData = MyCollectionsView.collection;
-        // markerManager.myLocations(that.userSavedData);
-      }});
+      MyCollectionsView.collection.fetch({
+        success: function () {
+          that.userSavedData = MyCollectionsView.collection;
+          console.log("that.userSavedData");
+          console.log(that.userSavedData);
+          that.$contentEl.html(MyCollectionsView.render().$el);
+          // markerManager.myLocations(that.userSavedData);
+        }
+      });
     }
     
     that.activeView = MyCollectionsView;

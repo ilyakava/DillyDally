@@ -9,6 +9,7 @@ DD.Models.Location = Backbone.Model.extend({
   },
 
   parse: function (response, options) {
+    console.log("PARSING a location object");
     response["categories"] = response["categories_as_array"];
 
     response["creator"] = new DD.Models.User(response["creator"]);
