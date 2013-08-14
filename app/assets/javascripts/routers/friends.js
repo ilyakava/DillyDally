@@ -14,9 +14,10 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   routes: {
     "" : "myFriends",
-    // "recenter-by-search": "recenterBySearch",
-    // "search-nearby": "searchNearby",
-    "detail-view/:id": "detailView"
+    "detail-view/:id": "detailView",
+    "users-locations-list/:id": "usersLocationsList",
+    "users-collections-list/:id": "usersCollectionsList",
+    "search-users": "searchUsers"
   },
 
   detailView: function (id) {
@@ -44,12 +45,12 @@ DD.Routers.Friends = Backbone.Router.extend({
       that.$contentEl.html(MyFriendsView.render().$el);
       that.firstLoad = false;
       this.userSavedData = MyFriendsView.collection;
-      markerManager.myLocations(that.userSavedData);
+      // markerManager.myLocations(that.userSavedData);
     } else {
       MyFriendsView.collection.fetch({success: function (response) {
         that.$contentEl.html(MyFriendsView.render().$el);
         this.userSavedData = MyFriendsView.collection;
-        markerManager.myLocations(that.userSavedData);
+        // markerManager.myLocations(that.userSavedData);
       }});
     }
     
