@@ -101,6 +101,7 @@ By the end of this phase:
 * users can friend others
 
 ##Stretch features
+* Make markers dissapear when moving from search nearby to my locations
 * display icons on the maps in variable ways
 	* ranking by comments/ratings
 * Have app recommend locations - "locations like this"
