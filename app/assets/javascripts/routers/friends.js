@@ -43,11 +43,7 @@ DD.Routers.Friends = Backbone.Router.extend({
       that.$headEl
     );
 
-    usersLocationsView.collection.fetch({success: function (response) {
-      that.$contentEl.html(usersLocationsView.render().$el);
-      // that.userSavedData = usersLocationsView.collection;
-      // markerManager.myLocations(that.userSavedData);
-    }});
+    that.$contentEl.html(usersLocationsView.render().$el);
     
     that.activeView = usersLocationsView;
   },

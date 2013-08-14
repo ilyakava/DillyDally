@@ -37,7 +37,7 @@ DD.Views.UsersLocationsList = Backbone.View.extend({
     // uses this View Instance
     var html = '<li><a id="users-locations-list"' +
       'href="#/users-locations-list/' + this.collection.get('id') +
-      '"' + '>Preview Collection</a></li>';
+      '"' + '>Friend Locations List</a></li>';
 
     if (boolean &! ($('#users-locations-list').length)) {
       this.$headEl.find('ul.tabs').append(html);
