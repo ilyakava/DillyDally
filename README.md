@@ -140,3 +140,4 @@ Related Resources and Reading
 	* [lodash](http://lodash.com/) for deep cloning of objects and other underscore like utility methods
 	* Do I need validations [JS side](http://coding.smashingmagazine.com/2013/08/09/backbone-js-tips-patterns/)?
 		* [Smashing Magazine](https://shop.smashingmagazine.com/smashing-book-3-printed-and-or-ebook.html#comments)
+		* [Faker](http://rubygems.org/gems/faker) for testing, random name generation
