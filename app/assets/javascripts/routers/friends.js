@@ -22,15 +22,16 @@ DD.Routers.Friends = Backbone.Router.extend({
   },
 
   detailView: function (id) {
-    var that = this;
-    if (that.activeView) { that.activeView.cancel(); }
+    // TODO
+    // var that = this;
+    // if (that.activeView) { that.activeView.cancel(); }
 
-    var model = that.userSavedData.get(id);
+    // var model = that.userSavedData.get(id);
 
-    var locationDetailView = new DD.Views.LocationDetail(that.$headEl, that.$contentEl, model);
-    locationDetailView.render();
+    // var locationDetailView = new DD.Views.LocationDetail(that.$headEl, that.$contentEl, model);
+    // locationDetailView.render();
 
-    that.activeView = locationDetailView;
+    // that.activeView = locationDetailView;
   },
 
   usersLocationsList: function (id) {
@@ -88,32 +89,5 @@ DD.Routers.Friends = Backbone.Router.extend({
     }
     
     that.activeView = MyFriendsView;
-  },
-
-  recenterBySearch: function () {
-    console.log("starting recenterBySearch method");
-    // this method is triggered by a click in the head view
-    var that = this;
-
-    // unbinds events
-    // http://stackoverflow.com/questions/6831362/backbone-js-view-cant-unbind-events-properly?rq=1
-    if (that.activeView) { that.activeView.cancel(); }
-
-    // generates its own collection from search phrase in $headEl, and renders
-    var recenterResultsView = new DD.Views.RecenterResults(that.$headEl, that.$contentEl);
-    recenterResultsView.render();
-    console.log("recenter search method/view finished");
-
-    that.activeView = recenterResultsView;
-  },
-
-  searchNearby: function () {
-    var that = this;
-    if (that.activeView) { that.activeView.cancel(); }
-
-    var locationSearchView = new DD.Views.LocationSearch(that.$contentEl, that.userSavedData);
-    that.$contentEl.html(locationSearchView.render().$el);
-
-    that.activeView = locationSearchView;
   }
 });
