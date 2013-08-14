@@ -10,7 +10,6 @@ DD.Views.DBUser = Backbone.View.extend({
     });
 
     that.$el.html(renderedUser);
-
     return that;
   }
 });

@@ -1,11 +1,6 @@
 DD.Views.MyFriends = Backbone.View.extend({
   tagName: 'ul',
-  collection: DD.Collections.Friends,
-
-  initialize: function (collection, $headEl) {
-    this.collection = collection;
-    this.$headEl = $headEl;
-  },
+  collection: DD.Collections.Users,
 
   render: function () {
     var that = this;
@@ -22,7 +17,6 @@ DD.Views.MyFriends = Backbone.View.extend({
     }
     // window.el = that.$el;
     // console.log(that.collection);
-    if (this.$headEl) {this.insertLocationListTab(true);}
     return this;
   },
 

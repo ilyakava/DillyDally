@@ -19,7 +19,7 @@
 		// where to render recenter map searchbar
 		// and what kind of sidebar-router to create
 		window.DD.initialize(function () {
-			var friends = JSON.parse($('#bootstrapped-friends').html());
+			var friends = JSON.parse($('#bootstrapped-users').html());
 
 			new DD.Routers.Friends($('#side-bar-navigation'), $('#data-list'), friends);
 			Backbone.history.start();
