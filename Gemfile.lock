@@ -66,6 +66,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -176,6 +181,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   ejs
+  factory_girl_rails
   figaro
   jbuilder (~> 1.2)
   jquery-rails
