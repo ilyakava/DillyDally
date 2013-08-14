@@ -51,6 +51,10 @@ group :development do
 	gem 'binding_of_caller'
 	gem 'letter_opener'
 end
+
+group :development, :test do
+	gem 'rspec-rails'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
