@@ -35,7 +35,8 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   usersLocationsList: function (id) {
     var that = this;
-    window.use = this.userSavedData.get(id);
+    if (that.activeView) { that.activeView.cancel(); }
+    
     var locations = this.userSavedData.get(id).get("locations");
 
     var usersLocationsView = new DD.Views.UsersLocationsList(
@@ -46,6 +47,22 @@ DD.Routers.Friends = Backbone.Router.extend({
     that.$contentEl.html(usersLocationsView.render().$el);
     
     that.activeView = usersLocationsView;
+  },
+
+  usersCollectionsList: function (id) {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    var locations = this.userSavedData.get(id).get("collections");
+
+    var usersCollectionsView = new DD.Views.UsersCollectionsList(
+      locations,
+      that.$headEl
+    );
+
+    that.$contentEl.html(usersCollectionsView.render().$el);
+    
+    that.activeView = usersCollectionsView;
   },
 
   myFriends: function () {

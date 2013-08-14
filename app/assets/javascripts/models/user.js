@@ -11,8 +11,12 @@ DD.Models.User = Backbone.Model.extend({
 
   parse: function (response, options) {
     console.log("PARSING user");
+    
     response["locations"] = new DD.Collections.Locations(
       response["locations"]
+    );
+    response["collections"] = new DD.Collections.Collections(
+      response["collections"]
     );
     return response;
   }
