@@ -14,7 +14,6 @@ DD.Models.User = Backbone.Model.extend({
     response["locations"] = new DD.Collections.Locations(
       response["locations"]
     );
-    window.krap = response;
     return response;
   }
 });
