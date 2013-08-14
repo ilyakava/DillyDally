@@ -14,9 +14,10 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   routes: {
     "" : "myFriends",
-    "detail-view/:id": "detailView",
+    // "my-followers": "myFollowers",
     "users-locations-list/:id": "usersLocationsList",
     "users-collections-list/:id": "usersCollectionsList",
+    "detail-view/:id": "detailView",
     "search-users": "searchUsers"
   },
 
@@ -30,6 +31,25 @@ DD.Routers.Friends = Backbone.Router.extend({
     locationDetailView.render();
 
     that.activeView = locationDetailView;
+  },
+
+  usersLocationsList: function (id) {
+    var that = this;
+    window.use = this.userSavedData.get(id);
+    var locations = this.userSavedData.get(id).get("locations");
+
+    var usersLocationsView = new DD.Views.UsersLocationsList(
+      locations,
+      that.$headEl
+    );
+
+    usersLocationsView.collection.fetch({success: function (response) {
+      that.$contentEl.html(usersLocationsView.render().$el);
+      // that.userSavedData = usersLocationsView.collection;
+      // markerManager.myLocations(that.userSavedData);
+    }});
+    
+    that.activeView = usersLocationsView;
   },
 
   myFriends: function () {

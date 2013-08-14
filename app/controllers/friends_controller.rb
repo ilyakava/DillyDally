@@ -1,9 +1,10 @@
 class FriendsController < ApplicationController
 
 	def index
-		@friends = current_user.friends
+		@friends = current_user.friends.includes(:locations, :collections)
 		@friends_json = @friends.to_json(
-			include: [:user_locations, :collections]
+			include: [{locations: {methods: [:categories_as_array],
+			include: [{comments: { include: :author }}, {location_tags: { include: :tag }}, :user_visits, :visitors, :savers, :creator]}}, :collections]
 		)
 		@users_json = User.all.to_json
 
