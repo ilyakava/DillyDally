@@ -1,4 +1,4 @@
-DD.Views.MyLocations = Backbone.View.extend({
+DD.Views.LocationsList = Backbone.View.extend({
   tagName: 'ul',
   collection: DD.Collections.Locations,
 
