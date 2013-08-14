@@ -37,7 +37,7 @@ DD.Routers.Friends = Backbone.Router.extend({
 
     if (that.activeView) { that.activeView.cancel(); }
 
-    var MyFriendsView = new DD.Views.MyFriends({
+    var MyFriendsView = new DD.Views.ListUsers({
       collection: that.userSavedData
     });
  
