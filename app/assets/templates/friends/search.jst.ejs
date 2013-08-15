@@ -4,7 +4,12 @@
 	<% usersChoices.each(function (user) { %>
 		<!-- Preparing for serializeArray(), which will preserve name+value -->
 		<!-- unfortunately, option tags don't take a name -->
-		<option value="<%= user.get("id") %>">
+		<option
+			value="<%= user.get("id") %>"
+			<% if (disabledChoices.findWhere({email: user.get("email")})) { %>
+				<%= ' disabled="disabled"' %>
+			<% } %>
+			>
 			<%= user.get("email") %>
 		</option>
 	<% }) %>

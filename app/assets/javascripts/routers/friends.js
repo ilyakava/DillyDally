@@ -23,7 +23,9 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   searchUsers: function () {
     var that = this;
-    var userSearchView = new DD.Views.SearchUsers();
+    var userSearchView = new DD.Views.SearchUsers({
+      collection: that.userSavedData
+    });
     this.$contentEl.html(userSearchView.render().$el);
   },
 

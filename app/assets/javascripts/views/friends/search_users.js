@@ -5,12 +5,14 @@ DD.Views.SearchUsers = Backbone.View.extend({
   },
 
   render: function () {
+    var that = this;
     var usersChoices = new DD.Collections.Users(
       JSON.parse($('#bootstrapped-users').html())
     );
 
     var searchPage = JST['friends/search']({
-      usersChoices: usersChoices
+      usersChoices: usersChoices,
+      disabledChoices: that.collection
     });
     this.$el.html(searchPage);
 
@@ -41,6 +43,7 @@ DD.Views.SearchUsers = Backbone.View.extend({
   },
 
   success: function () {
+    this.render();
     console.log("saved friends!");
     this.$el.find('h3').html('Successfuly friended users! Add More Friends!');
   },
