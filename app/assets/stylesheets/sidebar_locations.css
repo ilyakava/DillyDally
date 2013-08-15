@@ -30,6 +30,13 @@
     border-left: 1px rgb(26,79,81) solid;
 }
 
+#data-list > h3 {
+    margin: 10px 0 0 10px;
+    padding-bottom: 15px;
+    font-size: 28px;
+    border-bottom: rgb(26,79,81) 1px solid;
+}
+
 .searcharea {
     pointer-events: auto;
     padding: 6px 16px;

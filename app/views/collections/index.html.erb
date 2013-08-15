@@ -26,7 +26,7 @@
 		window.DD.initialize(function () {
 			var collections = JSON.parse($('#bootstrapped-collections').html());
 
-			new DD.Routers.Collections($('#side-bar-navigation'), $('#data-list'), collections);
+			new DD.Routers.Collections($('#side-bar-navigation'), $('#data-list'), collections, "<%= @page_header %>");
 			Backbone.history.start();
 		})
 	});

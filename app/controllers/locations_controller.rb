@@ -10,6 +10,8 @@ class LocationsController < ApplicationController
 		)
 		@tags_json = Tag.all.to_json
 
+		@page_header = "Viewing Locations Across All of Your Collections"
+
 		respond_to do |format|
 			format.json { render json: @locations_json}
 			format.html { render :index }

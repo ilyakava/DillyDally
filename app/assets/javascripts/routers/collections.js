@@ -1,7 +1,8 @@
 DD.Routers.Collections = Backbone.Router.extend({
-  initialize: function ($headEl, $contentEl, collectionsData) {
+  initialize: function ($headEl, $contentEl, collectionsData, pageHeader) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
+    this.pageHeader = pageHeader;
 
     this.userSavedData = new DD.Collections.Collections(collectionsData);
     this.firstLoad = true;
@@ -53,17 +54,20 @@ DD.Routers.Collections = Backbone.Router.extend({
       that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
       that.userSavedData = MyCollectionsView.collection;
+      that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
+      
       // markerManager.myLocations(that.userSavedData);
     } else {
       MyCollectionsView.collection.fetch({
         success: function () {
           that.userSavedData = MyCollectionsView.collection;
           that.$contentEl.html(MyCollectionsView.render().$el);
+          that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
           // markerManager.myLocations(that.userSavedData);
         }
       });
     }
-    
+  
     that.activeView = MyCollectionsView;
   },
 

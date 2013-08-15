@@ -1,7 +1,8 @@
 DD.Routers.Locations = Backbone.Router.extend({
-  initialize: function ($headEl, $contentEl, locationsData) {
+  initialize: function ($headEl, $contentEl, locationsData, pageName) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
+    this.pageName = pageName;
 
     this.userSavedData = new DD.Collections.Locations(locationsData);
     this.firstLoad = true;
@@ -40,14 +41,18 @@ DD.Routers.Locations = Backbone.Router.extend({
  
     if (that.firstLoad) {
       that.$contentEl.html(MyLocationsView.render().$el);
+      that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
       that.firstLoad = false;
       this.userSavedData = MyLocationsView.collection;
       markerManager.myLocations(that.userSavedData);
+      
     } else {
       MyLocationsView.collection.fetch({success: function (response) {
         that.$contentEl.html(MyLocationsView.render().$el);
+        that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
         this.userSavedData = MyLocationsView.collection;
         markerManager.myLocations(that.userSavedData);
+
       }});
     }
     
