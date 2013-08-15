@@ -1,0 +1,13 @@
+<h3>Friend As Many Users at Once as You Wish!</h3>
+<form>
+	<select multiple="true" name="user[friend_ids]">
+	<% usersChoices.each(function (user) { %>
+		<!-- Preparing for serializeArray(), which will preserve name+value -->
+		<!-- unfortunately, option tags don't take a name -->
+		<option value="<%= user.get("id") %>">
+			<%= user.get("email") %>
+		</option>
+	<% }) %>
+	</select>
+	<input type="submit" id="submit-users" value="Save Friends">
+</form>

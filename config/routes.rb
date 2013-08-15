@@ -7,6 +7,8 @@ DillyDally::Application.routes.draw do
   resources :location_tags, only: [:destroy, :create]
   resources :tags, only: [:create]
 
+  resources :friendships, only: [:create]
+
   resources :collections, only: [:index, :create, :show]
 
   resources :friends, only: :index

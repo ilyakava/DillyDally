@@ -17,8 +17,14 @@ DD.Routers.Friends = Backbone.Router.extend({
     // "my-followers": "myFollowers",
     "users-locations-list/:id": "usersLocationsList",
     "users-collections-list/:id": "usersCollectionsList",
-    "detail-view/:id": "detailView",
+    // "detail-view/:id": "detailView",
     "search-users": "searchUsers"
+  },
+
+  searchUsers: function () {
+    var that = this;
+    var userSearchView = new DD.Views.SearchUsers();
+    this.$contentEl.html(userSearchView.render().$el);
   },
 
   detailView: function (id) {
