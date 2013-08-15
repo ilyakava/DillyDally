@@ -1,5 +1,6 @@
 DD.Views.SearchUsers = Backbone.View.extend({
-
+  className: "add-new-friends",
+  
   events: {
     "click input[type=submit]": "saveFriends"
   },
