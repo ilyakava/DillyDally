@@ -27,6 +27,7 @@ DD.Views.LocationDetail = Backbone.View.extend({
     var tagFormView = new DD.Views.TagForm({
       model: that.model
     });
+    // ensure only one tag form is rendered at a time
     if (!this.$el.find("select[name=location\\[tag_ids\\]]").length) {
       that.$el.find('button.add-tag').parent().after(tagFormView.render().$el);
     }
