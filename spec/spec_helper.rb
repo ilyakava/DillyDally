@@ -6,8 +6,8 @@ require 'rspec/autorun'
 
 # Adding to load Capybara
 # http://www.opinionatedprogrammer.com/2011/02/capybara-and-selenium-with-rspec-and-rails-3/
-require 'capybara/rspec'
 require 'capybara/rails'
+require 'capybara/rspec'
 
 Capybara.javascript_driver = :webkit
 
