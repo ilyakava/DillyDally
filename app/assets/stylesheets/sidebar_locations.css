@@ -186,7 +186,8 @@
 }
 
 
-#side-bar #data-list li.location > ul > li.categories > dl > dt {
+#side-bar #data-list li.location > ul > li.categories > dl > dt,
+#side-bar #data-list ul.location > li.categories > dl > dt {
     /* This is a category */
     background-color: rgb(26, 79, 82 );
     padding: 3px 6px;
@@ -197,6 +198,11 @@
     font-weight: 900;
     font-size: 13px; 
     color: white;
+}
+
+/* location detail view */
+#data-list > ul.location {
+    margin-left: 5px;
 }
 
 /* Search Nearby exclusive */
@@ -228,11 +234,8 @@
 }
 
 
-/* From a checkbox from a while ago */
-/*#side-bar label {
-    float: left;
-    position: absolute;
-    top: 505px;
-    right: 226px;
+/* comment signature (by "me" at 8pm) */
+#data-list ul.comment-display > li.signature {
     font-size: 14px;
-}*/
+    font-style: italic;
+}

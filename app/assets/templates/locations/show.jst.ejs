@@ -32,7 +32,7 @@
 	<ul class="comment-display">
 		<% (location.get("comments")).each(function (comment) { %>
 			<li><%= comment.get("body") %></li>
-			<li>
+			<li class="signature">
 				By: <%= comment.get("author").get("email") %> at 
 				<%= comment.get("updated_at") %>
 			</li>
