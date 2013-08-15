@@ -52,12 +52,12 @@
 
 #side-bar .searcharea.recenter {
      position: fixed;
-     top: 70px;
+     top: 64px;
      border-left: none;
      width: 37%;
      z-index: 10;
      border: rgb(26,79,81) 1px solid;
-     left: 40px;
+     left: 48px;
 }
 
 #side-bar .searcharea.new-locations {

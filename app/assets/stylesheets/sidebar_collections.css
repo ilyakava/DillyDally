@@ -50,16 +50,6 @@
     float: left;
 }
 
-#side-bar .searcharea.recenter {
-     position: fixed;
-     top: 70px;
-     border-left: none;
-     width: 37%;
-     z-index: 10;
-     border: rgb(26,79,81) 1px solid;
-     left: 40px;
-}
-
 #side-bar .searcharea.new-locations {
      position: relative;
      top: 0px;
