@@ -9,8 +9,10 @@ DD.Views.LocationDetail = Backbone.View.extend({
     this.model = model;
 
     var renderCallback = that.render.bind(that);
-    that.listenTo(that.model.get("user_visits"), "change add remove", renderCallback);
+    var renderVisitCallback = that.userVisitHelper.bind(that);
+    that.listenTo(that.model.get("user_visits"), "change add remove", renderVisitCallback);
     that.listenTo(that.model.get("location_tags"), "change add remove", renderCallback);
+    that.listenTo(that.model.get("comments"), "change add remove", renderCallback);
   },
 
   events: {
