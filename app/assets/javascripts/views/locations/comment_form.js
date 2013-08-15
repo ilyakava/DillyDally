@@ -1,5 +1,6 @@
 DD.Views.CommentForm = Backbone.View.extend({
   tagName: 'li',
+  className: 'new-comment-form',
 
   events: {
     "click button.submit-comment": "newComment",

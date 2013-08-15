@@ -5,7 +5,7 @@ input#submit-tags, button.uservisits,
 button.remove-tag-form, button.add-tag,
 button#search-nearby, button#autolocator,
 button#recenter, button.add-comment,
-button.set-map-center, button.submit-content,
+button.set-map-center, button.submit-comment,
 button.remove-comment-form {
 	position: relative;
 	margin: 3px 5px 3px 0;

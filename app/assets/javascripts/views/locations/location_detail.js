@@ -36,7 +36,7 @@ DD.Views.LocationDetail = Backbone.View.extend({
     var commentFormView = new DD.Views.CommentForm({
       model: that.model
     });
-    that.$el.find('button.add-comment').parent().append(commentFormView.render().$el);
+    that.$el.find('button.add-comment').parent().before(commentFormView.render().$el);
   },
 
   userVisitHelper: function () {

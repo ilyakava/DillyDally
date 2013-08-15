@@ -239,3 +239,9 @@
     font-size: 14px;
     font-style: italic;
 }
+
+
+ul.location > li.new-comment-form > div.comment-form-buttons,
+ul.location > li.new-comment-form > textarea {
+    display: block;
+}
