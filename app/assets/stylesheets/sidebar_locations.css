@@ -201,7 +201,8 @@
 }
 
 /* location detail view */
-#data-list > ul.location {
+#data-list > ul.location,
+#data-list > ul.new-collection-form {
     margin-left: 5px;
 }
 
@@ -240,7 +241,9 @@
     font-style: italic;
 }
 
-
+/* new collection form aligning */
+ul.new-collection-form > li > input,
+/* new comment form aligning */
 ul.location > li.new-comment-form > div.comment-form-buttons,
 ul.location > li.new-comment-form > textarea {
     display: block;

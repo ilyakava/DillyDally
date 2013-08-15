@@ -1,5 +1,6 @@
 DD.Views.NewCollection = Backbone.View.extend({
   tagName: 'ul',
+  className: 'new-collection-form',
 
   initialize: function (userSavedData) {
     this.userSavedData = userSavedData;
