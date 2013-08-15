@@ -1,9 +1,14 @@
 #data-list ul.user {
-    border-bottom: 1px rgb(26,79,81) solid
+    border-bottom: 1px rgb(26,79,81) solid;
+    margin: 20px 5px;
 }
 
 #data-list ul.user > li.name {
-    font-size: 20px;
+    font-size: 25px;
+}
+
+#data-list ul.user > li {
+	margin: 5px;
 }
 
 #data-list > div.add-new-friends {
