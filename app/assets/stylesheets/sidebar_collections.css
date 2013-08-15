@@ -144,7 +144,7 @@
 }
 
 
-#side-bar #data-list > ul > .location {
+#side-bar #data-list > ul > .collection {
     width: 100%;
     border-bottom: 1px rgb(26,79,81) solid;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -157,12 +157,12 @@
 /* Exclusive to Did you mean search results */
 /*---------------------------------------------------------*/
 
-#side-bar #data-list > ul > li > p.location {
+#side-bar #data-list > ul > li > p.collection {
     padding: 5px;
     border-top: solid 1px rgb(26,79,81);
 }
 
-#side-bar #data-list > ul > li > p.location.map-center {
+#side-bar #data-list > ul > li > p.collection.map-center {
     background-color: rgb(26, 80, 82);
     color: white;
 }
@@ -170,24 +170,24 @@
 /* YOUR locations exclusive */
 /*---------------------------------------------------------*/
 
-#side-bar #data-list > ul > .location > li {
+#side-bar #data-list > ul > .collection > li {
     padding: 0px 5px;
     font-size: 14px;
     color: black;
 }
 
-#side-bar #data-list > ul > .location > li > a {
+#side-bar #data-list > ul > .collection > li > a {
     color: black;
 }
 
-#side-bar #data-list > ul > .location > li:first-child > a {
+#side-bar #data-list > ul > .collection > li:first-child > a {
     font-size: 26px;
     color: white;
 }
 
 
-#side-bar #data-list li.location > ul > li.categories > dl > dt,
-#side-bar #data-list ul.location > li.categories > dl > dt {
+#side-bar #data-list li.collection > ul > li.categories > dl > dt,
+#side-bar #data-list ul.collection > li.categories > dl > dt {
     /* This is a category */
     background-color: rgb(26, 79, 82 );
     padding: 3px 6px;
@@ -201,7 +201,7 @@
 }
 
 /* location detail view */
-#data-list > ul.location,
+#data-list > ul.collection,
 #data-list > ul.new-collection-form {
     margin-left: 5px;
 }
@@ -209,19 +209,19 @@
 /* Search Nearby exclusive */
 /*---------------------------------------------------------*/
 
-#side-bar #data-list ul.nearby-search-results > li > ul.location {
+#side-bar #data-list ul.nearby-search-results > li > ul.collection {
     border-bottom: 1px rgb(26,79,81) solid;
 }
 
 #side-bar #data-list ul.nearby-search-results > li:first-child {
-    
+   
 }
 
-#side-bar #data-list ul.nearby-search-results > li > ul.location > li > a {
+#side-bar #data-list ul.nearby-search-results > li > ul.collection > li > a {
     color: white;
 }
 
-#side-bar #data-list ul.nearby-search-results > li > ul.location > li > dl > dt {
+#side-bar #data-list ul.nearby-search-results > li > ul.collection > li > dl > dt {
     /* This is a category */
     background-color: rgb(26, 79, 82 );
     padding: 3px 6px;
@@ -244,7 +244,7 @@
 /* new collection form aligning */
 ul.new-collection-form > li > input,
 /* new comment form aligning */
-ul.location > li.new-comment-form > div.comment-form-buttons,
-ul.location > li.new-comment-form > textarea {
+ul.collection > li.new-comment-form > div.comment-form-buttons,
+ul.collection > li.new-comment-form > textarea {
     display: block;
 }

@@ -1,6 +1,5 @@
 DD.Views.DBUser = Backbone.View.extend({
   tagName: 'li',
-  className: 'user',
 
   render: function () {
     var that = this;

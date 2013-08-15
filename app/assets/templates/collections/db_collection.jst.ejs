@@ -1,7 +1,7 @@
 <% console.log("what follows is a collection you favorited!") %>
 
 <ul>
-	<li><%= collection.get("name") %></li>
+	<li><%= _.humanize(collection.get("name")) %></li>
 	<li><button class="set-map-center">Center Map</button></li>
 	<li><a href="#/detail-view/<%= collection.get("id") %>">(List the Locations in this Collection)</a></li>
 	

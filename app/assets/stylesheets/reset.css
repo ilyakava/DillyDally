@@ -8,3 +8,6 @@ h1, h2, h3, a, li, ul, p, body, img, dl, button, span, dt, div, html{
 	background-color: none;
 	
 }
+a {
+	color: white;
+}
