@@ -114,6 +114,7 @@ By the end of this phase:
 * Check nested includes statements
 * Check where a location of a friends that you are viewing and then saving is added. (As an orphan?)
 * Add labels to location views that indicate which collections of yours the location is saved in
+* Human readable dates
 
 ##Stretch features
 * icons for friends, locations and collections with hover over yeilding a pointy box with the options
