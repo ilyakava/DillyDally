@@ -1,0 +1,24 @@
+input#submit-tags, button.uservisits,
+button.remove-tag-form, button.add-tag,
+button#search-nearby, button#autolocator,
+button#recenter, button.add-comment,
+button.set-map-center, button.submit-content,
+button.remove-comment-form {
+	position: relative;
+	margin: 3px 5px 3px 0;
+	padding: 3px 8px 3px 8px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background-color: #e4e4e4;
+	background-image: linear-gradient(#f4f4f4 20%,#f0f0f0 50%,#e8e8e8 52%,#eee 100%);
+	background-clip: padding-box;
+	box-shadow: 0 0 2px #fff inset,0 1px 0 rgba(0,0,0,.05);
+	color: #333;
+	line-height: 16px;
+	cursor: default;
+    font-size: 14px;
+	color: #333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	cursor: pointer;
+}
