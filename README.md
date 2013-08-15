@@ -108,6 +108,7 @@ By the end of this phase:
 	* restrict fetching not on collection page load, but **only** when the models in this cache get updated
 * Don't rename friends controller, but still figure out a way to query the users controller to get information about individual user models
 * Break appart backbone view re-rendering (rerender individual db location views instead of containing collection views)
+	* This has been done for the visited/unvisited toggle, but not for comments/tags in the location detail view
 * Make markers dissapear when moving from search nearby to my locations
 * add in fetch to replace includes statements, to reduce unneccessarily detailed sql queries
 * Check nested includes statements
