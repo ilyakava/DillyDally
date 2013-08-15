@@ -1,0 +1,34 @@
+/* Pretty much a copy of the chosen harvest styles */
+
+dt.single-tag {
+	position: relative;
+	margin: 3px 0 3px 5px;
+	padding: 3px 20px 3px 5px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background-color: #e4e4e4;
+	background-image: linear-gradient(#f4f4f4 20%,#f0f0f0 50%,#e8e8e8 52%,#eee 100%);
+	background-clip: padding-box;
+	box-shadow: 0 0 2px #fff inset,0 1px 0 rgba(0,0,0,.05);
+	color: #333;
+	line-height: 16px;
+	cursor: default;
+}
+
+dt.single-tag > span {
+	line-height: 13px;
+	cursor: default;
+	color: #333;
+}
+
+dt.single-tag > button.delete-tag {
+	position: absolute;
+	top: 6px;
+	right: 4px;
+	display: block;
+	width: 12px;
+	height: 12px;
+	background: url(chosen-sprite.png) -42px 1px no-repeat;
+	font-size: 1px;
+	cursor: pointer;
+}

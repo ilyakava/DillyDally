@@ -1,7 +1,10 @@
-h1, h2, h3, a, li, ul, p, body, img, dl, dt, div, html{
+h1, h2, h3, a, li, ul, p, body, img, dl, button, span, dt, div, html{
 	text-decoration: none;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	border: none;
+	background: none;
+	background-color: none;
+	
 }
