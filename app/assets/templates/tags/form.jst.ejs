@@ -1,8 +1,5 @@
 <form>
-	<select
-		multiple="true"
-		name="location[tag_ids]"
-		>
+	<select multiple="true" name="location[tag_ids]">
 	<% tagChoices.each(function (tag) { %>
 		<!-- Preparing for serializeArray(), which will preserve name+value -->
 		<!-- unfortunately, option tags don't take a name -->
