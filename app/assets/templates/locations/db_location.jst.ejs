@@ -8,7 +8,7 @@
 	<li><%= location.get("address") %></li>
 	<li class="categories">Categories:
 		<dl class="group">
-			<% _(location.get("categories")).each(function (category) { %>
+			<% _(location.get("categories_as_array")).each(function (category) { %>
 				<dt><%= _(category).humanize() %></dt>
 			<% }) %>
 		</dl>
