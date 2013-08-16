@@ -8,7 +8,7 @@ DD.Views.UserCollectionsHead = Backbone.View.extend({
   didYouMean: function () {
     console.log("triggered map recenter search method");
     Backbone.history.navigate("#/redirecting");
-    Backbone.history.navigate("#/recenter-by-search");
+    Backbone.history.navigate("#/user-collections/recenter-by-search");
   },
 
   render: function () {
