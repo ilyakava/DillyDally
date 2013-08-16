@@ -30,7 +30,7 @@
 		window.DD.initialize(function () {
 			var locations = JSON.parse($('#bootstrapped-locations').html());
 
-			new DD.Routers.CollectionLocations($('#side-bar-navigation'), $('#data-list'), locations, "<%= @page_header %>");
+			new DD.Routers.CollectionLocations($('#side-bar-navigation'), $('#data-list'), locations, "<%= @page_header %>", <%= params[:id] %>);
 			Backbone.history.start();
 		})
 	});

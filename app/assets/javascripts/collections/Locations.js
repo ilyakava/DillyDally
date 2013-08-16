@@ -19,7 +19,7 @@ DD.Collections.Locations = Backbone.Collection.extend({
     });
   },
 
-  parseGooglePlaces: function (gpObjArray) {
+  parseGooglePlaces: function (gpObjArray, collectionId) {
     var that = this;
     var index = 0;
     _(gpObjArray).each(function (locObj) {
@@ -30,7 +30,8 @@ DD.Collections.Locations = Backbone.Collection.extend({
         name: locObj.name,
         categories: locObj.types,
         lat: locObj.geometry.location.lat,
-        lng: locObj.geometry.location.lng
+        lng: locObj.geometry.location.lng,
+        collection_id: collectionId
       });
     });
   }

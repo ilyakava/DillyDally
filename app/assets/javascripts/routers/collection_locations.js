@@ -1,74 +1,65 @@
 DD.Routers.CollectionLocations = Backbone.Router.extend({
-  initialize: function ($headEl, $contentEl, collectionsData, pageHeader) {
+  initialize: function ($headEl, $contentEl, locationsData, pageName, collectionId) {
     this.$headEl = $headEl;
     this.$contentEl = $contentEl;
-    this.pageHeader = pageHeader;
+    this.pageName = pageName;
+    this.collectionId = collectionId;
 
-    this.userSavedData = new DD.Collections.Collections(collectionsData);
+    this.userSavedData = new DD.Collections.Locations(locationsData);
     this.firstLoad = true;
     window.markerManager = new myMap.MarkerManager();
     
     // render head of searchbar (tabs and recenter searchbar)
-    var searchbarHead = new DD.Views.CollectionsHead();
+    var searchbarHead = new DD.Views.LocationsHead();
     this.$headEl.html(searchbarHead.render().$el);
   },
 
   routes: {
-    "" : "myCollections",
+    "" : "myLocations",
     "recenter-by-search": "recenterBySearch",
     "search-nearby": "searchNearby",
-    "detail-view/:id": "collectionLocationList",
-    "new-collection": "newCollection"
+    "detail-view/:id": "detailView"
   },
 
-  collectionLocationList: function (id) {
+  detailView: function (id) {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var locationsInCollection = that.userSavedData.get(id).get("locations");
+    var model = that.userSavedData.get(id);
 
-    var locationsListView = new DD.Views.LocationsList(
-      locationsInCollection,
-      that.$headEl
-    );
+    var locationDetailView = new DD.Views.LocationDetail(that.$headEl, that.$contentEl, model);
+    locationDetailView.render();
 
-    that.$contentEl.html(locationsListView.render().$el);
-    // locationsListView.collection.fetch({success: function (response) {
-      // that.userSavedData = locationsListView.collection;
-      // markerManager.myLocations(that.userSavedData);
-    // }});
-    
-    that.activeView = locationsListView;
+    that.activeView = locationDetailView;
   },
 
-  myCollections: function () {
+  myLocations: function () {
     var that = this;
 
     if (that.activeView) { that.activeView.cancel(); }
 
-    var MyCollectionsView = new DD.Views.MyCollections({
-      collection: that.userSavedData
-    });
+    var MyLocationsView = new DD.Views.LocationsList(that.userSavedData);
  
     if (that.firstLoad) {
-      that.$contentEl.html(MyCollectionsView.render().$el);
+      that.$contentEl.html(MyLocationsView.render().$el);
+      that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
       that.firstLoad = false;
-      that.userSavedData = MyCollectionsView.collection;
-      that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
+      this.userSavedData = MyLocationsView.collection;
+      markerManager.myLocations(that.userSavedData);
       
-      // markerManager.myLocations(that.userSavedData);
     } else {
-      MyCollectionsView.collection.fetch({
-        success: function () {
-          that.userSavedData = MyCollectionsView.collection;
-          that.$contentEl.html(MyCollectionsView.render().$el);
-          that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
-          // markerManager.myLocations(that.userSavedData);
+      MyLocationsView.collection.fetch({
+        url: "/collections/" + that.collectionId,
+        success: function (response) {
+          that.$contentEl.html(MyLocationsView.render().$el);
+          that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
+          this.userSavedData = MyLocationsView.collection;
+          markerManager.myLocations(that.userSavedData);
         }
       });
     }
-  
-    that.activeView = MyCollectionsView;
+    
+    that.activeView = MyLocationsView;
   },
 
   recenterBySearch: function () {
@@ -92,19 +83,13 @@ DD.Routers.CollectionLocations = Backbone.Router.extend({
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
-    var locationSearchView = new DD.Views.LocationSearch(that.$contentEl, that.userSavedData);
+    var locationSearchView = new DD.Views.LocationSearch(
+      that.$contentEl,
+      that.userSavedData,
+      that.collectionId
+    );
     that.$contentEl.html(locationSearchView.render().$el);
 
     that.activeView = locationSearchView;
-  },
-
-  newCollection: function () {
-    var that = this;
-    if (that.activeView) { that.activeView.cancel(); }
-
-    var newCollectionView = new DD.Views.NewCollection(that.userSavedData);
-    that.$contentEl.html(newCollectionView.render().$el);
-
-    that.activeView = newCollectionView;
   }
 });

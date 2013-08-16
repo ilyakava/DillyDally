@@ -1,10 +1,11 @@
 DD.Views.LocationSearch = Backbone.View.extend({
 
-  initialize: function ($contentEl, userSavedData, markerManager) {
+  initialize: function ($contentEl, userSavedData, collectionId) {
     var that = this;
     this.$contentEl = $contentEl;
     this.collection = new DD.Collections.Locations();
     this.userSavedData = userSavedData;
+    this.collectionId = collectionId;
   },
 
   events: {
@@ -58,7 +59,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
 
     var makeCollection = function (gpObjArray) {
       var nearbyLocs = new DD.Collections.Locations();
-      nearbyLocs.parseGooglePlaces(gpObjArray);
+      nearbyLocs.parseGooglePlaces(gpObjArray, that.collectionId);
 
       that.collection = nearbyLocs;
       that.updateDisplay();

@@ -28,6 +28,12 @@ class LocationsController < ApplicationController
 				user_id: current_user.id,
 				location_id: @location.id
 			)
+			if params[:collection_id]
+				@collectionlocation = CollectionLocation.create(
+					collection_id: params[:collection_id],
+					location_id: @location.id
+				)
+			end
 			respond_to do |format|
 				format.json { render json: @location }
 			end
