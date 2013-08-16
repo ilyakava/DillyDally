@@ -3,18 +3,19 @@ DD.Models.Location = Backbone.Model.extend({
 
   initialize: function (response) {
     // prevent parsing of objs that are in right format
-    if (!response["categories"]) {
+    if ((response && response["categories"] instanceof Array)) {
       this.attributes = this.parse(response);
     }
   },
 
   parse: function (response, options) {
     console.log("PARSING a location object");
-    response["categories"] = response["categories_as_array"];
+    // response["categories"] = response["categories_as_array"];
 
     response["creator"] = new DD.Models.User(response["creator"]);
     response["savers"] = new DD.Collections.Users(response["savers"]);
 
+    // Safe iteration, makes bad objects but does not crash
     response["comments"] = new DD.Collections.Comments(response["comments"]);
     (response["comments"]).each(function (comment) {
       comment.set("author", new DD.Models.User(comment.get("author")));

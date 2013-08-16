@@ -18,6 +18,9 @@ DD.Models.User = Backbone.Model.extend({
     response["collections"] = new DD.Collections.Collections(
       response["collections"]
     );
+    response["friends"] = new DD.Collections.Users(
+      response["friends"]
+    );
     return response;
   }
 });

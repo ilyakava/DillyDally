@@ -4,7 +4,7 @@ DD.Models.Collection = Backbone.Model.extend({
   initialize: function (response) {
     // prevent parsing of objs that are in right format
     // analogue of DD.Models.Location
-    if ((response["locations"] instanceof Array)) {
+    if ((response && response["locations"] instanceof Array)) {
       this.attributes = this.parse(response);
     }
   },
