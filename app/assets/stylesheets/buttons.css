@@ -2,7 +2,7 @@
 
 
 input#submit-tags, input#submit-users,
-button.uservisits,
+input[name=commit], button.uservisits,
 button.remove-tag-form, button.add-tag,
 button#search-nearby, button#autolocator,
 button#recenter, button.add-comment,
