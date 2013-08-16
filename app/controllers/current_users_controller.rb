@@ -23,7 +23,7 @@ class CurrentUsersController < ApplicationController
 		@current_user_json = @current_user.to_json(
 			include: [
 				{collections: {
-					include: [
+					include: {
 						locations: {
 							include: [
 								:tags,
@@ -33,7 +33,7 @@ class CurrentUsersController < ApplicationController
 								:categories_as_array
 							]
 						}
-					]
+					}
 				}},
 				{locations: {
 					include: [
