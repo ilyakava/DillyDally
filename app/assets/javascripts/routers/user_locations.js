@@ -42,7 +42,7 @@ DD.Routers.Locations = Backbone.Router.extend({
     if (that.firstLoad) {
       that.$contentEl.html(MyLocationsView.render().$el);
       that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
-      // that.firstLoad = false;
+      that.firstLoad = false;
       this.userSavedData = MyLocationsView.collection;
       markerManager.myLocations(that.userSavedData);
       
