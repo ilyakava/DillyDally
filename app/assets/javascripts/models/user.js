@@ -1,5 +1,5 @@
 DD.Models.User = Backbone.Model.extend({
-  url: 'friends',
+  url: 'current_users',
 
   initialize: function (response) {
     // prevent parsing of objs that are in right format
