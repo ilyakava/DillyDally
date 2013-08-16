@@ -45,6 +45,6 @@ class Location < ActiveRecord::Base
 	end
 
 	def categories_as_array
-		self.categories.map { |active_rec_obj| active_rec_obj.name }
+		self.categories.map { |active_rec_obj| active_rec_obj.name }.uniq
 	end
 end
