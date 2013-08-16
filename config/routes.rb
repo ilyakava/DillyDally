@@ -13,6 +13,8 @@ DillyDally::Application.routes.draw do
 
   resources :friends, only: :index
 
+  resources :current_users, only: [:index]
+
   # Makes google api calls
   resources :places, only: :index
   
