@@ -26,6 +26,24 @@ myMap = (function () {
     this.currCenterMarker = null;
     this.nearbyMarkers = null;
     this.myLocationsMarkers = null;
+    this.myMultiPolygon = null;
+  };
+
+  MarkerManager.prototype.multiPolygon = function (collectionCollection) {
+    if (this.myMultiPolygon) {
+      map.removeLayer(that.myMultiPolygon);
+    }
+
+    var latlngs = collectionCollection.map(function (collection) {
+      return collection.get("locations").map(function (location) {
+        return new L.LatLng(location.get("lat"), location.get("lng"));
+      });
+    });
+    console.log(latlngs);
+    _(latlngs).each(function (collection) {
+      new L.Polygon(collection, {color: '#8A2E56'}).addTo(map);
+    });
+    // new L.MultiPolygon(latlngs).addTo(map);
   };
 
   MarkerManager.prototype.mapCenter = function (locModel) {
@@ -59,7 +77,7 @@ myMap = (function () {
     this.currCenterMarker.addTo(map);
   };
 
-  MarkerManager.prototype.makeMarker = function (locModel) {
+  MarkerManager.prototype.makeMarker = function (locModel, iconType) {
     var lng = locModel.get("lng");
     var lat = locModel.get("lat");
     var title = locModel.get("name");
@@ -71,7 +89,7 @@ myMap = (function () {
         title: title,
         icon: new L.icon ({
           // in the future will call method to choose marker from categories
-          "iconUrl": Icons.general,
+          "iconUrl": iconType || Icons.general,
           "iconSize": [26, 26 ],
           "iconAnchor": [13, 13],
           "popupAnchor": [0, -13]
@@ -88,7 +106,9 @@ myMap = (function () {
     if (this.nearbyMarkers) {
       map.removeLayer(that.nearbyMarkers);
     }
-    this.nearbyMarkers = this.collection(locCollection);
+    if (locCollection) {
+      this.nearbyMarkers = this.collection(locCollection);
+    }
   };
 
   MarkerManager.prototype.myLocations = function (locCollection) {
@@ -96,16 +116,18 @@ myMap = (function () {
     if (this.myLocationsMarkers) {
       map.removeLayer(that.myLocationsMarkers);
     }
-    this.myLocationsMarkers = this.collection(locCollection);
+    if (locCollection) {
+      this.myLocationsMarkers = this.collection(locCollection, Icons.star);
+    }
   };
 
-  MarkerManager.prototype.collection = function (locCollection) {
+  MarkerManager.prototype.collection = function (locCollection, iconType) {
     var that = this;
     var markers = new L.MarkerClusterGroup();
     locCollection.each(function (locModel) {
       var title = locModel.get("name");
 
-      var marker = that.makeMarker(locModel);
+      var marker = that.makeMarker(locModel, iconType);
       marker.bindPopup(title);
       markers.addLayer(marker);
     });

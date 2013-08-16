@@ -34,7 +34,8 @@ DD.Routers.Locations = Backbone.Router.extend({
 
   myLocations: function () {
     var that = this;
-
+    // clear nearby search from map
+    markerManager.nearby();
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.LocationsList(that.userSavedData);

@@ -35,15 +35,15 @@ DD.Routers.Collections = Backbone.Router.extend({
     that.$contentEl.html(locationsListView.render().$el);
     // locationsListView.collection.fetch({success: function (response) {
       // that.userSavedData = locationsListView.collection;
-      // markerManager.myLocations(that.userSavedData);
     // }});
+    markerManager.myLocations(locationsInCollection);
     
     that.activeView = locationsListView;
   },
 
   myCollections: function () {
     var that = this;
-
+    markerManager.myLocations();
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyCollectionsView = new DD.Views.MyCollections({
@@ -56,14 +56,14 @@ DD.Routers.Collections = Backbone.Router.extend({
       that.userSavedData = MyCollectionsView.collection;
       that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
       
-      // markerManager.myLocations(that.userSavedData);
+      markerManager.multiPolygon(that.userSavedData);
     } else {
       MyCollectionsView.collection.fetch({
         success: function () {
           that.userSavedData = MyCollectionsView.collection;
           that.$contentEl.html(MyCollectionsView.render().$el);
           that.$contentEl.prepend('<h3>' + that.pageHeader + '</h3>');
-          // markerManager.myLocations(that.userSavedData);
+          markerManager.multiPolygon(that.userSavedData);
         }
       });
     }
