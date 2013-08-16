@@ -11,7 +11,7 @@ DD.Views.UserCollections = Backbone.View.extend({
       that.$el.append('<li class="location"><h3>No Collections Saved Yet...</h3></li>');
     } else {
       collections.each(function (collectionModel) {
-        singleCollection = new DD.Views.DBCollection( {model: collectionModel} );
+        singleCollection = new DD.Views.CollectionAsListItem( {model: collectionModel} );
         that.$el.append(singleCollection.render().$el);
 
         console.log("rendering a view for a saved collection");
@@ -21,7 +21,7 @@ DD.Views.UserCollections = Backbone.View.extend({
   },
 
   cancel: function () {
-    console.log("cancelling MyCollections View...");
+    console.log("cancelling UserCollections View...");
     // no events to cancel yet
   },
 });

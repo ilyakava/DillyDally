@@ -12,7 +12,8 @@ DD.Routers.Main = Backbone.Router.extend({
   // from the nav bar
   routes: {
     "": "userCollections",
-    "user-collections/recenter-by-search": "recenterBySearch",
+    "search-nearby": "searchNearby",
+    // "user-collections/recenter-by-search": "recenterBySearch",
 
     "user-locations": "userLocations",
     "user-friends": "userFriends",
@@ -45,7 +46,6 @@ DD.Routers.Main = Backbone.Router.extend({
         }
       });
     }
-  
     that.activeView = MyCollectionsView;
   },
 

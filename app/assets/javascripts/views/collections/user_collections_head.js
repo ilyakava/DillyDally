@@ -15,5 +15,9 @@ DD.Views.UserCollectionsHead = Backbone.View.extend({
     var renderedHead = JST['collections/head']();
     this.$el.html(renderedHead);
     return this;
+  },
+
+  cancel: function () {
+    // nothing yet
   }
 });
