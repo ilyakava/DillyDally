@@ -32,11 +32,11 @@ DD.Routers.Collections = Backbone.Router.extend({
       that.$headEl
     );
 
-    locationsListView.collection.fetch({success: function (response) {
-      that.$contentEl.html(locationsListView.render().$el);
+    that.$contentEl.html(locationsListView.render().$el);
+    // locationsListView.collection.fetch({success: function (response) {
       // that.userSavedData = locationsListView.collection;
       // markerManager.myLocations(that.userSavedData);
-    }});
+    // }});
     
     that.activeView = locationsListView;
   },
