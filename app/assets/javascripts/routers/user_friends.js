@@ -31,6 +31,8 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   collectionsLocationsList: function (id) {
     var that = this;
+    markerManager.myLocations();
+    markerManager.multiPolygon();
     if (that.activeView) { that.activeView.cancel(); }
     
     var locations = that.userSavedData.select(function (user) {
@@ -45,6 +47,7 @@ DD.Routers.Friends = Backbone.Router.extend({
     );
 
     that.$contentEl.html(usersLocationsView.render().$el);
+    markerManager.multiPolygon(locations);
     
     that.activeView = usersLocationsView;
   },
@@ -64,6 +67,8 @@ DD.Routers.Friends = Backbone.Router.extend({
 
   usersLocationsList: function (id) {
     var that = this;
+    markerManager.multiPolygon();
+
     if (that.activeView) { that.activeView.cancel(); }
     
     var locations = this.userSavedData.get(id).get("locations");
@@ -74,12 +79,15 @@ DD.Routers.Friends = Backbone.Router.extend({
     );
 
     that.$contentEl.html(usersLocationsView.render().$el);
-    
+    markerManager.myLocations(locations);
     that.activeView = usersLocationsView;
   },
 
   usersCollectionsList: function (id) {
     var that = this;
+    markerManager.myLocations();
+    markerManager.multiPolygon();
+
     if (that.activeView) { that.activeView.cancel(); }
 
     var locations = this.userSavedData.get(id).get("collections");
@@ -90,13 +98,16 @@ DD.Routers.Friends = Backbone.Router.extend({
     );
 
     that.$contentEl.html(usersCollectionsView.render().$el);
+    markerManager.multiPolygon(locations);
     
     that.activeView = usersCollectionsView;
   },
 
   myFriends: function () {
     var that = this;
-
+    markerManager.myLocations();
+    markerManager.multiPolygon();
+    
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyFriendsView = new DD.Views.ListUsers({

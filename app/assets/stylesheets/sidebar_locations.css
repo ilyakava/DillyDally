@@ -167,11 +167,13 @@
 #side-bar #data-list > ul > li > p.location {
     padding: 5px;
     border-top: solid 1px rgb(26,79,81);
+    cursor: pointer;
 }
 
 #side-bar #data-list > ul > li > p.location.map-center {
     background-color: rgb(26, 80, 82);
     color: white;
+    /* cursor: pointer; */
 }
 
 /* YOUR locations exclusive */

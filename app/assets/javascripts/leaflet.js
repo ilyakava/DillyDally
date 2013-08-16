@@ -30,19 +30,26 @@ myMap = (function () {
   };
 
   MarkerManager.prototype.multiPolygon = function (collectionCollection) {
-    if (this.myMultiPolygon) {
-      map.removeLayer(that.myMultiPolygon);
-    }
-
-    var latlngs = collectionCollection.map(function (collection) {
-      return collection.get("locations").map(function (location) {
-        return new L.LatLng(location.get("lat"), location.get("lng"));
+    var that = this;
+    // if (this.myMultiPolygon) {
+    //   _(that.myMultiPolygon).each(function (polygon) {
+    //     map.removeLayer(polygon);
+    //   });
+    // }
+    if (collectionCollection) {
+      var latlngs = collectionCollection.map(function (collection) {
+        return collection.get("locations").map(function (location) {
+          return new L.LatLng(location.get("lat"), location.get("lng"));
+        });
       });
-    });
-    console.log(latlngs);
-    _(latlngs).each(function (collection) {
-      new L.Polygon(collection, {color: '#8A2E56'}).addTo(map);
-    });
+
+      _(latlngs).map(function (collection) {
+        var l = new L.Polygon(collection, {color: '#8A2E56'});
+        l.addTo(map);
+        return l;
+      });
+      // that.myMultiPolygon = latlngs;
+    }
     // new L.MultiPolygon(latlngs).addTo(map);
   };
 
