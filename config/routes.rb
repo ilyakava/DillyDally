@@ -1,7 +1,7 @@
 DillyDally::Application.routes.draw do
   devise_for :users
   root to: 'locations#index'
-  resources :locations, only: [:index, :create]
+  resources :locations, only: [:index, :create, :show]
   resources :comments, only: [:index, :create]
   resources :user_visits, only: [:destroy, :create]
   resources :location_tags, only: [:destroy, :create]

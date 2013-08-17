@@ -1,4 +1,5 @@
-DD.Views.DBLocation = Backbone.View.extend({
+// in use
+DD.Views.LocationAsListItem = Backbone.View.extend({
   tagName: 'li',
   className: 'location',
 

@@ -18,6 +18,18 @@ class LocationsController < ApplicationController
 		end
 	end
 
+	def show
+		@location = Location.find(params[:id])
+		@locations_json = @location.to_json(
+			methods: [:categories_as_array],
+			include: [{comments: { include: :author }}, {location_tags: { include: :tag }}, :user_visits, :visitors, :savers, :creator]
+		)
+		respond_to do |format|
+			format.json { render json: @locations_json}
+			# format.html { render :index }
+		end
+	end
+
 	def create
 		@location = Location.find_or_create_by(params[:location])
 		@location.assign_categories_for(params[:categories])

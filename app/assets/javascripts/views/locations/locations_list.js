@@ -16,7 +16,9 @@ DD.Views.UserLocations = Backbone.View.extend({
       that.$el.append('<li class="location"><h3>No Locations Saved Yet...</h3></li>');
     } else {
       that.collection.each(function (location) {
-        singleLocation = new DD.Views.DBLocation( {model: location} );
+        singleLocation = new DD.Views.LocationAsListItem({
+          model: location
+        });
         that.$el.append(singleLocation.render().$el);
 
         console.log("rendering a view for a saved location");

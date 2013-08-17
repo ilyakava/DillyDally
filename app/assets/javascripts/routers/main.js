@@ -17,6 +17,8 @@ DD.Routers.Main = Backbone.Router.extend({
     // "user-collections/recenter-by-search": "recenterBySearch",
 
     "user-locations": "userLocations",
+    "user-locations/location-details/:locId": "locationDetails",
+
     "user-friends": "userFriends",
     "collection-locations/:colId": "collectionLocations"
   },
@@ -95,6 +97,24 @@ DD.Routers.Main = Backbone.Router.extend({
     
     that.activeView = MyLocationsView;
     // has a user, has her locations
+  },
+
+  locationDetails: function (id) {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    that.userData.get("locations").get(id).fetch({
+      url: "locations/" + id,
+      success: function (model, response) {
+        var locationDetailView = new DD.Views.LocationDetail(
+          that.$headEl,
+          that.$contentEl,
+          new DD.Models.Location(response)
+        );
+        locationDetailView.render();
+        that.activeView = locationDetailView;
+      }
+    });
   },
 
   userFriends: function () {

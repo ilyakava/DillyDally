@@ -1,3 +1,4 @@
+// in use
 DD.Views.LocationDetail = Backbone.View.extend({
   tagName: 'ul',
   className: 'location',
