@@ -151,3 +151,5 @@ Related Resources and Reading
 		* [Smashing Magazine](https://shop.smashingmagazine.com/smashing-book-3-printed-and-or-ebook.html#comments)
 		* [Faker](http://rubygems.org/gems/faker) for testing, random name generation
 	* [Style](http://ilikepixels.co.uk/drop/bubbler/) with bubble/corners
+	* [Subroutes](http://www.geekdave.com/2012/04/05/module-specific-subroutes-in-backbone/) - organizational gains
+	* [Backbone Patterns](http://ricostacruz.com/backbone-patterns/)
