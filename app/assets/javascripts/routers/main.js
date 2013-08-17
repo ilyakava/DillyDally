@@ -14,13 +14,14 @@ DD.Routers.Main = Backbone.Router.extend({
     "": "userCollections",
     "new-collection": "newCollection",
     "search-nearby": "searchNearby",
-    // "user-collections/recenter-by-search": "recenterBySearch",
+    "recenter-by-search": "recenterBySearch",
 
     "user-locations": "userLocations",
     "user-locations/location-details/:locId": "locationDetails",
 
     "user-friends": "userFriends",
     "user-friends/search-users": "searchUsers",
+
     "collection-locations/:colId": "collectionLocations"
   },
 
@@ -167,5 +168,22 @@ DD.Routers.Main = Backbone.Router.extend({
     that.$contentEl.html(locationSearchView.render().$el);
 
     that.activeView = locationSearchView;
-  }
+  },
+
+  recenterBySearch: function () {
+    console.log("starting recenterBySearch method");
+    // this method is triggered by a click in the head view
+    var that = this;
+
+    // unbinds events
+    // http://stackoverflow.com/questions/6831362/backbone-js-view-cant-unbind-events-properly?rq=1
+    if (that.activeView) { that.activeView.cancel(); }
+
+    // generates its own collection from search phrase in $headEl, and renders
+    var recenterResultsView = new DD.Views.RecenterResults(that.$headEl, that.$contentEl);
+    recenterResultsView.render();
+    console.log("recenter search method/view finished");
+
+    that.activeView = recenterResultsView;
+  },
 });

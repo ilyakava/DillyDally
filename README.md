@@ -102,7 +102,6 @@ By the end of this phase:
 * friends
 	* friend detail view
 * universals:
-	* search nearby
 	* recenter map
 * from userFriends
 	* userCollections
