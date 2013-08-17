@@ -78,7 +78,6 @@ DD.Routers.Main = Backbone.Router.extend({
       that.$headEl
     );
  
-    
     MyLocationsView.collection.fetch({success: function (response) {
       
       that.$contentEl.html(MyLocationsView.render().$el);
