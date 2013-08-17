@@ -1,3 +1,4 @@
+// in use
 DD.Views.FriendsHead = Backbone.View.extend({
 
   render: function () {
