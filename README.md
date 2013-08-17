@@ -100,7 +100,6 @@ By the end of this phase:
 
 ##TODO
 * friends
-	* adding new friends
 	* friend detail view
 * universals:
 	* search nearby
@@ -111,6 +110,7 @@ By the end of this phase:
 
 ##Fix later
 * SQL queries! not just in to_json!
+* set up collection listeners, to reload when there was a change, and adding to collection every time something has been saved
 * Update titles of the webpage when navigating SPAs
 	* [Helper](https://github.com/pwhisenhunt/Backbonejs-Router-Title-Helper)
 * Rename userSavedData variable to cached
