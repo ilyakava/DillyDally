@@ -1,5 +1,8 @@
+// in use
 DD.Views.UserFriends = Backbone.View.extend({
   tagName: 'ul',
+  // is a view that accepts user model, and renders all friends
+
   // collection: DD.Collections.Users,
 
   render: function () {

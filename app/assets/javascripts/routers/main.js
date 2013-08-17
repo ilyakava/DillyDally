@@ -131,16 +131,12 @@ DD.Routers.Main = Backbone.Router.extend({
  
     that.$contentEl.html(MyFriendsView.render().$el);
     
-    // MyFriendsView.collection.fetch({success: function (response) {
-    //   // this.userSavedData = MyFriendsView.collection;
-    //   // markerManager.myLocations(that.userSavedData);
-    // }});
+    // markerManager.myLocations(that.userSavedData);
     
     
     that.activeView = MyFriendsView;
   
     // has a user, has her friends
-    // render a view that accepts user model, and resnders all friends
   },
 
   collectionsLocations: function () {
