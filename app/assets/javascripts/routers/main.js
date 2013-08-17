@@ -78,22 +78,16 @@ DD.Routers.Main = Backbone.Router.extend({
       that.$headEl
     );
  
-    if (that.firstLoad) {
+    
+    MyLocationsView.collection.fetch({success: function (response) {
+      
       that.$contentEl.html(MyLocationsView.render().$el);
       // that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
-      that.firstLoad = false;
       // this.userSavedData = MyLocationsView.collection;
       // markerManager.myLocations(that.userSavedData);
-      
-    } else {
-      MyLocationsView.collection.fetch({success: function (response) {
-        that.$contentEl.html(MyLocationsView.render().$el);
-        // that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
-        // this.userSavedData = MyLocationsView.collection;
-        // markerManager.myLocations(that.userSavedData);
 
-      }});
-    }
+    }});
+    
     
     that.activeView = MyLocationsView;
     // has a user, has her locations

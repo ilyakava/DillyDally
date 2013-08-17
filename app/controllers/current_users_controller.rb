@@ -1,23 +1,14 @@
 class CurrentUsersController < ApplicationController
 	def index
 		@current_user = User.includes(
+			:locations,
+			:friends,
 			collections: {
 				locations: [
 					:tags,
 					:categories
 				]
-			},
-			locations: [
-				:tags,
-				:categories,
-				:collections,
-				:visitors,
-				:savers
-			],
-			friends: [
-				:locations,
-				:collections
-			]
+			}
 		).find(current_user.id)
 
 		@current_user_json = @current_user.to_json(
@@ -35,21 +26,8 @@ class CurrentUsersController < ApplicationController
 						}
 					}
 				}},
-				{locations: {
-					include: [
-						:tags,
-						:categories,
-						:collections,
-						:visitors,
-						:savers
-					]
-				}},
-				{friends: {
-					include: [
-						:locations,
-						:collections
-					]
-				}}
+				:locations,
+				:friends
 			]
 		)
 
