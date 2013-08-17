@@ -99,6 +99,9 @@ By the end of this phase:
 ---
 
 ##TODO
+* friends
+	* adding new friends
+	* friend detail view
 * universals:
 	* search nearby
 	* recenter map
