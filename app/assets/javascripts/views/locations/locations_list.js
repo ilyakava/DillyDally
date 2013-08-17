@@ -37,18 +37,18 @@ DD.Views.UserLocations = Backbone.View.extend({
   },
 
   insertLocationListTab: function (boolean) {
-    // Only necessary when the collection view
-    // uses this View Instance
-    var html = '<li><a id="detail-view"' +
-      'href="#/detail-view/' + this.collection.get('id') +
-      '"' + '>Preview Collection</a></li>';
+  //   // Only necessary when the collection view
+  //   // uses this View Instance
+  //   var html = '<li><a id="detail-view"' +
+  //     'href="#/detail-view/' + this.collection.get('id') +
+  //     '"' + '>Preview Collection</a></li>';
 
-    if (boolean &! ($('#detail-view').length)) {
-      this.$headEl.find('ul.tabs').append(html);
-    } else if (!boolean) {
-      console.log("Removing detail view tab");
-      this.$headEl.find('#detail-view').parent().replaceWith("");
-    }
+  //   if (boolean &! ($('#detail-view').length)) {
+  //     this.$headEl.find('ul.tabs').append(html);
+  //   } else if (!boolean) {
+  //     console.log("Removing detail view tab");
+  //     this.$headEl.find('#detail-view').parent().replaceWith("");
+  //   }
   }
 
 });

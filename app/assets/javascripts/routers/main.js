@@ -73,6 +73,11 @@ DD.Routers.Main = Backbone.Router.extend({
   userLocations: function () {
     // nav bar triggered view
     var that = this;
+
+    // render head of searchbar (tabs and recenter searchbar)
+    var searchbarHead = new DD.Views.LocationsHead();
+    this.$headEl.html(searchbarHead.render().$el);
+    
     // clear nearby search from map
     // markerManager.nearby();
     if (that.activeView) { that.activeView.cancel(); }
