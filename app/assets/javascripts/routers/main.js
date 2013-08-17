@@ -153,9 +153,22 @@ DD.Routers.Main = Backbone.Router.extend({
     this.$contentEl.html(userSearchView.render().$el);
   },
 
-  collectionsLocations: function () {
+  collectionsLocations: function (collectionId) {
     // nav bar triggered view
-
+    new DD.Models.Collection({}).fetch({
+      url: 'collections/' + collectionId,
+      success: function (model, response) {
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        var MyLocationsView = new DD.Views.LocationsList({
+          model: this
+        });
+        that.$contentEl.html(MyLocationsView.render().$el);
+        // this.userSavedData = MyLocationsView.collection;
+        // markerManager.myLocations(that.userSavedData);
+      }
+    });
     // has a collections, has its locations
     // render a view that accepts a collection model
   },
@@ -186,4 +199,6 @@ DD.Routers.Main = Backbone.Router.extend({
 
     that.activeView = recenterResultsView;
   },
+
+  
 });
