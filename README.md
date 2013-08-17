@@ -98,8 +98,13 @@ By the end of this phase:
 
 ---
 
-##Basic/Taken-for-granted features
-* users can friend others
+##TODO
+* universals:
+	* search nearby
+	* recenter map
+* from userFriends
+	* userCollections
+	* userLocations
 
 ##Fix later
 * SQL queries! not just in to_json!
@@ -116,6 +121,7 @@ By the end of this phase:
 * Check where a location of a friends that you are viewing and then saving is added. (As an orphan?)
 * Add labels to location views that indicate which collections of yours the location is saved in
 * Human readable dates
+* reconsider eager loading on friends page
 
 ##Stretch features
 * icons for friends, locations and collections with hover over yeilding a pointy box with the options
