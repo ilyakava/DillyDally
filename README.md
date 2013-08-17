@@ -102,6 +102,7 @@ By the end of this phase:
 * users can friend others
 
 ##Fix later
+* SQL queries! not just in to_json!
 * Update titles of the webpage when navigating SPAs
 	* [Helper](https://github.com/pwhisenhunt/Backbonejs-Router-Title-Helper)
 * Rename userSavedData variable to cached
