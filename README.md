@@ -101,8 +101,6 @@ By the end of this phase:
 ##TODO
 * friends
 	* friend detail view
-* universals:
-	* recenter map
 * from userFriends
 	* userCollections
 	* userLocations
