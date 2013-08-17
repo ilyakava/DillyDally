@@ -119,7 +119,26 @@ DD.Routers.Main = Backbone.Router.extend({
 
   userFriends: function () {
     // nav bar triggered view
+    var that = this;
+    // markerManager.myLocations();
+    // markerManager.multiPolygon();
+    
+    if (that.activeView) { that.activeView.cancel(); }
 
+    var MyFriendsView = new DD.Views.UserFriends({
+      model: that.userData
+    });
+ 
+    that.$contentEl.html(MyFriendsView.render().$el);
+    
+    // MyFriendsView.collection.fetch({success: function (response) {
+    //   // this.userSavedData = MyFriendsView.collection;
+    //   // markerManager.myLocations(that.userSavedData);
+    // }});
+    
+    
+    that.activeView = MyFriendsView;
+  
     // has a user, has her friends
     // render a view that accepts user model, and resnders all friends
   },
