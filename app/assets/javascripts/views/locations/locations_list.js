@@ -1,9 +1,11 @@
-DD.Views.LocationsList = Backbone.View.extend({
+// in use
+DD.Views.UserLocations = Backbone.View.extend({
+  // a view that accepts user model, and renders all locations
   tagName: 'ul',
   collection: DD.Collections.Locations,
 
-  initialize: function (collection, $headEl) {
-    this.collection = collection;
+  initialize: function (user, $headEl) {
+    this.collection = user.get("locations");
     this.$headEl = $headEl;
   },
 

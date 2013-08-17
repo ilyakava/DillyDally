@@ -58,7 +58,7 @@ DD.Routers.Main = Backbone.Router.extend({
     var newCollectionView = new DD.Views.NewCollection({
       model: that.userData
     });
-    
+
     that.$contentEl.html(newCollectionView.render().$el);
 
     that.activeView = newCollectionView;
@@ -66,9 +66,35 @@ DD.Routers.Main = Backbone.Router.extend({
 
   userLocations: function () {
     // nav bar triggered view
+    var that = this;
+    // clear nearby search from map
+    // markerManager.nearby();
+    if (that.activeView) { that.activeView.cancel(); }
 
+    var MyLocationsView = new DD.Views.UserLocations(
+      that.userData,
+      that.$headEl
+    );
+ 
+    if (that.firstLoad) {
+      that.$contentEl.html(MyLocationsView.render().$el);
+      // that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
+      that.firstLoad = false;
+      // this.userSavedData = MyLocationsView.collection;
+      // markerManager.myLocations(that.userSavedData);
+      
+    } else {
+      MyLocationsView.collection.fetch({success: function (response) {
+        that.$contentEl.html(MyLocationsView.render().$el);
+        // that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
+        // this.userSavedData = MyLocationsView.collection;
+        // markerManager.myLocations(that.userSavedData);
+
+      }});
+    }
+    
+    that.activeView = MyLocationsView;
     // has a user, has her locations
-    // render a view that accepts user model, and renders all locations
   },
 
   userFriends: function () {
