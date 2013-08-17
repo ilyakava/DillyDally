@@ -29,6 +29,9 @@ DD.Routers.Main = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     // render head of searchbar (tabs and recenter searchbar)
+    // Done here because the UserCollections view used is 
+    // too generic and is reused later with a diff sidebar
+    // set up inheritance later
     var userColHead = new DD.Views.UserCollectionsHead();
     this.$headEl.html(userColHead.render().$el);
 
