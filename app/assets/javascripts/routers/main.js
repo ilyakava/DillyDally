@@ -20,6 +20,7 @@ DD.Routers.Main = Backbone.Router.extend({
     "user-locations/location-details/:locId": "locationDetails",
 
     "user-friends": "userFriends",
+    "user-friends/search-users": "searchUsers",
     "collection-locations/:colId": "collectionLocations"
   },
 
@@ -136,6 +137,14 @@ DD.Routers.Main = Backbone.Router.extend({
     that.activeView = MyFriendsView;
   
     // has a user, has her friends
+  },
+
+  searchUsers: function () {
+    var that = this;
+    var userSearchView = new DD.Views.SearchUsers({
+      model: that.userData
+    });
+    this.$contentEl.html(userSearchView.render().$el);
   },
 
   collectionsLocations: function () {

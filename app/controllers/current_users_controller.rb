@@ -33,6 +33,8 @@ class CurrentUsersController < ApplicationController
 			]
 		)
 
+		@users_json = User.all.to_json
+		
 		respond_to do |format|
 			format.json { render json: @current_user_json}
 			format.html { render :index }

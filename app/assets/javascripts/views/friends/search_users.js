@@ -1,3 +1,4 @@
+// in use
 DD.Views.SearchUsers = Backbone.View.extend({
   className: "add-new-friends",
   
@@ -8,12 +9,12 @@ DD.Views.SearchUsers = Backbone.View.extend({
   render: function () {
     var that = this;
     var usersChoices = new DD.Collections.Users(
-      JSON.parse($('#bootstrapped-users').html())
+      JSON.parse($('#bootstrapped-all-users').html())
     );
 
     var searchPage = JST['friends/search']({
       usersChoices: usersChoices,
-      disabledChoices: that.collection
+      disabledChoices: that.model.get("friends")
     });
     this.$el.html(searchPage);
 
