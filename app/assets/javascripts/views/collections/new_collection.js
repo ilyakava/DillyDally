@@ -1,10 +1,7 @@
+// in use
 DD.Views.NewCollection = Backbone.View.extend({
   tagName: 'ul',
   className: 'new-collection-form',
-
-  initialize: function (userSavedData) {
-    this.userSavedData = userSavedData;
-  },
 
   events: {
     "click button.new-collection": "newCollection"
@@ -16,7 +13,7 @@ DD.Views.NewCollection = Backbone.View.extend({
       name: $(event.target).prev().val()
     }).save({}, {
       success: function (model, response) {
-        that.userSavedData.add(response);
+        that.model.get("collections").add(response);
         // Link to Navigate to collection show page
         var targetUrl = 'collections/' + response["id"];
         var html = '<li><a href="' + targetUrl + '">Click here to' +

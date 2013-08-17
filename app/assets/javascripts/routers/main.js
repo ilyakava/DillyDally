@@ -12,7 +12,8 @@ DD.Routers.Main = Backbone.Router.extend({
   // from the nav bar
   routes: {
     "": "userCollections",
-    "search-nearby": "searchNearby",
+    "new-collection": "newCollection",
+    // "search-nearby": "searchNearby",
     // "user-collections/recenter-by-search": "recenterBySearch",
 
     "user-locations": "userLocations",
@@ -21,6 +22,7 @@ DD.Routers.Main = Backbone.Router.extend({
   },
 
   userCollections: function () {
+    // nav bar triggered view
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
 
@@ -49,17 +51,36 @@ DD.Routers.Main = Backbone.Router.extend({
     that.activeView = MyCollectionsView;
   },
 
+  newCollection: function () {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    var newCollectionView = new DD.Views.NewCollection({
+      model: that.userData
+    });
+    
+    that.$contentEl.html(newCollectionView.render().$el);
+
+    that.activeView = newCollectionView;
+  },
+
   userLocations: function () {
+    // nav bar triggered view
+
     // has a user, has her locations
     // render a view that accepts user model, and renders all locations
   },
 
   userFriends: function () {
+    // nav bar triggered view
+
     // has a user, has her friends
     // render a view that accepts user model, and resnders all friends
   },
 
   collectionsLocations: function () {
+    // nav bar triggered view
+
     // has a collections, has its locations
     // render a view that accepts a collection model
   }
