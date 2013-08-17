@@ -13,7 +13,7 @@ DD.Routers.Main = Backbone.Router.extend({
   routes: {
     "": "userCollections",
     "new-collection": "newCollection",
-    // "search-nearby": "searchNearby",
+    "search-nearby": "searchNearby",
     // "user-collections/recenter-by-search": "recenterBySearch",
 
     "user-locations": "userLocations",
@@ -77,7 +77,7 @@ DD.Routers.Main = Backbone.Router.extend({
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.LocationsHead();
     this.$headEl.html(searchbarHead.render().$el);
-    
+
     // clear nearby search from map
     // markerManager.nearby();
     if (that.activeView) { that.activeView.cancel(); }
@@ -157,5 +157,15 @@ DD.Routers.Main = Backbone.Router.extend({
 
     // has a collections, has its locations
     // render a view that accepts a collection model
+  },
+
+  searchNearby: function () {
+    var that = this;
+    if (that.activeView) { that.activeView.cancel(); }
+
+    var locationSearchView = new DD.Views.LocationSearch(that.$contentEl, that.userSavedData);
+    that.$contentEl.html(locationSearchView.render().$el);
+
+    that.activeView = locationSearchView;
   }
 });
