@@ -115,12 +115,15 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
     // markerManager.myLocations();
     // markerManager.multiPolygon();
+
+
     
     if (that.activeView) { that.activeView.cancel(); }
 
-    var MyFriendsView = new DD.Views.UserFriends({
-      model: that.userData
-    });
+    var MyFriendsView = new DD.Views.UserFriends(
+      that.userData,
+      that.$headEl
+    );
  
     that.$contentEl.html(MyFriendsView.render().$el);
     

@@ -1,4 +1,6 @@
 class CurrentUsersController < ApplicationController
+	before_filter :authenticate_user!
+
 	def index
 		@current_user = User.includes(
 			:locations,
