@@ -10,3 +10,15 @@
     border-bottom: rgb(130,206,209) 1px solid;
     color: white;
 }
+
+/* hover effects */
+#side-bar ul.tabs > li.index > a.index:hover,
+#side-bar ul.tabs > li.new-collection > a.new-collection:hover,
+#side-bar ul.tabs > li.location-details > a.location-details:hover,
+#side-bar ul.tabs > li.search-users > a.search-users:hover,
+#side-bar ul.tabs > li.friends-locations > a.friends-locations:hover,
+#side-bar ul.tabs > li.friends-collections > a.friends-collections:hover,
+#side-bar ul.tabs > li.collection-locations > a.collection-locations:hover,
+#side-bar ul.tabs > li.search-nearby > a.search-nearby :hover{
+	color: black;
+}
