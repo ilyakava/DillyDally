@@ -21,7 +21,7 @@ DD.Routers.Main = Backbone.Router.extend({
 
     "user-friends": "userFriends",
     "user-friends/search-users": "searchUsers",
-    "user-friends/location/:id": "friendLocations",
+    "user-friends/:friendId/locations": "friendLocations",
 
     "collection-locations/:colId": "collectionLocations"
   },
@@ -177,7 +177,6 @@ DD.Routers.Main = Backbone.Router.extend({
   collectionLocations: function (collectionId) {
     // nav bar triggered view
     var that = this;
-    var parent = _.humanize(decodeURIComponent(name));
 
     if (that.activeView) { that.activeView.cancel(); }
 
