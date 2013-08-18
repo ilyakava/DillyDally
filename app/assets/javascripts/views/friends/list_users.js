@@ -50,7 +50,7 @@ DD.Views.UserFriends = Backbone.View.extend({
   },
 
   cancel: function () {
-    console.log("cancelling MyLocations View...");
+    console.log("cancelling UserFriends View...");
     // no events to cancel yet
   }
 
