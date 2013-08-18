@@ -5,6 +5,7 @@ DD.Views.UserLocations = DD.Views.LocationsList.extend({
   collection: DD.Collections.Locations,
 
   initialize: function (userModel, $headEl) {
+    this.model = userModel;
     this.collection = userModel.get("locations");
     this.$headEl = $headEl;
   },
@@ -19,7 +20,23 @@ DD.Views.UserLocations = DD.Views.LocationsList.extend({
       that.renderMyCollection.bind(that)();
     }
     // if (this.$headEl) {this.insertLocationListTab(true);}
+    that.$el.prepend(that.parentInfo());
     return this;
+  },
+
+  parentInfo: function () {
+    var that = this,
+        html;
+    var parentIsYourself = function () {
+      return (that.model.get("email") == current_user.email);
+    };
+    if (parentIsYourself()) {
+      html = '<li class="location"><h3>Viewing Your Locations</h3></li>';
+    } else {
+      html = '<li class="location"><h3>Viewing ' +
+        that.model.get("email") + "'s Locations</h3></li>";
+    }
+    return html;
   },
 
   cancel: function () {
