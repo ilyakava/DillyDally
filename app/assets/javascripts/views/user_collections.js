@@ -4,6 +4,7 @@ DD.Views.UserCollections = Backbone.View.extend({
   // is a view that accepts a user model, and renders collections
 
   initialize: function (userModel, $headEl) {
+    this.model = userModel;
     this.collection = userModel.get("collections");
     this.$headEl = $headEl;
   },
