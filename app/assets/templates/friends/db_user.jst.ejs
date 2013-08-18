@@ -4,6 +4,14 @@
 <ul class="user">
 	<li class="name"><%= user.get("email") %></li>
 	<!-- <li><a href="#/detail-view/<%= user.get("id") %>">(user Detail View)</a></li> -->
-	<li><a href="#/user-friends/location/<%= user.get("id") %>">(See the Locations this user added)</a></li>
-	<li><a href="#/users-collections-list/<%= user.get("id") %>">(See this user's Collections)</a></li>
+	<li>
+		<a href="#/user-friends/<%= user.get("id") %>/locations">
+			(See the Locations this user added)
+		</a>
+	</li>
+	<li>
+		<a href="#/user-friends/<%= user.get("id") %>/collections">
+			(See this user's Collections)
+		</a>
+	</li>
 </ul>
