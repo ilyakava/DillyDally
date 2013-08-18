@@ -1,6 +1,6 @@
 DillyDally::Application.routes.draw do
   devise_for :users
-  root to: 'locations#index'
+  root to: 'current_users#index'
   resources :locations, only: [:index, :create, :show]
   resources :comments, only: [:index, :create]
   resources :user_visits, only: [:destroy, :create]

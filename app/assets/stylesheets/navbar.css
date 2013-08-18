@@ -121,6 +121,10 @@ nav > .user > li:last-child {
     border-right: rgb(26,79,81) 1px solid;
 }
 
+nav > .user > li:last-child:hover {
+    background-color: rgb(158,90,92);
+}
+
 nav > .user > li > a {
     float: left;
     color: white;
