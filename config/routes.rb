@@ -14,6 +14,7 @@ DillyDally::Application.routes.draw do
   resources :friends, only: :index do
     member do
       get 'locations'
+      get 'collections'
     end
   end
 

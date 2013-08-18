@@ -39,9 +39,10 @@ DD.Routers.Main = Backbone.Router.extend({
     var userColHead = new DD.Views.UserCollectionsHead();
     this.$headEl.html(userColHead.render().$el);
 
-    var MyCollectionsView = new DD.Views.UserCollections({
-      model: that.userData
-    });
+    var MyCollectionsView = new DD.Views.UserCollections(
+      that.userData,
+      that.$headEl
+    );
 
     if (that.firstLoad) {
       that.$contentEl.html(MyCollectionsView.render().$el);
@@ -172,6 +173,26 @@ DD.Routers.Main = Backbone.Router.extend({
         );
         that.$contentEl.html(userLocationsView.render().$el);
         that.activeView = userLocationsView;
+      }
+    });
+  },
+
+  friendCollections: function (friendId) {
+    var that = this;
+
+    if (that.activeView) { that.activeView.cancel(); }
+
+    // get around parent id problem by including the user
+    // in the locations fetch
+    new DD.Models.User({id: friendId}).fetch({
+      url: 'friends/' + friendId + '/collections',
+      success: function (model, response) {
+        var userCollectionsView = new DD.Views.UserCollections(
+          new DD.Collections.Users(response).first(),
+          that.$headEl
+        );
+        that.$contentEl.html(userCollectionsView.render().$el);
+        that.activeView = userCollectionsView;
       }
     });
   },
