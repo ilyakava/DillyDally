@@ -126,8 +126,10 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
     // markerManager.myLocations();
     // markerManager.multiPolygon();
-
-
+    
+    // render head of searchbar (tabs and recenter searchbar)
+    var searchbarHead = new DD.Views.FriendsHead();
+    this.$headEl.html(searchbarHead.render().$el);
     
     if (that.activeView) { that.activeView.cancel(); }
 

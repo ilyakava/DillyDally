@@ -8,9 +8,7 @@ DD.Views.UserFriends = DD.Views.ListHelper.extend({
     this.model = userModel;
     this.$headEl = $headEl;
 
-    // render head of searchbar (tabs and recenter searchbar)
-    var searchbarHead = new DD.Views.FriendsHead();
-    this.$headEl.html(searchbarHead.render().$el);
+    
   },
 
   render: function () {
