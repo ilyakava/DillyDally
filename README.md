@@ -101,6 +101,8 @@ By the end of this phase:
 ##TODO
 * friends
 	* friend detail view
+* collections
+	* collection detail view
 * ability to edit collections that locations belong to, just like tags
 
 
