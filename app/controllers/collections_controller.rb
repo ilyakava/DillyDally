@@ -11,7 +11,6 @@ class CollectionsController < ApplicationController
 			:visitors,
 			:savers,
 			:creator,
-			:collection,
 			comments: [
 				:author	
 			],
@@ -41,8 +40,7 @@ class CollectionsController < ApplicationController
 				:user_visits,
 				:visitors,
 				:savers,
-				:creator,
-				:collection
+				:creator
 			],
 			methods: [
 				:categories_as_array
