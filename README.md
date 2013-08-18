@@ -101,9 +101,7 @@ By the end of this phase:
 ##TODO
 * friends
 	* friend detail view
-* from userFriends (include name in URI of both)
-	* userCollections
-	* userLocations
+
 
 ##Fix later
 * SQL queries! not just in to_json!
