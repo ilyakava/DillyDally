@@ -57,6 +57,7 @@ DD.Routers.Main = Backbone.Router.extend({
     }
     that.activeView = MyCollectionsView;
     that.navBarResetClass('collections');
+    that.tabsResetClass('index');
   },
 
   newCollection: function () {
@@ -70,6 +71,7 @@ DD.Routers.Main = Backbone.Router.extend({
     that.$contentEl.html(newCollectionView.render().$el);
 
     that.activeView = newCollectionView;
+    that.tabsResetClass('new-collection');
   },
 
   userLocations: function () {
@@ -101,6 +103,7 @@ DD.Routers.Main = Backbone.Router.extend({
     
     that.activeView = MyLocationsView;
     that.navBarResetClass('locations');
+    that.tabsResetClass('index');
     // has a user, has her locations
   },
 
@@ -117,6 +120,7 @@ DD.Routers.Main = Backbone.Router.extend({
         );
         locationDetailView.render();
         that.activeView = locationDetailView;
+        that.tabsResetClass('location-details');
       }
     });
   },
@@ -126,7 +130,7 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
     // markerManager.myLocations();
     // markerManager.multiPolygon();
-    
+
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.FriendsHead();
     this.$headEl.html(searchbarHead.render().$el);
@@ -145,6 +149,7 @@ DD.Routers.Main = Backbone.Router.extend({
     
     that.activeView = MyFriendsView;
     that.navBarResetClass('friends');
+    that.tabsResetClass('index');
     // has a user, has her friends
   },
 
@@ -154,6 +159,7 @@ DD.Routers.Main = Backbone.Router.extend({
       model: that.userData
     });
     this.$contentEl.html(userSearchView.render().$el);
+    that.tabsResetClass('search-users');
   },
 
   friendLocations: function (friendId) {
@@ -172,6 +178,7 @@ DD.Routers.Main = Backbone.Router.extend({
         );
         that.$contentEl.html(userLocationsView.render().$el);
         that.activeView = userLocationsView;
+        that.tabsResetClass('friends-locations');
       }
     });
   },
@@ -192,6 +199,7 @@ DD.Routers.Main = Backbone.Router.extend({
         );
         that.$contentEl.html(userCollectionsView.render().$el);
         that.activeView = userCollectionsView;
+        that.tabsResetClass('friends-collections');
       }
     });
   },
@@ -212,12 +220,12 @@ DD.Routers.Main = Backbone.Router.extend({
         );
         that.$contentEl.html(collectionLocationsView.render().$el);
         that.activeView = collectionLocationsView;
+        that.tabsResetClass('collection-locations');
       }
     });
 
     // has a collections, has its locations
     // render a view that accepts a collection model
-
     // emulates location details method
   },
 
@@ -229,6 +237,7 @@ DD.Routers.Main = Backbone.Router.extend({
     that.$contentEl.html(locationSearchView.render().$el);
 
     that.activeView = locationSearchView;
+    that.tabsResetClass('search-nearby');
   },
 
   recenterBySearch: function () {
@@ -256,7 +265,7 @@ DD.Routers.Main = Backbone.Router.extend({
 
   tabsResetClass: function (newClass) {
     $('#side-bar-navigation').
-      find('ul.tabs>li').
+      find('ul.tabs>li>a').
       attr('class', newClass);
   }
 

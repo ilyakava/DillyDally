@@ -36,7 +36,7 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
     
     // Only necessary when the collection view
     // uses this View Instance
-    var html = '<li><a id="collection-locations"' +
+    var html = '<li class="collection-locations"><a id="collection-locations"' +
       'href="#/collection-locations/' + this.model.get('id') +
       '">Locations in Collection</a></li>';
 

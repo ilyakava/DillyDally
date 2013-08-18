@@ -71,7 +71,7 @@ DD.Views.LocationDetail = Backbone.View.extend({
   insertTab: function (boolean) {
     this.$headEl.find('#location-details').parent().replaceWith("");
 
-    var html = '<li><a id="location-details"' +
+    var html = '<li class="location-details"><a id="location-details"' +
       'href="#/user-locations/location-details/' +
       this.model.get('id') + '">Location Details</a></li>';
 

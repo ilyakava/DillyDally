@@ -36,7 +36,7 @@ DD.Views.UserLocations = DD.Views.ListHelper.extend({
     
     // Only necessary when the collection view
     // uses this View Instance
-    var html = '<li><a id="friends-locations"' +
+    var html = '<li class="friends-locations"><a id="friends-locations"' +
       'href="#/user-friends/' + this.model.get('id') +
       '/locations"' + ">Friend's Locations</a></li>";
 
