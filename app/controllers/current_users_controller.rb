@@ -15,19 +15,21 @@ class CurrentUsersController < ApplicationController
 
 		@current_user_json = @current_user.to_json(
 			include: [
-				{collections: {
-					include: {
-						locations: {
-							include: [
-								:tags,
-								:categories
-							],
-							methods: [
-								:categories_as_array
-							]
+				{
+					collections: {
+						include: {
+							locations: {
+								include: [
+									:tags,
+									:categories
+								],
+								methods: [
+									:categories_as_array
+								]
+							}
 						}
 					}
-				}},
+				},
 				:locations,
 				:friends
 			]

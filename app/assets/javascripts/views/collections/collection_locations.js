@@ -1,11 +1,11 @@
 // in use
-DD.Views.UserLocations = DD.Views.LocationsList.extend({
+DD.Views.CollectionLocations = DD.Views.LocationsList.extend({
   // a view that accepts user model, and renders all locations
   tagName: 'ul',
-  collection: DD.Collections.Locations,
+  model: DD.Models.Collection,
 
-  initialize: function (locations, $headEl) {
-    this.collection = locations;
+  initialize: function (collection, $headEl) {
+    this.collection = collection;
     this.$headEl = $headEl;
   },
 

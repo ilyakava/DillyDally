@@ -3,7 +3,7 @@
 <ul>
 	<li><%= _.humanize(collection.get("name")) %></li>
 	<li><button class="set-map-center">Center Map</button></li>
-	<li><a href="#/detail-view/<%= collection.get("id") %>">(List the Locations in this Collection)</a></li>
+	<li><a href="#/collection-locations/<%= collection.get("id") %>">(List the Locations in this Collection)</a></li>
 	
 	<% var allCategories = []; %>
 	<% collection.get("locations").each(function (location) { %>
