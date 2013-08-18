@@ -1,10 +1,10 @@
-li.index > a.index,
-li.new-collection > a.new-collection,
-li.location-details > a.location-details,
-li.search-users > a.search-users,
-li.friends-locations > a.friends-locations,
-li.friends-collections > a.friends-collections,
-li.collection-locations > a.collection-locations,
-li.search-nearby > a.search-nearby {
+ul.tabs > li.index > a.index,
+ul.tabs > li.new-collection > a.new-collection,
+ul.tabs > li.location-details > a.location-details,
+ul.tabs > li.search-users > a.search-users,
+ul.tabs > li.friends-locations > a.friends-locations,
+ul.tabs > li.friends-collections > a.friends-collections,
+ul.tabs > li.collection-locations > a.collection-locations,
+ul.tabs > li.search-nearby > a.search-nearby {
 	background-color: red;
 }
