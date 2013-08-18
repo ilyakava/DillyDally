@@ -56,6 +56,7 @@ DD.Routers.Main = Backbone.Router.extend({
       });
     }
     that.activeView = MyCollectionsView;
+    that.navBarResetClass('collections');
   },
 
   newCollection: function () {
@@ -99,6 +100,7 @@ DD.Routers.Main = Backbone.Router.extend({
     
     
     that.activeView = MyLocationsView;
+    that.navBarResetClass('locations');
     // has a user, has her locations
   },
 
@@ -140,7 +142,7 @@ DD.Routers.Main = Backbone.Router.extend({
     
     
     that.activeView = MyFriendsView;
-  
+    that.navBarResetClass('friends');
     // has a user, has her friends
   },
 
@@ -243,6 +245,18 @@ DD.Routers.Main = Backbone.Router.extend({
 
     that.activeView = recenterResultsView;
   },
+
+  navBarResetClass: function (newClass) {
+    $('nav').
+      find('ul.user>li').
+      attr('class', newClass);
+  },
+
+  tabsResetClass: function (newClass) {
+    $('#side-bar-navigation').
+      find('ul.tabs>li').
+      attr('class', newClass);
+  }
 
   
 });
