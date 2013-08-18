@@ -163,6 +163,7 @@ DD.Routers.Main = Backbone.Router.extend({
     // get around parent id problem by including the user
     // in the locations fetch
     new DD.Models.User({id: friendId}).fetch({
+      url: 'friends/' + friendId,
       success: function (model, response) {
         var userLocationsView = new DD.Views.UserLocations(
           new DD.Collections.Users(response).first(),
