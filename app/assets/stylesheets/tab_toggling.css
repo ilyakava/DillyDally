@@ -1,0 +1,10 @@
+li.index > a.index,
+li.new-collection > a.new-collection,
+li.location-details > a.location-details,
+li.search-users > a.search-users,
+li.friends-locations > a.friends-locations,
+li.friends-collections > a.friends-collections,
+li.collection-locations > a.collection-locations,
+li.search-nearby > a.search-nearby {
+	background-color: red;
+}

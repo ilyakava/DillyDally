@@ -86,7 +86,6 @@
 #side-bar .tabs > li {
     font-size: 14px;
     float: left;
-    padding: 16px 7px;
     border-right: rgb(26,79,81) 1px solid;
     border-bottom: rgb(26,79,81) 1px solid;
     background-color: rgb(130,206,209);
@@ -94,9 +93,9 @@
 }
 
 #side-bar .tabs > li:last-child {
-    padding: 16px 9px;
 
 }
+
 #side-bar .tabs > li:first-child {
     border-left: rgb(26,79,81) 1px solid;
 
