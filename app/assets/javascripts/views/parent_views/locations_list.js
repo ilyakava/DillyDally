@@ -1,9 +1,9 @@
 // in use
-DD.Views.LocationsList = Backbone.View.extend({
+DD.Views.ListHelper = Backbone.View.extend({
   
   // assumes child view has a
   // this.collection = "a locations collection"
-  renderMyCollection: function () {
+  renderMyLocations: function () {
     var that = this;
     that.collection.each(function (location) {
       singleLocation = new DD.Views.LocationAsListItem({

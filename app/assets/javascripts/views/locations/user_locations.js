@@ -1,8 +1,8 @@
 // in use
-DD.Views.UserLocations = DD.Views.LocationsList.extend({
+DD.Views.UserLocations = DD.Views.ListHelper.extend({
   // a view that accepts user model, and renders all locations
   tagName: 'ul',
-  collection: DD.Collections.Locations,
+  // collection: DD.Collections.Locations,
 
   initialize: function (userModel, $headEl) {
     this.model = userModel;
@@ -17,7 +17,7 @@ DD.Views.UserLocations = DD.Views.LocationsList.extend({
       that.$el.append('<li class="location"><h3>No Locations Saved Yet...</h3></li>');
     } else {
       // method in parent view
-      that.renderMyCollection.bind(that)();
+      that.renderMyLocations.bind(that)();
     }
     // if (this.$headEl) {this.insertLocationListTab(true);}
     that.$el.prepend(that.parentInfo());
