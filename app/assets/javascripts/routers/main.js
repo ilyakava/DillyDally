@@ -8,8 +8,6 @@ DD.Routers.Main = Backbone.Router.extend({
 
   },
 
-  // non-subroutes should be the only routes redirected to
-  // from the nav bar
   routes: {
     "": "userCollections",
     "new-collection": "newCollection",

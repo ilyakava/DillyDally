@@ -30,7 +30,23 @@ DD.Views.UserFriends = Backbone.View.extend({
         }
       });
     }
+    that.$el.prepend(that.parentInfo());
     return this;
+  },
+
+  parentInfo: function () {
+    var that = this,
+        html;
+    var parentIsYourself = function () {
+      return (that.model.get("email") == current_user.email);
+    };
+    if (parentIsYourself()) {
+      html = '<li class="location"><h3>Viewing Your Friends</h3></li>';
+    } else {
+      html = '<li class="location"><h3>Viewing ' +
+        that.model.get("email") + "'s Friends</h3></li>";
+    }
+    return html;
   },
 
   cancel: function () {
