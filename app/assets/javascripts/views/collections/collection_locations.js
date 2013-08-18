@@ -4,6 +4,7 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
   tagName: 'ul',
 
   initialize: function (collectionModel, $headEl) {
+    this.model = collectionModel;
     this.collection = collectionModel.get("locations");
     this.$headEl = $headEl;
   },
@@ -18,6 +19,7 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
       that.renderMyLocations.bind(that)();
     }
     // if (this.$headEl) {this.insertLocationListTab(true);}
+    that.$el.prepend(that.parentCollectionInfo.bind(that)());
     return this;
   },
 

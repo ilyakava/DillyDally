@@ -41,5 +41,11 @@ DD.Views.ListHelper = Backbone.View.extend({
         that.model.get("email") + "'s " + listType + "</h3></li>";
     }
     return html;
+  },
+
+  parentCollectionInfo: function () {
+    var that = this;
+    return ('<li class="location"><h3>Viewing Locations in the ' +
+      _.humanize(that.model.get("name")) + " Collection</h3></li>");
   }
 });
