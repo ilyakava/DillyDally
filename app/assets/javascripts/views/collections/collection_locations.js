@@ -18,30 +18,30 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
       // method in parent view
       that.renderMyLocations.bind(that)();
     }
-    // if (this.$headEl) {this.insertLocationListTab(true);}
+    if (this.$headEl) {this.insertTab(true);}
     that.$el.prepend(that.parentCollectionInfo.bind(that)());
     return this;
   },
 
   cancel: function () {
     console.log("cancelling MyLocations View...");
-    if (this.$headEl) {this.insertLocationListTab(false);}
+    if (this.$headEl) {this.insertTab(false);}
     // no events to cancel yet
   },
 
-  insertLocationListTab: function (boolean) {
-  //   // Only necessary when the collection view
-  //   // uses this View Instance
-  //   var html = '<li><a id="detail-view"' +
-  //     'href="#/detail-view/' + this.collection.get('id') +
-  //     '"' + '>Preview Collection</a></li>';
+  insertTab: function (boolean) {
+    // always remove first
+    this.$headEl.find('#collection-locations').parent().replaceWith("");
+    
+    // Only necessary when the collection view
+    // uses this View Instance
+    var html = '<li><a id="collection-locations"' +
+      'href="#/collection-locations/' + this.model.get('id') +
+      '">Locations in Collection</a></li>';
 
-  //   if (boolean &! ($('#detail-view').length)) {
-  //     this.$headEl.find('ul.tabs').append(html);
-  //   } else if (!boolean) {
-  //     console.log("Removing detail view tab");
-  //     this.$headEl.find('#detail-view').parent().replaceWith("");
-  //   }
+    if (boolean &! ($('#collection-locations').length)) {
+      this.$headEl.find('ul.tabs').append(html);
+    }
   }
 
 });

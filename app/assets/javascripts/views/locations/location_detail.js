@@ -69,15 +69,14 @@ DD.Views.LocationDetail = Backbone.View.extend({
   },
 
   insertTab: function (boolean) {
-    var html = '<li><a id="detail-view"' +
-      'href="#/detail-view/' + this.model.get('id') +
-      '"' + '>Location Details</a></li>';
+    this.$headEl.find('#location-details').parent().replaceWith("");
 
-    if (boolean &! ($('#detail-view').length)) {
+    var html = '<li><a id="location-details"' +
+      'href="#/user-locations/location-details/' +
+      this.model.get('id') + '">Location Details</a></li>';
+
+    if (boolean &! ($('#location-details').length)) {
       this.$headEl.find('ul.tabs').append(html);
-    } else if (!boolean) {
-      console.log("Removing detail view tab");
-      this.$headEl.find('#detail-view').parent().replaceWith("");
     }
   },
 
