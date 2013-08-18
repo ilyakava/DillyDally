@@ -23,7 +23,7 @@ DD.Routers.Main = Backbone.Router.extend({
     "user-friends/search-users": "searchUsers",
     "user-friends/location/:id": "friendLocations",
 
-    "collection-locations/:colId/*name": "collectionLocations"
+    "collection-locations/:colId": "collectionLocations"
   },
 
   userCollections: function () {
@@ -174,7 +174,7 @@ DD.Routers.Main = Backbone.Router.extend({
     });
   },
 
-  collectionLocations: function (collectionId, name) {
+  collectionLocations: function (collectionId) {
     // nav bar triggered view
     var that = this;
     var parent = _.humanize(decodeURIComponent(name));
