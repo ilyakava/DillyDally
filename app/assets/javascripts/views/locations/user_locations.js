@@ -4,8 +4,8 @@ DD.Views.UserLocations = DD.Views.LocationsList.extend({
   tagName: 'ul',
   collection: DD.Collections.Locations,
 
-  initialize: function (locations, $headEl) {
-    this.collection = locations;
+  initialize: function (model, $headEl) {
+    this.collection = model.get("locations");
     this.$headEl = $headEl;
   },
 
