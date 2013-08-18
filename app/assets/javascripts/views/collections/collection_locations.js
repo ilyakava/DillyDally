@@ -4,8 +4,9 @@ DD.Views.CollectionLocations = DD.Views.LocationsList.extend({
   tagName: 'ul',
   model: DD.Models.Collection,
 
-  initialize: function (collection, $headEl) {
-    this.collection = collection;
+  initialize: function (model, $headEl) {
+    this.collection = model.get("locations");
+    window.collection = this.collection;
     this.$headEl = $headEl;
   },
 

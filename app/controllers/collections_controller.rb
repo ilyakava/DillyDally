@@ -4,46 +4,52 @@ class CollectionsController < ApplicationController
 
 	def show
 		# Exactly like locations index page
-		@locations = Collection.find(params[:id]).locations.includes(
-			:tags,
-			:categories,
-			:user_visits,
-			:visitors,
-			:savers,
-			:creator,
-			comments: [
-				:author	
-			],
-			location_tags: [
-				:tag
-			]
-		)
-
-		@locations_json = @locations.to_json(
-			include: [
+		@collections = Collection.includes(
+			locations: [
 				:tags,
 				:categories,
-				{
-					comments: {
-						include: [
-							:author
-						]
-					}
-				},
-				{
-					location_tags: {
-						include: [
-							:tag
-						]
-					}
-				},
 				:user_visits,
 				:visitors,
 				:savers,
-				:creator
-			],
-			methods: [
-				:categories_as_array
+				:creator,
+				comments: [
+					:author	
+				],
+				location_tags: [
+					:tag
+				]
+			]
+		).find(params[:id])
+
+		@collections_json = @collections.to_json(
+			include: [
+				locations: {
+					include: [
+						:tags,
+						:categories,
+						{
+							comments: {
+								include: [
+									:author
+								]
+							}
+						},
+						{
+							location_tags: {
+								include: [
+									:tag
+								]
+							}
+						},
+						:user_visits,
+						:visitors,
+						:savers,
+						:creator
+					],
+					methods: [
+						:categories_as_array
+					]
+				}
 			]
 		)
 
@@ -52,7 +58,7 @@ class CollectionsController < ApplicationController
 		@page_header = "Viewing Locations in the #{Collection.find(params[:id]).name.capitalize} Collection"
 
 		respond_to do |format|
-			format.json { render json: @locations_json}
+			format.json { render json: @collections_json}
 			format.html { render :show }
 		end
 	end

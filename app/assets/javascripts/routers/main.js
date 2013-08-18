@@ -186,7 +186,7 @@ DD.Routers.Main = Backbone.Router.extend({
     new DD.Models.Collection({id: collectionId}).fetch({
       success: function (model, response) {
         var collectionLocationsView = new DD.Views.CollectionLocations(
-          new DD.Collections.Locations(response),
+          new DD.Collections.Collections(response).first(),
           that.$headEl
         );
         that.$contentEl.html(collectionLocationsView.render().$el);
