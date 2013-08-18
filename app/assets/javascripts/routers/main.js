@@ -109,7 +109,6 @@ DD.Routers.Main = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     that.userData.get("locations").get(id).fetch({
-      url: "locations/" + id,
       success: function (model, response) {
         var locationDetailView = new DD.Views.LocationDetail(
           that.$headEl,

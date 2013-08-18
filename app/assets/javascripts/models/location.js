@@ -1,5 +1,5 @@
 DD.Models.Location = Backbone.Model.extend({
-  url: '/locations',
+  urlRoot: '/locations',
 
   initialize: function (response) {
     // prevent parsing of objs that are in right format
