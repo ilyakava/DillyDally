@@ -1,5 +1,5 @@
 // in use
-DD.Views.UserFriends = Backbone.View.extend({
+DD.Views.UserFriends = DD.Views.ListHelper.extend({
   tagName: 'ul',
   // is a view that accepts user model, and renders all friends
 
@@ -30,23 +30,8 @@ DD.Views.UserFriends = Backbone.View.extend({
         }
       });
     }
-    that.$el.prepend(that.parentInfo());
+    that.$el.prepend(that.parentUserInfo.bind(that, 'Friends')());
     return this;
-  },
-
-  parentInfo: function () {
-    var that = this,
-        html;
-    var parentIsYourself = function () {
-      return (that.model.get("email") == current_user.email);
-    };
-    if (parentIsYourself()) {
-      html = '<li class="location"><h3>Viewing Your Friends</h3></li>';
-    } else {
-      html = '<li class="location"><h3>Viewing ' +
-        that.model.get("email") + "'s Friends</h3></li>";
-    }
-    return html;
   },
 
   cancel: function () {

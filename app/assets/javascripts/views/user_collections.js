@@ -1,5 +1,5 @@
 // in use
-DD.Views.UserCollections = Backbone.View.extend({
+DD.Views.UserCollections = DD.Views.ListHelper.extend({
   tagName: 'ul',
   // is a view that accepts a user model, and renders collections
 
@@ -16,31 +16,13 @@ DD.Views.UserCollections = Backbone.View.extend({
     if (!that.collection.length) {
       that.$el.append('<li class="location"><h3>No Collections Saved Yet...</h3></li>');
     } else {
-      that.collection.each(function (collectionModel) {
-        singleCollection = new DD.Views.CollectionAsListItem( {model: collectionModel} );
-        that.$el.append(singleCollection.render().$el);
-
-        console.log("rendering a view for a saved collection");
-      });
+      // method in parent view
+      that.renderMyCollections.bind(that)();
     }
-    that.$el.prepend(that.parentInfo());
+    that.$el.prepend(that.parentUserInfo.bind(that, 'Collections')());
     return this;
   },
 
-  parentInfo: function () {
-    var that = this,
-        html;
-    var parentIsYourself = function () {
-      return (that.model.get("email") == current_user.email);
-    };
-    if (parentIsYourself()) {
-      html = '<li class="location"><h3>Viewing Your Collections</h3></li>';
-    } else {
-      html = '<li class="location"><h3>Viewing ' +
-        that.model.get("email") + "'s Collections</h3></li>";
-    }
-    return html;
-  },
 
   cancel: function () {
     console.log("cancelling UserCollections View...");

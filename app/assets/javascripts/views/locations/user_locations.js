@@ -20,23 +20,8 @@ DD.Views.UserLocations = DD.Views.ListHelper.extend({
       that.renderMyLocations.bind(that)();
     }
     // if (this.$headEl) {this.insertLocationListTab(true);}
-    that.$el.prepend(that.parentInfo());
+    that.$el.prepend(that.parentUserInfo.bind(that, 'Locations')());
     return this;
-  },
-
-  parentInfo: function () {
-    var that = this,
-        html;
-    var parentIsYourself = function () {
-      return (that.model.get("email") == current_user.email);
-    };
-    if (parentIsYourself()) {
-      html = '<li class="location"><h3>Viewing Your Locations</h3></li>';
-    } else {
-      html = '<li class="location"><h3>Viewing ' +
-        that.model.get("email") + "'s Locations</h3></li>";
-    }
-    return html;
   },
 
   cancel: function () {
