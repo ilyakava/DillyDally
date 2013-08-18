@@ -14,7 +14,7 @@ class FriendsController < ApplicationController
 		end		
 	end
 
-	def show
+	def locations
 		@friend = User.includes(
 			locations: [
 				:tags,
