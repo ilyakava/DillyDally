@@ -160,6 +160,8 @@ DD.Routers.Main = Backbone.Router.extend({
 
     if (that.activeView) { that.activeView.cancel(); }
 
+    // get around parent id problem by including the collection
+    // in the locations fetch
     new DD.Models.Collection({id: collectionId}).fetch({
       success: function (model, response) {
         var collectionLocationsView = new DD.Views.CollectionLocations(
@@ -170,11 +172,11 @@ DD.Routers.Main = Backbone.Router.extend({
         that.activeView = collectionLocationsView;
       }
     });
-        // this.userSavedData = MyLocationsView.collection;
-        // markerManager.myLocations(that.userSavedData);
-      
+
     // has a collections, has its locations
     // render a view that accepts a collection model
+
+    // emulates location details method
   },
 
   searchNearby: function () {
