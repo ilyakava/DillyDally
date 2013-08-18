@@ -13,4 +13,62 @@ class FriendsController < ApplicationController
 			format.html { render :index }
 		end		
 	end
+
+	def show
+		@friend = User.includes(
+			locations: [
+				:tags,
+				:categories,
+				:user_visits,
+				:visitors,
+				:savers,
+				:creator,
+				comments: [
+					:author	
+				],
+				location_tags: [
+					:tag
+				]
+			]
+		).find(params[:id])
+
+		@friend_json = @friend.to_json(
+			include: [
+				locations: {
+					include: [
+						:tags,
+						:categories,
+						{
+							comments: {
+								include: [
+									:author
+								]
+							}
+						},
+						{
+							location_tags: {
+								include: [
+									:tag
+								]
+							}
+						},
+						:user_visits,
+						:visitors,
+						:savers,
+						:creator
+					],
+					methods: [
+						:categories_as_array
+					]
+				}
+			]
+		)
+
+		@users_json = User.all.to_json
+		
+		respond_to do |format|
+			format.json { render json: @friend_json}
+			format.html { render :index }
+		end		
+	end
 end
