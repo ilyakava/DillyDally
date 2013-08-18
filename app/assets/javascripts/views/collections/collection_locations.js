@@ -2,10 +2,9 @@
 DD.Views.CollectionLocations = DD.Views.LocationsList.extend({
   // a view that accepts user model, and renders all locations
   tagName: 'ul',
-  model: DD.Models.Collection,
 
-  initialize: function (model, $headEl) {
-    this.collection = model.get("locations");
+  initialize: function (collectionModel, $headEl) {
+    this.collection = collectionModel.get("locations");
     window.collection = this.collection;
     this.$headEl = $headEl;
   },
