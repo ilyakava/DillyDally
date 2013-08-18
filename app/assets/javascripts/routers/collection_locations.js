@@ -38,7 +38,7 @@ DD.Routers.CollectionLocations = Backbone.Router.extend({
 
     if (that.activeView) { that.activeView.cancel(); }
 
-    var MyLocationsView = new DD.Views.LocationsList(that.userSavedData);
+    var MyLocationsView = new XX.Views.LocationsList(that.userSavedData);
  
     if (that.firstLoad) {
       that.$contentEl.html(MyLocationsView.render().$el);

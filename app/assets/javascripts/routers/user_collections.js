@@ -27,7 +27,7 @@ DD.Routers.Collections = Backbone.Router.extend({
 
     var locationsInCollection = that.userSavedData.get(id).get("locations");
 
-    var locationsListView = new DD.Views.LocationsList(
+    var locationsListView = new XX.Views.LocationsList(
       locationsInCollection,
       that.$headEl
     );
