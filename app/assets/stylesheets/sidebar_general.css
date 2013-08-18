@@ -96,17 +96,12 @@
     position: fixed;
     top: 70px;
     right: 20px;
-    /* background-color: rgb(130,206,209); */
     overflow-x: hidden;
     z-index: 10;
 }
 #side-bar .tabs > li {
     font-size: 14px;
     float: left;
-    border-right: rgb(26,79,81) 1px solid;
-    border-bottom: rgb(26,79,81) 1px solid;
-    background-color: rgb(130,206,209);
-    border-top: rgb(26,79,81) 1px solid;
 }
 
 #side-bar .tabs > li:last-child {
@@ -119,9 +114,18 @@
 }
 
 #side-bar .tabs > li > a {
-    color: white;
+    border-right: rgb(26,79,81) 1px solid;
+    border-bottom: rgb(26,79,81) 1px solid;
+    border-top: rgb(26,79,81) 1px solid;
+    background-color: rgb(90,143,145);
+    color: rgb(130,206,209);
     padding: 16px;
     display: block;
+}
+
+#side-bar .tabs > li > a:hover {
+    background-color: rgb(63,101,102);
+    color: rgb(130,206,209);
 }
 
 
