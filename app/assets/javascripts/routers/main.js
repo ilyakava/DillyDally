@@ -21,8 +21,9 @@ DD.Routers.Main = Backbone.Router.extend({
 
     "user-friends": "userFriends",
     "user-friends/search-users": "searchUsers",
+    "user-friends/location/:id": "friendLocations",
 
-    "collection-locations/:colId": "collectionLocations"
+    "collection-locations/:colId/*name": "collectionLocations"
   },
 
   userCollections: function () {
@@ -154,14 +155,34 @@ DD.Routers.Main = Backbone.Router.extend({
     this.$contentEl.html(userSearchView.render().$el);
   },
 
-  collectionLocations: function (collectionId) {
-    // nav bar triggered view
+  friendLocations: function (friendId) {
     var that = this;
 
     if (that.activeView) { that.activeView.cancel(); }
 
-    // get around parent id problem by including the collection
+    // get around parent id problem by including the user
     // in the locations fetch
+    new DD.Models.User({id: collectionId}).fetch({
+      success: function (model, response) {
+        var collectionLocationsView = new DD.Views.CollectionLocations(
+          new DD.Collections.Locations(response),
+          that.$headEl
+        );
+        that.$contentEl.html(collectionLocationsView.render().$el);
+        that.activeView = collectionLocationsView;
+      }
+    });
+  },
+
+  collectionLocations: function (collectionId, name) {
+    // nav bar triggered view
+    var that = this;
+    var parent = _.humanize(decodeURIComponent(name));
+
+    if (that.activeView) { that.activeView.cancel(); }
+
+    // get around parent id problem by including the collection
+    // name in the url
     new DD.Models.Collection({id: collectionId}).fetch({
       success: function (model, response) {
         var collectionLocationsView = new DD.Views.CollectionLocations(
