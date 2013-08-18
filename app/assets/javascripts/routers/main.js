@@ -17,6 +17,8 @@ DD.Routers.Main = Backbone.Router.extend({
     "user-locations": "userLocations",
     "user-locations/location-details/:locId": "locationDetails",
 
+    // "collection-details/:colId": "collectionDetails",
+
     "user-friends": "userFriends",
     "user-friends/search-users": "searchUsers",
     "user-friends/:friendId/locations": "friendLocations",

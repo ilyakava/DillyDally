@@ -1,17 +1,20 @@
 <% console.log("what follows is a user you followed!") %>
-<% console.log(user); %>
 
 <ul class="user">
 	<li class="name"><%= user.get("email") %></li>
 	<!-- <li><a href="#/detail-view/<%= user.get("id") %>">(user Detail View)</a></li> -->
-	<li>
-		<a href="#/user-friends/<%= user.get("id") %>/locations">
-			(See the Locations this user added)
+	<li class="friend-locations-link">
+		<a
+			href="#/user-friends/<%= user.get("id") %>/locations"
+			class="friend-locations-link">
+			See the Locations this user added
 		</a>
 	</li>
-	<li>
-		<a href="#/user-friends/<%= user.get("id") %>/collections">
-			(See this user's Collections)
+	<li class="friend-collections-link">
+		<a
+			href="#/user-friends/<%= user.get("id") %>/collections"
+			class="friend-collections-link">
+			See this user's Collections
 		</a>
 	</li>
 </ul>
