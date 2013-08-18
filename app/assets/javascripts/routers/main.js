@@ -162,14 +162,14 @@ DD.Routers.Main = Backbone.Router.extend({
 
     // get around parent id problem by including the user
     // in the locations fetch
-    new DD.Models.User({id: collectionId}).fetch({
+    new DD.Models.User({id: friendId}).fetch({
       success: function (model, response) {
-        var collectionLocationsView = new DD.Views.CollectionLocations(
-          new DD.Collections.Locations(response),
+        var userLocationsView = new DD.Views.UserLocations(
+          new DD.Collections.Users(response).first(),
           that.$headEl
         );
-        that.$contentEl.html(collectionLocationsView.render().$el);
-        that.activeView = collectionLocationsView;
+        that.$contentEl.html(userLocationsView.render().$el);
+        that.activeView = userLocationsView;
       }
     });
   },
