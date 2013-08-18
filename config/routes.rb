@@ -11,7 +11,7 @@ DillyDally::Application.routes.draw do
 
   resources :collections, only: [:index, :create, :show]
 
-  resources :friends, only: :index
+  resources :friends, only: [:index, :show]
 
   resources :current_users, only: [:index]
 
