@@ -38,8 +38,7 @@ DD.Routers.Main = Backbone.Router.extend({
     this.$headEl.html(userColHead.render().$el);
 
     var MyCollectionsView = new DD.Views.UserCollections(
-      that.userData,
-      that.$headEl
+      that.userData
     );
 
     if (that.firstLoad) {
@@ -85,8 +84,7 @@ DD.Routers.Main = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.UserLocations(
-      that.userData,
-      that.$headEl
+      that.userData
     );
  
     MyLocationsView.collection.fetch({

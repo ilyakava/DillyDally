@@ -6,6 +6,7 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
   initialize: function (collectionModel, $headEl) {
     this.model = collectionModel;
     this.collection = collectionModel.get("locations");
+    // only present when not viewing your own locations
     this.$headEl = $headEl;
   },
 
