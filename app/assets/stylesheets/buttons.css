@@ -12,7 +12,8 @@ button.remove-comment-form,
 a.collection-locations-link,
 a.friend-locations-link,
 a.friend-collections-link,
-a.location-detail-link {
+a.location-detail-link,
+button.add-collection {
 	position: relative;
 	margin: 3px 5px 3px 0;
 	padding: 3px 8px 3px 8px;

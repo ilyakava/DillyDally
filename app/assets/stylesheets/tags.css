@@ -1,7 +1,8 @@
 /* Pretty much a copy of the chosen harvest styles */
 
 
-dt.single-tag {
+dt.single-tag,
+dt.single-collection {
 	position: relative;
 	margin: 3px 5px 3px 0;
 	padding: 3px 20px 3px 5px;
@@ -17,13 +18,15 @@ dt.single-tag {
 	float: left;
 }
 
-dt.single-tag > span {
+dt.single-tag,
+dt.single-collection > span {
 	line-height: 13px;
 	cursor: default;
 	color: #333;
 }
 
-dt.single-tag > button.delete-tag {
+dt.single-tag > button.delete-tag,
+dt.single-collection > button.delete-collection {
 	position: absolute;
 	top: 6px;
 	right: 4px;
@@ -35,6 +38,7 @@ dt.single-tag > button.delete-tag {
 	cursor: pointer;
 }
 
-dt.single-tag > button.delete-tag:hover {
+dt.single-tag > button.delete-tag:hover,
+dt.single-collection > button.delete-collection:hover {
 	background-position: -42px -10px;
 }
