@@ -23,6 +23,7 @@ class FriendsController < ApplicationController
 				:visitors,
 				:savers,
 				:creator,
+				:collections,
 				comments: [
 					:author	
 				],
@@ -55,7 +56,8 @@ class FriendsController < ApplicationController
 						:user_visits,
 						:visitors,
 						:savers,
-						:creator
+						:creator,
+						:collections,
 					],
 					methods: [
 						:categories_as_array
