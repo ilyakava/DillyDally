@@ -13,7 +13,9 @@ a.collection-locations-link,
 a.friend-locations-link,
 a.friend-collections-link,
 a.location-detail-link,
-button.add-collection {
+button.add-collection,
+button.remove-collection-form,
+input#submit-collections {
 	position: relative;
 	margin: 3px 5px 3px 0;
 	padding: 3px 8px 3px 8px;
