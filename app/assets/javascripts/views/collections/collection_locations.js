@@ -38,7 +38,7 @@ DD.Views.CollectionLocations = DD.Views.ListHelper.extend({
     // uses this View Instance
     var html = '<li class="collection-locations"><a id="collection-locations"' +
       'href="#/collection-locations/' + this.model.get('id') +
-      '">Locations in Collection</a></li>';
+      '">Collection Contents</a></li>';
 
     if (boolean &! ($('#collection-locations').length)) {
       this.$headEl.find('ul.tabs').append(html);
