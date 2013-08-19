@@ -21,7 +21,12 @@
 		</dl>
 	</li>
 
-	<li class="collection-display">Collections Included In:
+	<li class="collection-display">
+		<% if (location.get("collections").length) { %>
+			Collections Included In:
+		<% } else { %>
+			Not Included In Any Collections Yet
+		<% } %>
 		<dl class="group">
 			<% (location.get("collections")).each(function (collection) { %>
 				<dt class="single-collection">
