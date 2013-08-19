@@ -11,6 +11,7 @@
 			Location Detail View
 		</a>
 	</li>
+	<li><button class="add-comment">Add a Comment</button></li>
 	<li><%= location.get("address") %></li>
 	<li class="categories">Categories:
 		<dl class="group">
@@ -24,7 +25,7 @@
 		<dl class="group">
 			<% (location.get("collections")).each(function (collection) { %>
 				<dt class="single-collection">
-					<span><%= collection.get("name") %></span>
+					<span><%= _.humanize(collection.get("name")) %></span>
 					<% if (collection.get("user_id") == current_user.id) { %>
 						<%= '<button data-id="' + collection.get("id") + '" class="delete-collection">X</button>' %>
 					<% } %>
@@ -32,5 +33,5 @@
 			<% }) %>
 		</dl>
 	</li>
-	<li><button class="add-comment">Add a Comment</button></li>
+	<li><button class="add-collection">Add a Collection</button></li>
 </ul>
