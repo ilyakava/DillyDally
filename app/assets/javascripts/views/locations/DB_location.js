@@ -5,7 +5,21 @@ DD.Views.LocationAsListItem = Backbone.View.extend({
 
   events: {
     "click button.add-comment": "addComment",
-    "click button.set-map-center": "centerMap"
+    "click button.set-map-center": "centerMap",
+    "click button.add-collection": "openCollectionForm"
+  },
+
+  openCollectionForm: function () {
+    console.log("openning addCollection form!");
+    var that = this;
+    var collectionFormView = new DD.Views.CollectionForm({
+      model: that.model
+    });
+    // ensure only one tag form is rendered at a time
+    if (!this.$el.find("select[name=location\\[collection_ids\\]]").length) {
+      that.$el.find('button.add-collection').
+        parent().after(collectionFormView.render().$el);
+    }
   },
 
   addComment: function () {
