@@ -4,7 +4,7 @@
 		<!-- Preparing for serializeArray(), which will preserve name+value -->
 		<!-- unfortunately, option collections don't take a name -->
 		<option
-			value="<%= collection.get("id") %>"
+			value="<%= collection.get("id") %>|<%= collection.get("name") %>"
 			<% if (disabledChoices.findWhere({id: collection.get("id")})) { %>
 				<%= ' disabled="disabled"' %>
 			<% } %>

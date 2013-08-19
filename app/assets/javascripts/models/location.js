@@ -28,6 +28,11 @@ DD.Models.Location = Backbone.Model.extend({
     (response["location_tags"]).each(function (location_tag) {
       location_tag.set("tag", new DD.Models.Tag(location_tag.get("tag")));
     });
+
+    response["collection_locations"] = new DD.Collections.CollectionLocations(response["collection_locations"]);
+    (response["collection_locations"]).each(function (collection_location) {
+      collection_location.set("collection", new DD.Models.Collection(collection_location.get("collection")));
+    });
     
     response["collections"] = new DD.Collections.Collections(response["collections"]);
 

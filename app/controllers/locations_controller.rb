@@ -10,6 +10,7 @@ class LocationsController < ApplicationController
 			:savers,
 			:creator,
 			:collections,
+			:collection_locations,
 			comments: [
 				:author	
 			],
@@ -38,6 +39,7 @@ class LocationsController < ApplicationController
 				:savers,
 				:creator,
 				:collections,
+				:collection_locations,
 			],
 			methods: [
 				:categories_as_array

@@ -1,0 +1,1 @@
+DD.Models.CollectionLocation = Backbone.Model.extend({});

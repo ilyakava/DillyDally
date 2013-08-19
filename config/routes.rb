@@ -5,6 +5,7 @@ DillyDally::Application.routes.draw do
   resources :comments, only: [:index, :create]
   resources :user_visits, only: [:destroy, :create]
   resources :location_tags, only: [:destroy, :create]
+  resources :collection_locations, only: [:destroy, :create]
   resources :tags, only: [:create]
 
   resources :friendships, only: [:create]
