@@ -19,10 +19,46 @@ class LocationsController < ApplicationController
 	end
 
 	def show
-		@location = Location.find(params[:id])
+		@location = Location.includes(
+			:categories,
+			:user_visits,
+			:visitors,
+			:savers,
+			:creator,
+			:collections,
+			comments: [
+				:author	
+			],
+			location_tags: [
+				:tag
+			]
+		).find(params[:id])
+
 		@locations_json = @location.to_json(
-			methods: [:categories_as_array],
-			include: [{comments: { include: :author }}, {location_tags: { include: :tag }}, :user_visits, :visitors, :savers, :creator]
+			include: [
+				{
+					comments: {
+						include: [
+							:author
+						]
+					}
+				},
+				{
+					location_tags: {
+						include: [
+							:tag
+						]
+					}
+				},
+				:user_visits,
+				:visitors,
+				:savers,
+				:creator,
+				:collections,
+			],
+			methods: [
+				:categories_as_array
+			]	
 		)
 		respond_to do |format|
 			format.json { render json: @locations_json}
