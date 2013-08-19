@@ -19,5 +19,18 @@
 			<% }) %>
 		</dl>
 	</li>
+
+	<li class="collection-display">Collections Included In:
+		<dl class="group">
+			<% (location.get("collections")).each(function (collection) { %>
+				<dt class="single-collection">
+					<span><%= collection.get("name") %></span>
+					<% if (collection.get("user_id") == current_user.id) { %>
+						<%= '<button data-id="' + collection.get("id") + '" class="delete-collection">X</button>' %>
+					<% } %>
+				</dt>
+			<% }) %>
+		</dl>
+	</li>
 	<li><button class="add-comment">Add a Comment</button></li>
 </ul>

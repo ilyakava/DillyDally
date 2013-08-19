@@ -29,6 +29,9 @@ DD.Models.Location = Backbone.Model.extend({
       location_tag.set("tag", new DD.Models.Tag(location_tag.get("tag")));
     });
     
+    response["collections"] = new DD.Collections.Collections(response["collections"]);
+
+
     return response;
   }
 });
