@@ -3,7 +3,7 @@ DD.Views.CollectionForm = Backbone.View.extend({
 
   events: {
     "click input[type=submit]": "saveTags",
-    "click button.remove-tag-form": "hideForm",
+    "click button.remove-collection-form": "hideForm",
     "keyup input[type=text].default": "createNewOption"
   },
 
@@ -49,7 +49,7 @@ DD.Views.CollectionForm = Backbone.View.extend({
 
   hideForm: function () {
     $(this.el).undelegate('input[type=submit]', 'click');
-    $(this.el).undelegate('button.remove-tag-form', 'click');
+    $(this.el).undelegate('button.remove-collection-form', 'click');
     this.$el.html("");
   },
 
