@@ -3,6 +3,12 @@ DD.Views.LocationAsListItem = Backbone.View.extend({
   tagName: 'li',
   className: 'location',
 
+  initialize: function () {
+    var that = this;
+    var renderCallback = that.render.bind(that);
+    that.listenTo(that.model.get("collection_locations"), "change add remove", renderCallback);
+  },
+
   events: {
     "click button.add-comment": "addComment",
     "click button.set-map-center": "centerMap",

@@ -28,12 +28,12 @@
 			Not Included In Any Collections Yet
 		<% } %>
 		<dl class="group">
-			<% (location.get("collections")).each(function (collection) { %>
+			<% (location.get("collection_locations")).each(function (collection_location) { %>
 				<dt class="single-collection">
-					<span><%= _.humanize(collection.get("name")) %></span>
-					<% if (collection.get("user_id") == current_user.id) { %>
-						<%= '<button data-id="' + collection.get("id") + '" class="delete-collection">X</button>' %>
-					<% } %>
+					<span><%= _.humanize(collection_location.get("collection").get("name")) %></span>
+					
+					<%= '<button data-id="' + collection_location.get("collection_id") + '" class="delete-collection">X</button>' %>
+					
 				</dt>
 			<% }) %>
 		</dl>

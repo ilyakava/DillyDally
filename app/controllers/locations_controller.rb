@@ -10,7 +10,9 @@ class LocationsController < ApplicationController
 			:savers,
 			:creator,
 			:collections,
-			:collection_locations,
+			collection_locations: [
+				:collection
+			],
 			comments: [
 				:author	
 			],
@@ -39,7 +41,13 @@ class LocationsController < ApplicationController
 				:savers,
 				:creator,
 				:collections,
-				:collection_locations,
+				{
+					collection_locations: {
+						include: [
+							:collection
+						]
+					}
+				},
 			],
 			methods: [
 				:categories_as_array
