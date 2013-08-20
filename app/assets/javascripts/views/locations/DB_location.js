@@ -12,7 +12,8 @@ DD.Views.LocationAsListItem = Backbone.View.extend({
   events: {
     "click button.add-comment": "addComment",
     "click button.set-map-center": "centerMap",
-    "click button.add-collection": "openCollectionForm"
+    "click button.add-collection": "openCollectionForm",
+    "click button.delete-collection": "destroyCollectionLocs"
   },
 
   openCollectionForm: function () {
@@ -47,6 +48,11 @@ DD.Views.LocationAsListItem = Backbone.View.extend({
     that.$el.html(renderedLocation);
 
     return that;
+  },
+
+  destroyCollectionLocs: function (event) {
+    var collectionLocId = $(event.target).attr('data-id');
+    this.model.get("collection_locations").get(collectionLocId).destroy();
   },
 
   centerMap: function () {
