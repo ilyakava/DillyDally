@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
 							:collection
 						]
 					}
-				},
+				}
 			],
 			methods: [
 				:categories_as_array
