@@ -25,9 +25,7 @@ DD.Views.CollectionForm = Backbone.View.extend({
     var collectionChoices = new DD.Collections.Collections(
       JSON.parse($('#bootstrapped-collection-choices').html())
     );
-    var disabledChoices = new DD.Collections.Collections(
-      that.model.get("collections")
-    );
+    var disabledChoices = that.model.get("collections");
     
     var form = JST['collections/form']({
       choices: collectionChoices,
