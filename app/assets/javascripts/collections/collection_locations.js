@@ -11,7 +11,10 @@ DD.Collections.CollectionLocations = Backbone.Collection.extend({
       that.create({
         location_id: location_id,
         collection_id: id,
-        collection: new DD.Models.Collection({name: name}),
+        collection: new DD.Models.Collection({
+          name: name,
+          user_id: current_user.id
+        }),
         user_id: current_user.id
       });
     });

@@ -31,12 +31,14 @@
 			<% (location.get("collection_locations")).each(function (collection_location) { %>
 				<dt class="single-collection">
 					<span><%= _.humanize(collection_location.get("collection").get("name")) %></span>
-					
-					<%= '<button data-id="' + collection_location.get("collection_id") + '" class="delete-collection">X</button>' %>
-					
+					<% if (collection_location.get("collection").get("user_id") == current_user.id) { %>
+						<%= '<button data-id="' + collection_location.get("collection_id") + '" class="delete-collection">X</button>' %>
+					<% } %>
 				</dt>
 			<% }) %>
 		</dl>
 	</li>
-	<li><button class="add-collection">Add a Collection</button></li>
+	<% if (location.get("savers").findWhere({id: current_user.id})) { %>
+		<li><button class="add-collection">Add a Collection</button></li>
+	<% } %>
 </ul>
