@@ -103,7 +103,13 @@ By the end of this phase:
 	* friend detail view
 * collections
 	* collection detail view
-* ability to edit collections that locations belong to, just like tags
+* Buttons: Map View, Details, Add Comment
+	* "Add to collection"
+* Not as visible categories
+* tab highlighting on recenter map
+	* choice highlighting on recenter map
+* "Searching within 50 meters of map radius"
+
 
 
 ##Fix later
