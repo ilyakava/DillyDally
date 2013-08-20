@@ -55,22 +55,23 @@ DD.Views.CollectionForm = Backbone.View.extend({
     var that = this;
     //Enable new subjects to be added to the options list
     var newOptionValue = $(event.target).val();
-    var isNewOption = !($('option').filter(function (tagOption) {
-      return $(tagOption).text() == newOptionValue;
+    var isNewOption = !($('option').filter(function (existingOption) {
+      return $(existingOption).text() == newOptionValue;
     })).length;
     
     if (event.keyCode === 13 && isNewOption && (newOptionValue.length > 0)) {
-      new DD.Models.Tag({name: newOptionValue}).save({}, {
-        success: function (model, response) {
-          var html = '<option value="' + response.id + '|' +
-            response.name + '"' + ' selected="selected"' + '>' +
-            response.name + '</option>';
+      var response = that.model.get("collections").create({name: newOptionValue});
+      // new DD.Models.Collection({name: newOptionValue}).save({}, {
+      //   success: function (model, response) {
+          var html = '<option value="' + response.get("id") + '|' +
+            response.get("name") + '"' + ' selected="selected"' + '>' +
+            response.get("name") + '</option>';
             
-          var options = that.$el.find("select[name=location\\[tag_ids\\]]");
+          var options = that.$el.find("select[name=location\\[collection_ids\\]]");
           options.append(html);
           options.trigger("chosen:updated");
-        }
-      });
+        // }
+      // });
     }
   }
 });
