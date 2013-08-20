@@ -8,9 +8,6 @@ DD.Collections.CollectionLocations = Backbone.Collection.extend({
       var id = object["value"].split("|")[0];
       var name = object["value"].split("|")[1];
 
-      console.log("KAKAKAKAKAKA");
-      console.log(name);
-
       that.create({
         location_id: location_id,
         collection_id: id,
