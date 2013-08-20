@@ -49,14 +49,10 @@ DD.Routers.Main = Backbone.Router.extend({
     if (that.firstLoad) {
       that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
-      // that.userSavedData = MyCollectionsView.collection;
-      // markerManager.multiPolygon(that.userSavedData);
     } else {
       MyCollectionsView.model.fetch({
         success: function () {
-          // that.userSavedData = MyCollectionsView.collection;
           that.$contentEl.html(MyCollectionsView.render().$el);
-          // markerManager.multiPolygon(that.userSavedData);
         }
       });
     }
@@ -104,7 +100,7 @@ DD.Routers.Main = Backbone.Router.extend({
         that.$contentEl.html(MyLocationsView.render().$el);
       // that.$contentEl.prepend("<h3>" + that.pageName + "</h3>");
       // this.userSavedData = MyLocationsView.collection;
-      // markerManager.myLocations(that.userSavedData);
+        markerManager.myLocations(MyLocationsView.collection);
 
     }});
     
@@ -130,6 +126,7 @@ DD.Routers.Main = Backbone.Router.extend({
         locationDetailView.render();
         that.activeView = locationDetailView;
         that.tabsResetClass('location-details');
+        markerManager.mapCenter(locationDetailView.model);
       }
     });
   },
@@ -189,6 +186,7 @@ DD.Routers.Main = Backbone.Router.extend({
         that.$contentEl.html(userLocationsView.render().$el);
         that.activeView = userLocationsView;
         that.tabsResetClass('friends-locations');
+        markerManager.myLocations(userLocationsView.collection);
       }
     });
   },
@@ -235,6 +233,7 @@ DD.Routers.Main = Backbone.Router.extend({
         that.$contentEl.html(collectionLocationsView.render().$el);
         that.activeView = collectionLocationsView;
         that.tabsResetClass('collection-locations');
+        markerManager.myLocations(collectionLocationsView.collection);
       }
     });
 
@@ -253,6 +252,7 @@ DD.Routers.Main = Backbone.Router.extend({
 
     that.activeView = locationSearchView;
     that.tabsResetClass('search-nearby');
+    markerManager.myLocations(locationSearchView.collection);
   },
 
   recenterBySearch: function () {

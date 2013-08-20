@@ -31,22 +31,20 @@ myMap = (function () {
   };
 
 
-  // MarkerManager.prototype.singlePolygon = function (collection) {
-  //   var that = this;
-  //   if (this.myMultiPolygon) {
-  //     _(that.myMultiPolygon).each(function (polygon) {
-  //       map.removeLayer(polygon);
-  //     });
-  //   }
-  //   if (collection) {
-  //     var latlngs = collection.get("locations").map(function (location) {
-  //       return new L.LatLng(location.get("lat"), location.get("lng"));
-  //     });
+  MarkerManager.prototype.singlePolygon = function (collection) {
+    var that = this;
+    if (that.mySinglePolygon) {
+      map.removeLayer(that.mySinglePolygon);
+    }
+    if (collection) {
+      var latlngs = collection.get("locations").map(function (location) {
+        return new L.LatLng(location.get("lat"), location.get("lng"));
+      });
 
-  //     that.mySinglePolygon = new L.Polygon(latlngs, {color: '#8A2E56'});
-  //   }
-  //   that.mySinglePolygon.addTo(map);
-  // };
+      that.mySinglePolygon = new L.Polygon(latlngs, {color: '#8A2E56'});
+      that.mySinglePolygon.addTo(map);
+    }
+  };
 
   MarkerManager.prototype.multiPolygon = function (collectionCollection) {
     var that = this;
@@ -217,7 +215,7 @@ myMap = (function () {
 
   MarkerManager.prototype.reset = function () {
     this.multiPolygon();
-    // this.singlePolygon();
+    this.singlePolygon();
     this.mapCenter();
     this.nearby();
     this.myLocations();

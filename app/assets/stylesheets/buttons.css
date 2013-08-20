@@ -15,7 +15,8 @@ a.friend-collections-link,
 a.location-detail-link,
 button.add-collection,
 button.remove-collection-form,
-input#submit-collections {
+input#submit-collections,
+button.show-on-map {
 	position: relative;
 	margin: 3px 5px 3px 0;
 	padding: 3px 8px 3px 8px;

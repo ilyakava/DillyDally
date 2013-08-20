@@ -5,7 +5,7 @@ DD.Views.CollectionAsListItem = Backbone.View.extend({
 
   events: {
     // "click button.add-comment": "addComment",
-    // "click button.set-map-center": "centerMap"
+    "click button.show-on-map": "drawPolygon"
   },
 
   addComment: function () {
@@ -30,9 +30,9 @@ DD.Views.CollectionAsListItem = Backbone.View.extend({
     return that;
   },
 
-  centerMap: function () {
-    // TODO
+  drawPolygon: function () {
     var that = this;
-    myMap.moveMap(that.model);
+    markerManager.reset();
+    markerManager.singlePolygon(that.model);
   }
 });

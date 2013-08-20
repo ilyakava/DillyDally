@@ -14,20 +14,20 @@ DD.Views.UserFriends = DD.Views.ListHelper.extend({
   render: function () {
     var that = this;
     var friends = that.model.get("friends");
-    if (!friends.length) {
-      that.$el.append('<li class="location"><h3>No Users Followed Yet...</h3></li>');
-    } else {
       friends.fetch({
         url: 'friends',
         success: function (collection, response) {
-          new DD.Collections.Users(response).each(function (user) {
-            singleUserView = new DD.Views.DBUser( {model: user} );
-            that.$el.append(singleUserView.render().$el);
-            console.log("rendering a view for a user");
-          });
+          if (!friends.length) {
+            that.$el.append('<li class="location"><h3>No Users Followed Yet...</h3></li>');
+          } else {
+            new DD.Collections.Users(response).each(function (user) {
+              singleUserView = new DD.Views.DBUser( {model: user} );
+              that.$el.append(singleUserView.render().$el);
+              console.log("rendering a view for a user");
+            });
+          }
         }
       });
-    }
     that.$el.prepend(that.parentUserInfo.bind(that, 'Friends')());
     return this;
   },
