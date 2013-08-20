@@ -9,7 +9,8 @@ DD.Views.LocationSearch = Backbone.View.extend({
   },
 
   events: {
-    "click button#search-nearby": "searchNearby"
+    "click button#search-nearby": "searchNearbyClick",
+    "keyup input[type=text].search-nearby-box": "searchNearbyEnter"
   },
 
   render: function () {
@@ -48,9 +49,20 @@ DD.Views.LocationSearch = Backbone.View.extend({
     markerManager.nearby();
   },
 
-  searchNearby: function () {
+  searchNearbyClick: function () {
     var that = this;
-    var searchPhrase = $(event.target).prev().val();
+    that.searchNearbyWith($(event.target).prev().val());
+  },
+
+  searchNearbyEnter: function (event) {
+    var that = this;
+    if (event.keyCode === 13) {
+      that.searchNearbyWith($(event.target).val());
+    }
+  },
+
+  searchNearbyWith: function (searchPhrase) {
+    var that = this;
 
     // var tempLat = 40.72264044368007;
     // var tempLng = -73.99240493774414;

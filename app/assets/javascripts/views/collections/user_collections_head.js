@@ -2,7 +2,15 @@
 DD.Views.UserCollectionsHead = Backbone.View.extend({
 
   events: {
-    "click button#recenter": "didYouMean"
+    "click button#recenter": "didYouMean",
+    "keyup input[type=text].recenter-box": "didYouMeanEnter"
+  },
+
+  didYouMeanEnter: function (event) {
+    var that = this;
+    if (event.keyCode === 13) {
+      that.didYouMean();
+    }
   },
 
   didYouMean: function () {
