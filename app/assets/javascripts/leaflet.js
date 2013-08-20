@@ -27,15 +27,32 @@ myMap = (function () {
     this.nearbyMarkers = null;
     this.myLocationsMarkers = null;
     this.myMultiPolygon = null;
+    this.mySinglePolygon = null;
   };
+
+
+  // MarkerManager.prototype.singlePolygon = function (collection) {
+  //   var that = this;
+  //   if (this.myMultiPolygon) {
+  //     _(that.myMultiPolygon).each(function (polygon) {
+  //       map.removeLayer(polygon);
+  //     });
+  //   }
+  //   if (collection) {
+  //     var latlngs = collection.get("locations").map(function (location) {
+  //       return new L.LatLng(location.get("lat"), location.get("lng"));
+  //     });
+
+  //     that.mySinglePolygon = new L.Polygon(latlngs, {color: '#8A2E56'});
+  //   }
+  //   that.mySinglePolygon.addTo(map);
+  // };
 
   MarkerManager.prototype.multiPolygon = function (collectionCollection) {
     var that = this;
-    // if (this.myMultiPolygon) {
-    //   _(that.myMultiPolygon).each(function (polygon) {
-    //     map.removeLayer(polygon);
-    //   });
-    // }
+    if (this.myMultiPolygon) {
+      map.removeLayer(that.myMultiPolygon);
+    }
     if (collectionCollection) {
       var latlngs = collectionCollection.map(function (collection) {
         return collection.get("locations").map(function (location) {
@@ -43,14 +60,13 @@ myMap = (function () {
         });
       });
 
-      _(latlngs).map(function (collection) {
-        var l = new L.Polygon(collection, {color: '#8A2E56'});
-        l.addTo(map);
-        return l;
-      });
-      // that.myMultiPolygon = latlngs;
+      // var temp = _(latlngs).map(function (collection) {
+      //   var l = new L.Polygon(collection, {color: '#8A2E56'});
+      //   return l;
+      // });
+      that.myMultiPolygon = new L.MultiPolygon(latlngs);
+      that.myMultiPolygon.addTo(map);
     }
-    // new L.MultiPolygon(latlngs).addTo(map);
   };
 
   MarkerManager.prototype.mapCenter = function (locModel) {
@@ -58,30 +74,33 @@ myMap = (function () {
     if (this.currCenterMarker) {
       map.removeLayer(that.currCenterMarker);
     }
-    // expects BB location object
-    // Best with global search results - i.e. map centering
-    var lng = locModel.get("lng");
-    var lat = locModel.get("lat");
-    var address = locModel.get("address");
-    console.log("adding a basic marker at: " + lat + ", " + lng);
 
-    this.currCenterMarker = L.mapbox.markerLayer({
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        // notice coords are in long, lat here
-        coordinates: [lng, lat]
-      },
-      properties: {
-        title: address,
-        description: 'Map Center',
-        'marker-size': 'large',
-        // my red color rgb(156, 56,  45)
-        'marker-color': '9C382D'
-      }
-    });
-    // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/single-marker/
-    this.currCenterMarker.addTo(map);
+    if (locModel) {
+      // expects BB location object
+      // Best with global search results - i.e. map centering
+      var lng = locModel.get("lng");
+      var lat = locModel.get("lat");
+      var address = locModel.get("address");
+      console.log("adding a basic marker at: " + lat + ", " + lng);
+
+      this.currCenterMarker = L.mapbox.markerLayer({
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          // notice coords are in long, lat here
+          coordinates: [lng, lat]
+        },
+        properties: {
+          title: address,
+          description: 'Map Center',
+          'marker-size': 'large',
+          // my red color rgb(156, 56,  45)
+          'marker-color': '9C382D'
+        }
+      });
+      // more info: http://www.mapbox.com/mapbox.js/example/v1.0.0/single-marker/
+      this.currCenterMarker.addTo(map);
+    }
   };
 
   MarkerManager.prototype.makeMarker = function (locModel, iconType) {
@@ -194,6 +213,15 @@ myMap = (function () {
   // var iconFileHash = {
 
   // }
+
+
+  MarkerManager.prototype.reset = function () {
+    this.multiPolygon();
+    // this.singlePolygon();
+    this.mapCenter();
+    this.nearby();
+    this.myLocations();
+  };
 
   return {
     getRadius: getRadius,

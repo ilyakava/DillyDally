@@ -7,6 +7,7 @@ DD.Routers.Main = Backbone.Router.extend({
     this.firstLoad = true;
 
     window.markerManager = new myMap.MarkerManager();
+
   },
 
   routes: {
@@ -32,6 +33,7 @@ DD.Routers.Main = Backbone.Router.extend({
     // nav bar triggered view
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
 
     // render head of searchbar (tabs and recenter searchbar)
     // Done here because the UserCollections view used is 
@@ -66,6 +68,7 @@ DD.Routers.Main = Backbone.Router.extend({
   newCollection: function () {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
 
     var newCollectionView = new DD.Views.NewCollection({
       model: that.userData
@@ -80,14 +83,15 @@ DD.Routers.Main = Backbone.Router.extend({
   userLocations: function () {
     // nav bar triggered view
     var that = this;
+    // clear nearby search from map
+    // markerManager.nearby();
+    if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
 
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.LocationsHead();
     this.$headEl.html(searchbarHead.render().$el);
 
-    // clear nearby search from map
-    // markerManager.nearby();
-    if (that.activeView) { that.activeView.cancel(); }
 
     var MyLocationsView = new DD.Views.UserLocations(
       that.userData
@@ -114,6 +118,7 @@ DD.Routers.Main = Backbone.Router.extend({
   locationDetails: function (id) {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
 
     that.userData.get("locations").get(id).fetch({
       success: function (model, response) {
@@ -132,14 +137,13 @@ DD.Routers.Main = Backbone.Router.extend({
   userFriends: function () {
     // nav bar triggered view
     var that = this;
-    // markerManager.myLocations();
-    // markerManager.multiPolygon();
+    if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
 
     // render head of searchbar (tabs and recenter searchbar)
     var searchbarHead = new DD.Views.FriendsHead();
     this.$headEl.html(searchbarHead.render().$el);
     
-    if (that.activeView) { that.activeView.cancel(); }
 
     var MyFriendsView = new DD.Views.UserFriends(
       that.userData,
@@ -170,6 +174,8 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
 
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
+
 
     // get around parent id problem by including the user
     // in the locations fetch
@@ -191,6 +197,8 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
 
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
+
 
     // get around parent id problem by including the user
     // in the locations fetch
@@ -213,6 +221,8 @@ DD.Routers.Main = Backbone.Router.extend({
     var that = this;
 
     if (that.activeView) { that.activeView.cancel(); }
+    markerManager.reset();
+
 
     // get around parent id problem by including the collection
     // name in the url
@@ -236,6 +246,7 @@ DD.Routers.Main = Backbone.Router.extend({
   searchNearby: function () {
     var that = this;
     if (that.activeView) { that.activeView.cancel(); }
+    
 
     var locationSearchView = new DD.Views.LocationSearch(that.$contentEl, that.userData.get("locations"));
     that.$contentEl.html(locationSearchView.render().$el);

@@ -22,6 +22,7 @@ DD.Views.UserCollections = DD.Views.ListHelper.extend({
     }
     if (this.$headEl) {this.insertTab(true);}
     that.$el.prepend(that.parentUserInfo.bind(that, 'Collections')());
+    markerManager.multiPolygon(that.collection);
     return this;
   },
 

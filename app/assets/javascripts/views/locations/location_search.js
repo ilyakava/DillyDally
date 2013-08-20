@@ -45,6 +45,7 @@ DD.Views.LocationSearch = Backbone.View.extend({
   cancel: function () {
     console.log("cancelling LocationSearch View...");
     $(this.el).undelegate('button#search-nearby', 'click');
+    markerManager.nearby();
   },
 
   searchNearby: function () {
