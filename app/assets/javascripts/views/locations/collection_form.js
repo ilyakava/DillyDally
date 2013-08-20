@@ -60,18 +60,19 @@ DD.Views.CollectionForm = Backbone.View.extend({
     })).length;
     
     if (event.keyCode === 13 && isNewOption && (newOptionValue.length > 0)) {
-      var response = that.model.get("collections").create({name: newOptionValue});
-      // new DD.Models.Collection({name: newOptionValue}).save({}, {
-      //   success: function (model, response) {
-          var html = '<option value="' + response.get("id") + '|' +
-            response.get("name") + '"' + ' selected="selected"' + '>' +
-            response.get("name") + '</option>';
+      new DD.Models.Collection({name: newOptionValue}).save({}, {
+        success: function (model, response) {
+          var html = '<option value="' + response.id + '|' +
+            response.name + '"' + ' selected="selected"' + '>' +
+            response.name + '</option>';
+
+          that.model.get("collections").add(new DD.Models.Collection(response));
             
           var options = that.$el.find("select[name=location\\[collection_ids\\]]");
           options.append(html);
           options.trigger("chosen:updated");
-        // }
-      // });
+        }
+      });
     }
   }
 });
