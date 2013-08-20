@@ -36,8 +36,15 @@ button.show-on-map {
 	cursor: pointer;
 }
 
-li.collection-locations-link,
-li.location-detail-link {
+li > a.location-detail-link {
+	display: block;
+}
+
+div.location-buttons > li {
+	float: left;
+}
+
+li.collection-locations-link {
 	margin: 8px 0;
 }
 

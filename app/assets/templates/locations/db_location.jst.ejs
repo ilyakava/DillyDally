@@ -3,15 +3,19 @@
 
 <ul>
 	<li><%= location.get("name") %></li>
-	<li><button class="set-map-center">Center Map</button></li>
-	<li class="location-detail-link">
-		<a
-			href="#/user-locations/location-details/<%= location.get("id") %>"
-			class="location-detail-link">
-			Location Detail View
-		</a>
-	</li>
-	<li><button class="add-comment">Add a Comment</button></li>
+	
+	<div class="location-buttons group">
+		<li><button class="set-map-center">Map View</button></li>
+		<li class="location-detail-link">
+			<a
+				href="#/user-locations/location-details/<%= location.get("id") %>"
+				class="location-detail-link">
+				Details
+			</a>
+		</li>
+		<li><button class="add-comment">Add Comment</button></li>
+	</div>
+
 	<li><%= location.get("address") %></li>
 	<li class="categories">Categories:
 		<dl class="group">
