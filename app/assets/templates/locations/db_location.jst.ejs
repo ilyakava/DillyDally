@@ -26,16 +26,13 @@
 	</li>
 
 	<li class="collection-display">
-		<% if (location.get("collections").length) { %>
+		<% if (location.get("collection_locations").length) { %>
 			Collections Included In:
 		<% } else { %>
 			Not Included In Any Collections Yet
 		<% } %>
 		<dl class="group">
 			<% (location.get("collection_locations")).each(function (collection_location) { %>
-				<% console.log("HAHAHAHA") %>
-				<% console.log(collection_location.get("collection")) %>
-				<% console.log(location) %>
 				<dt class="single-collection">
 					<span><%= _.humanize(collection_location.get("collection").get("name")) %></span>
 					<% if (collection_location.get("collection").get("user_id") == current_user.id) { %>
