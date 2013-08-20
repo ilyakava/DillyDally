@@ -6,6 +6,7 @@ DD.Routers.Main = Backbone.Router.extend({
     this.userData = new DD.Models.User(userData);
     this.firstLoad = true;
 
+    window.markerManager = new myMap.MarkerManager();
   },
 
   routes: {
@@ -93,6 +94,7 @@ DD.Routers.Main = Backbone.Router.extend({
     );
  
     MyLocationsView.collection.fetch({
+      wait: true,
       success: function (response) {
       
         that.$contentEl.html(MyLocationsView.render().$el);
