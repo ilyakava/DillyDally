@@ -1,4 +1,4 @@
-[DillyDally](www.dillydally.herokuapp.com)
+[DillyDally](http://www.dillydally.herokuapp.com)
 ===
 
 Users create maps of their favorite locations in an area, and share them. The point being that the app stores locations that the user liked, and groups them by location, or in groups that the user chooses. Then, users can share the small maps with each other, and create itineraries together (Chelsea Galeries…eat at Rocket Pig restaurant…walk down highline…coffee at Colombe).
