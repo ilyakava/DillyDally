@@ -38,8 +38,10 @@ DD.Views.LocationSearch = Backbone.View.extend({
       that.$el.find('ul.nearby-search-results').append(singleLocation.render().$el);
     });
 
+    var html = '<li>No results were found on the current map view.' +
+      ' Zoom out to widen your search area.</li>';
     if (!that.collection.length) {
-      that.$el.find('ul.nearby-search-results').append('<li>No Results Found</li>');
+      that.$el.find('ul.nearby-search-results').append(html);
     }
   },
 

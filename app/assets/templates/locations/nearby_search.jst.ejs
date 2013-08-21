@@ -1,5 +1,5 @@
 <ul class="location">
-	<li><a href="#"><%= location.get("name") %></a></li>
+	<li><a class="click-to-center"><%= location.get("name") %></a></li>
 	<li><%= location.get("address") %></li>
 	<% window.near = location %>
 	<li class="categories">Categories:
@@ -9,7 +9,7 @@
 			<% }) %>
 		</dl>
 	</li>
-	<li><a href="#">Detail View</a></li>
+<!-- 	<li><a href="#">Detail View</a></li> -->
 	<% if ((userSavedData).findWhere({lat: location.get("lat")})) { %>
 		<%= "<li>You've Saved this Location</li>" %>
 	<% } else { %>
