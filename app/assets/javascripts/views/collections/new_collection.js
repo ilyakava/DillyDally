@@ -14,11 +14,11 @@ DD.Views.NewCollection = Backbone.View.extend({
     }).save({}, {
       success: function (model, response) {
         that.model.get("collections").add(response);
-        // Link to Navigate to collection show page
-        var targetUrl = 'collections/' + response["id"];
-        var html = '<li><a href="' + targetUrl + '">Click here to' +
-          ' add locations to your new Collection</a></li>';
-        $(event.target).parent().append(html);
+        // Navigate to collection show page
+        var targetUrl = '#/collection-locations/' + response["id"];
+
+        Backbone.history.navigate("#/redirecting");
+        Backbone.history.navigate(targetUrl);
       }
     });
   },
