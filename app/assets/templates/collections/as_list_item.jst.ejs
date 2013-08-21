@@ -16,14 +16,16 @@
 		<% allCategories = allCategories.concat(location.get("categories_as_array")) %>
 	<% }); %>
 
-	<li class="categories">Included Categories:
-		<dl class="group">
-			<% console.log() %>
-			<% _(_.uniq(allCategories)).each(function (category) { %>
-				<dt><%= _(category).humanize() %></dt>
-			<% }) %>
-		</dl>
-	</li>
+	<% if (allCategories.length) { %>
+		<li class="categories">Included Categories:
+			<dl class="group">
+				<% console.log() %>
+				<% _(_.uniq(allCategories)).each(function (category) { %>
+					<dt><%= _(category).humanize() %></dt>
+				<% }) %>
+			</dl>
+		</li>
+	<% } %>
 <!-- 	<li>
 		<a href="/collections/<%= collection.get("id") %>">
 			View Comments/Notes for this Collection
