@@ -73,8 +73,16 @@
     
 }
 
+/* Name of a location in the nearby search results */
 #side-bar #data-list ul.nearby-search-results > li > ul.location > li > a {
     color: white;
+    font: 20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+#side-bar #data-list ul.nearby-search-results > li > ul.location > li > a:hover {
+    font-weight: 500;
 }
 
 #side-bar #data-list ul.nearby-search-results > li > ul.location > li > dl > dt {
