@@ -22,9 +22,6 @@ DD.Views.TagForm = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    var tagChoices = new DD.Collections.Tags(
-      JSON.parse($('#bootstrapped-tag-choices').html())
-    );
     var disabledChoices = new DD.Collections.Tags(
       (that.model.get("location_tags")).map(
         function (locationTag) {
@@ -32,21 +29,28 @@ DD.Views.TagForm = Backbone.View.extend({
         }
       )
     );
-    
-    var form = JST['tags/form']({
-      tagChoices: tagChoices,
-      disabledChoices: disabledChoices
+    var tagChoices = new DD.Collections.Tags(
+      JSON.parse($('#bootstrapped-tag-choices').html())
+    ).fetch({
+      success: function (collection, response) {
+        var form = JST['tags/form']({
+          tagChoices: collection,
+          disabledChoices: disabledChoices
+        });
+        that.$el.html(form);
+        // Chosen Harvest plugin stuff
+        that.$el.find("select[name=location\\[tag_ids\\]]").chosen({
+          allow_single_deselect: true,
+          no_results_text: "Hit ENTER to add the tag:",
+          width: "70%",
+          search_contains: true,
+          placeholder_text_multiple: "Add Some Tags..."
+        });
+      }
     });
-    this.$el.html(form);
 
-    // Chosen Harvest plugin stuff
-    this.$el.find("select[name=location\\[tag_ids\\]]").chosen({
-      allow_single_deselect: true,
-      no_results_text: "Hit ENTER to add the tag:",
-      width: "70%",
-      search_contains: true,
-      placeholder_text_multiple: "Add Some Tags..."
-    });
+    
+
 
     return this;
   },
