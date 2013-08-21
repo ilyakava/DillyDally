@@ -42,16 +42,19 @@ DD.Routers.Main = Backbone.Router.extend({
     var userColHead = new DD.Views.UserCollectionsHead();
     this.$headEl.html(userColHead.render().$el);
 
-    var MyCollectionsView = new DD.Views.UserCollections(
-      that.userData
-    );
 
     if (that.firstLoad) {
+      var MyCollectionsView = new DD.Views.UserCollections(
+        that.userData
+      );
       that.$contentEl.html(MyCollectionsView.render().$el);
       that.firstLoad = false;
     } else {
-      MyCollectionsView.model.fetch({
-        success: function () {
+      that.userData.fetch({
+        success: function (model, response) {
+          var MyCollectionsView = new DD.Views.UserCollections(
+            model
+          );
           that.$contentEl.html(MyCollectionsView.render().$el);
         }
       });
