@@ -107,6 +107,7 @@ By the end of this phase:
 	* collection detail view
 * Buttons: Map View, Details, Add Comment
 	* "Add to collection"
+	* make sure that it adds the option in a way accessible to chosen
 * Not as visible categories
 * tab highlighting on recenter map
 	* choice highlighting on recenter map
