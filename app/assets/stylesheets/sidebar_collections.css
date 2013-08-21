@@ -39,6 +39,13 @@
     color: white;
 }
 
+/* title of collections */
+#data-list li.collection > ul > li.collection-title,
+#data-list li.location > ul > li.location-title {
+    font-size: 21px;
+}
+
+
 
 #side-bar #data-list li.collection > ul > li.categories > dl > dt,
 #side-bar #data-list ul.collection > li.categories > dl > dt {
