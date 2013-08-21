@@ -92,7 +92,10 @@
 /* new collection form aligning */
 ul.new-collection-form > li > input,
 /* new comment form aligning */
-ul.collection > li.new-comment-form > div.comment-form-buttons,
-ul.collection > li.new-comment-form > textarea {
+ul.location > div.new-comment-form > div.comment-form-buttons,
+ul.location > div.new-comment-form > textarea,
+li.location div.new-comment-form > div.comment-form-buttons,
+li.location div.new-comment-form > textarea,
+li.location div.new-comment-form > label {
     display: block;
 }

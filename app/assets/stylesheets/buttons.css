@@ -40,7 +40,7 @@ li > a.location-detail-link {
 	display: block;
 }
 
-div.location-buttons > li {
+ul.location-buttons > li {
 	float: left;
 }
 
