@@ -2,7 +2,8 @@ DD.Views.NearbyResult = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    "click button.persist": "saveModel"
+    "click button.persist": "saveModel",
+    "click a.click-to-center": "centerMap"
   },
   
   saveModel: function () {
@@ -23,5 +24,10 @@ DD.Views.NearbyResult = Backbone.View.extend({
     that.$el.html(renderedLocation);
 
     return that;
+  },
+
+  centerMap: function () {
+    var that = this;
+    myMap.moveMap(that.model);
   }
 });
