@@ -22,25 +22,36 @@ DD.Views.CollectionForm = Backbone.View.extend({
 
   render: function () {
     var that = this;
+
+    var disabledChoices = new DD.Collections.Collections(
+      (that.model.get("collection_locations")).map(
+        function (collectionLocation) {
+          return collectionLocation.get("collection");
+        }
+      )
+    );
+
     var collectionChoices = new DD.Collections.Collections(
       JSON.parse($('#bootstrapped-collection-choices').html())
-    );
-    var disabledChoices = that.model.get("collections");
-    
-    var form = JST['collections/form']({
-      choices: collectionChoices,
-      disabledChoices: disabledChoices
-    });
-    this.$el.html(form);
+    ).fetch({
+      success: function (collection, response) {
+        var form = JST['collections/form']({
+          choices: collection,
+          disabledChoices: disabledChoices
+        });
+        that.$el.html(form);
 
-    // Chosen Harvest plugin stuff
-    this.$el.find("select[name=location\\[collection_ids\\]]").chosen({
-      allow_single_deselect: true,
-      no_results_text: "Hit ENTER to create the collection:",
-      width: "70%",
-      search_contains: true,
-      placeholder_text_multiple: "Add Some Collections..."
+        // Chosen Harvest plugin stuff
+        that.$el.find("select[name=location\\[collection_ids\\]]").chosen({
+          allow_single_deselect: true,
+          no_results_text: "Hit ENTER to create the collection:",
+          width: "70%",
+          search_contains: true,
+          placeholder_text_multiple: "Add Some Collections..."
+        });
+      }
     });
+    
 
     return this;
   },
