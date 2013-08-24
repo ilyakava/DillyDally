@@ -250,7 +250,10 @@ DD.Routers.Main = Backbone.Router.extend({
     if (that.activeView) { that.activeView.cancel(); }
     
 
-    var locationSearchView = new DD.Views.LocationSearch(that.$contentEl, that.userData.get("locations"));
+    var locationSearchView = new DD.Views.LocationSearch(
+      that.$contentEl,
+      that.userData.get("locations")
+    );
     that.$contentEl.html(locationSearchView.render().$el);
 
     that.activeView = locationSearchView;
