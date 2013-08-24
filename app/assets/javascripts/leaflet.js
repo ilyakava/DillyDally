@@ -1,10 +1,21 @@
 myMap = (function () {
 
+  var zoomOut = function () {
+    if (map.getZoom() >= 13) {
+      map.zoomOut();
+    }
+  };
+
   var getRadius = function () {
     console.log("getting radius from the map on the page!");
     var mapBounds = map.getBounds();
     var degreeRadius = Math.abs(mapBounds.getCenter().lat) -
       Math.abs(mapBounds.getNorthEast().lat);
+
+    // used to get more results from google on infinite scroll
+    if (map.getZoom() < 13) {
+      degreeRadius += (Math.random() / 5);
+    }
     // convert to meters
     return parseInt(Math.abs(degreeRadius * 111000), 10);
   };
@@ -125,6 +136,11 @@ myMap = (function () {
     );
   };
 
+  MarkerManager.prototype.testCoords = function (lat, lng) {
+    var test = new DD.Models.Location({lat: lat, lng: lng, name: "test"});
+    this.makeMarker(test).addTo(map);
+  };
+
   MarkerManager.prototype.nearby = function (locCollection) {
     var that = this;
     if (this.nearbyMarkers) {
@@ -224,6 +240,7 @@ myMap = (function () {
   return {
     getRadius: getRadius,
     moveMap: moveMap,
+    zoomOut: zoomOut,
     MarkerManager: MarkerManager
   };
 
