@@ -21,18 +21,22 @@ DD.Collections.Locations = Backbone.Collection.extend({
 
   parseGooglePlaces: function (gpObjArray, collectionId) {
     var that = this;
-    var index = 0;
     _(gpObjArray).each(function (locObj) {
-      index++;
-      that.add({
-        myId: index,
-        address: locObj.vicinity,
-        name: locObj.name,
-        categories: locObj.types,
-        lat: locObj.geometry.location.lat,
-        lng: locObj.geometry.location.lng,
-        collection_id: collectionId
-      });
+      var lat = locObj.geometry.location.lat;
+      var lng = locObj.geometry.location.lng;
+
+      // findWhere used because google places may add to the nearbyLocs
+      // collection upon additional load for infinite scroll
+      if (!that.findWhere({lat: lat, lng: lng})) {
+        that.add({
+          address: locObj.vicinity,
+          name: locObj.name,
+          categories: locObj.types,
+          lat: lat,
+          lng: lng,
+          collection_id: collectionId
+        });
+      }
     });
   }
 });
