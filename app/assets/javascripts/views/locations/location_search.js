@@ -6,11 +6,14 @@ DD.Views.LocationSearch = Backbone.View.extend({
     this.collection = new DD.Collections.Locations();
     this.userSavedData = userSavedData;
     this.collectionId = collectionId;
+    that.searchPhrase = null;
+
+    $contentEl.parent().bind("scroll", that.checkScroll.bind(that));
   },
 
   events: {
     "click button#search-nearby": "searchNearbyClick",
-    "keyup input[type=text].search-nearby-box": "searchNearbyEnter"
+    "keyup input[type=text].search-nearby-box": "searchNearbyEnter",
   },
 
   render: function () {
@@ -48,23 +51,70 @@ DD.Views.LocationSearch = Backbone.View.extend({
   cancel: function () {
     console.log("cancelling LocationSearch View...");
     $(this.el).undelegate('button#search-nearby', 'click');
+    //  need to undelegate the scroll
     markerManager.nearby();
   },
 
   searchNearbyClick: function () {
     var that = this;
-    that.searchNearbyWith($(event.target).prev().val());
+    that.searchPhrase = $(event.target).prev().val();
+    that.searchNearbyWith(that.searchPhrase);
   },
 
   searchNearbyEnter: function (event) {
     var that = this;
+    that.searchPhrase = $(event.target).val();
     if (event.keyCode === 13) {
-      that.searchNearbyWith($(event.target).val());
+      that.searchNearbyWith(that.searchPhrase);
     }
   },
 
-  searchNearbyWith: function (searchPhrase) {
+  checkScroll: function () {
     var that = this;
+    // window.las = this.$contentEl.parent();
+    var renderedList = this.$contentEl.parent();
+    var bottomPosition = renderedList.scrollTop();
+    // var info = "top of Scrolling window: " + bottomPosition +
+    //   " , height of visible window: " + renderedList.height() +
+    //   " , height of list: " + $('#data-list').height();
+    // console.log(info);
+
+    if (bottomPosition + renderedList.height() >= $('#data-list').height()) {
+
+      myMap.zoomOut();
+      var searchPhrase = $('#data-list').find('input[type=text]').val();
+      console.log("searchPhrase is: " + searchPhrase);
+
+      that.searchNearbyWith(searchPhrase, that.updateCollection);
+      renderedList.scrollTop(bottomPosition);
+    }
+  },
+
+  // searchNearbyAgain: function (searchPhrase) {
+
+  // },
+
+  makeCollection: function (gpObjArray) {
+    var that = this;
+    var nearbyLocs = new DD.Collections.Locations();
+    nearbyLocs.parseGooglePlaces(gpObjArray, that.collectionId);
+
+    that.collection = nearbyLocs;
+    that.updateDisplay();
+    markerManager.nearby(that.collection);
+  },
+
+  updateCollection: function (gpObjArray) {
+    var that = this;
+    that.collection.parseGooglePlaces(gpObjArray, that.collectionId);
+
+    that.updateDisplay();
+    markerManager.nearby(that.collection);
+  },
+
+  searchNearbyWith: function (searchPhrase, callback) {
+    var that = this,
+        collectionCallback;
 
     // var tempLat = 40.72264044368007;
     // var tempLng = -73.99240493774414;
@@ -72,16 +122,14 @@ DD.Views.LocationSearch = Backbone.View.extend({
     var tempLat = mapCenter.lat;
     var tempLng = mapCenter.lng;
 
-    var makeCollection = function (gpObjArray) {
-      var nearbyLocs = new DD.Collections.Locations();
-      nearbyLocs.parseGooglePlaces(gpObjArray, that.collectionId);
-
-      that.collection = nearbyLocs;
-      that.updateDisplay();
-      markerManager.nearby(that.collection);
-    };
+    if (callback) {
+      collectionCallback = callback.bind(that);
+    } else {
+      collectionCallback = that.makeCollection.bind(that);
+    }
     
     var placeSearcher = new Google.Places( API.Google );
-    placeSearcher.query(tempLat, tempLng, searchPhrase, makeCollection);
+    placeSearcher.query(tempLat, tempLng, searchPhrase, collectionCallback);
+
   }
 });
