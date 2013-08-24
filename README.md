@@ -101,6 +101,8 @@ By the end of this phase:
 ---
 
 ##TODO
+* Infinite scroll on location search
+	* hit the bottom of the page, and send another request to google, zooming out the map, and adding items to the list
 * friends
 	* friend detail view
 * collections
@@ -112,10 +114,16 @@ By the end of this phase:
 * tab highlighting on recenter map
 	* choice highlighting on recenter map
 * "Searching within 50 meters of map radius"
+* Make it very clear that only adresses can be searched in the center map bar
+	* jQuery hover over popup for more info
+	* Change button to say: "Lookup address"
+	* Add a suggestion in search results that says: "did you mean to search for #{x} as a location and not as an address"
 
 
 
 ##Fix later
+* Center map search tab highlighting
+* Change chosen highlight color to be teal
 * SQL queries! not just in to_json!
 * set up collection listeners, to reload when there was a change, and adding to collection every time something has been saved
 * Update titles of the webpage when navigating SPAs
