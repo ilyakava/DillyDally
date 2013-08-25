@@ -49,6 +49,8 @@ DD.Views.RecenterResults = Backbone.View.extend({
 
   render: function () {
     var that = this;
+    // grab searchbar element off the DOM
+    var address = $('.recenter input[type=text]').val().toString();
 
     var displayResults = function (mqObjArray) {
       console.log("display results method starts");
@@ -60,7 +62,8 @@ DD.Views.RecenterResults = Backbone.View.extend({
 
       // render locations from BB collection
       var locListView = JST['locations/address_list']({
-        locations: recenterLocs
+        locations: recenterLocs,
+        searchPhrase: address
       });
 
       if (!recenterLocs.length) {
@@ -83,8 +86,6 @@ DD.Views.RecenterResults = Backbone.View.extend({
       // console.log(that.searchResults);
     };
 
-    // grab searchbar element off the DOM
-    var address = $('.recenter input[type=text]').val().toString();
 
     // method to instantiate my interface with mapquest
     var geocoder = new MapQuest.Geocoder( API.MapQuest );
