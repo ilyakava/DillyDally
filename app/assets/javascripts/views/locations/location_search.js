@@ -51,7 +51,8 @@ DD.Views.LocationSearch = Backbone.View.extend({
   cancel: function () {
     console.log("cancelling LocationSearch View...");
     $(this.el).undelegate('button#search-nearby', 'click');
-    //  need to undelegate the scroll
+    $(this.el).undelegate('input[type=text].search-nearby-box', 'keyup');
+    //  undelegates the scroll
     this.$contentEl.parent().off();
     markerManager.nearby();
   },
