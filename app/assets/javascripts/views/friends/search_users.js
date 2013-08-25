@@ -12,9 +12,17 @@ DD.Views.SearchUsers = Backbone.View.extend({
       JSON.parse($('#bootstrapped-all-users').html())
     );
 
+    var disabledChoices = new DD.Collections.Collections(
+      (that.model.get("friendships")).map(
+        function (friendship) {
+          return friendship.get("friend");
+        }
+      )
+    );
+
     var searchPage = JST['friends/search']({
       usersChoices: usersChoices,
-      disabledChoices: that.model.get("friends")
+      disabledChoices: disabledChoices
     });
     this.$el.html(searchPage);
 
