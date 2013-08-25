@@ -5,7 +5,7 @@
 		<!-- Preparing for serializeArray(), which will preserve name+value -->
 		<!-- unfortunately, option tags don't take a name -->
 		<option
-			value="<%= user.get("id") %>"
+			value="<%= user.get("id") %>|<%= user.get("email") %>"
 			<% if (disabledChoices.findWhere({email: user.get("email")})) { %>
 				<%= ' disabled="disabled"' %>
 			<% } %>
