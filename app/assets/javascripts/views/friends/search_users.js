@@ -45,7 +45,7 @@ DD.Views.SearchUsers = Backbone.View.extend({
 
     var formData = $(event.target).parent().serializeArray();
     console.log(formData);
-    new DD.Collections.Friendship().parseAndSaveForm(
+    new DD.Collections.Friendships().parseAndSaveForm(
       formData
     );
     

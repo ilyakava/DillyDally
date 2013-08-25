@@ -1,4 +1,4 @@
-DD.Collections.Friendship = Backbone.Collection.extend({
+DD.Collections.Friendships = Backbone.Collection.extend({
   model: DD.Models.Friendship,
 
   parseAndSaveForm: function (serializedArray) {
