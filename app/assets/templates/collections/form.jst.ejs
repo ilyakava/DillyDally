@@ -5,7 +5,7 @@
 		<!-- unfortunately, option collections don't take a name -->
 		<option
 			value="<%= collection.get("id") %>|<%= collection.get("name") %>"
-			<% if (disabledChoices.findWhere({id: collection.get("id")})) { %>
+			<% if (disabledChoices.findWhere({name: collection.get("name")})) { %>
 				<%= ' disabled="disabled"' %>
 			<% } %>
 			>
