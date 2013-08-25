@@ -21,6 +21,11 @@ DD.Models.User = Backbone.Model.extend({
     response["friends"] = new DD.Collections.Users(
       response["friends"]
     );
+
+    response["friendships"] = new DD.Collections.Friendships(response["friendships"]);
+    (response["friendships"]).each(function (friendship) {
+      friendship.set("friend", new DD.Models.User(friendship.get("friend")));
+    });
     return response;
   }
 });
