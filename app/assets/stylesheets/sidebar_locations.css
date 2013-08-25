@@ -11,10 +11,15 @@
 /* Exclusive to Did you mean search results */
 /*---------------------------------------------------------*/
 
-#side-bar #data-list > ul > li > p.location {
+#side-bar #data-list > ul > li > p.location,
+#side-bar #data-list > ul > li > a {
     padding: 5px;
     border-top: solid 1px rgb(26,79,81);
     cursor: pointer;
+}
+
+#side-bar #data-list > ul > li > a {
+    display: block;
 }
 
 #side-bar #data-list > ul > li > p.location.map-center {
