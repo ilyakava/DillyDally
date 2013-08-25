@@ -74,8 +74,8 @@
     border-bottom: 1px rgb(26,79,81) solid;
 }
 
-#side-bar #data-list ul.nearby-search-results > li:first-child {
-    
+#side-bar #data-list ul.nearby-search-results > li > ul.location > li {
+    margin-left: 10px
 }
 
 /* Name of a location in the nearby search results */
