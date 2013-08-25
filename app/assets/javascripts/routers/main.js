@@ -275,6 +275,7 @@ DD.Routers.Main = Backbone.Router.extend({
     recenterResultsView.render();
     console.log("recenter search method/view finished");
 
+    that.tabsResetClass('did-you-mean');
     that.activeView = recenterResultsView;
   },
 

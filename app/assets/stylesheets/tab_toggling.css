@@ -5,7 +5,8 @@
 #side-bar ul.tabs > li.friends-locations > a.friends-locations,
 #side-bar ul.tabs > li.friends-collections > a.friends-collections,
 #side-bar ul.tabs > li.collection-locations > a.collection-locations,
-#side-bar ul.tabs > li.search-nearby > a.search-nearby {
+#side-bar ul.tabs > li.search-nearby > a.search-nearby,
+#side-bar ul.tabs > li.did-you-mean > a.did-you-mean {
 	background-color: rgb(130,206,209);
     border-bottom: rgb(130,206,209) 1px solid;
     color: white;
@@ -19,6 +20,7 @@
 #side-bar ul.tabs > li.friends-locations > a.friends-locations:hover,
 #side-bar ul.tabs > li.friends-collections > a.friends-collections:hover,
 #side-bar ul.tabs > li.collection-locations > a.collection-locations:hover,
-#side-bar ul.tabs > li.search-nearby > a.search-nearby :hover{
+#side-bar ul.tabs > li.search-nearby > a.search-nearby:hover,
+#side-bar ul.tabs > li.did-you-mean > a.did-you-mean:hover{
 	color: black;
 }
