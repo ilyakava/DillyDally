@@ -7,7 +7,18 @@
 		<a
 			href="#/collection-locations/<%= collection.get("id") %>"
 			class="collection-locations-link">
-			List the <%= collection.get("locations").length %> Locations in this Collection
+			<% var num = collection.get("locations").length %>
+			<% if (num > 0) { %>
+				List the 
+				<% if (num == 1) { %>
+					Only Location
+				<% } else { %>
+					<%= num %> Locations
+				<% } %>
+			<% } else { %>
+				There are No Locations
+			<% } %>
+		  in this Collection
 		</a>
 	</li>
 	
