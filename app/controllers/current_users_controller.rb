@@ -5,6 +5,9 @@ class CurrentUsersController < ApplicationController
 		@current_user = User.includes(
 			:locations,
 			:friends,
+			friendships: [
+				:friend
+			],
 			collections: {
 				locations: [
 					:tags,
@@ -31,7 +34,13 @@ class CurrentUsersController < ApplicationController
 					}
 				},
 				:locations,
-				:friends
+				:friends,
+				{
+					friendships: {
+						include:
+							:friend
+					}
+				}
 			]
 		)
 
