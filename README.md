@@ -102,7 +102,7 @@ By the end of this phase:
 
 ##TODO
 * Infinite scroll on location search
-	* hit the bottom of the page, and send another request to google, zooming out the map, and adding items to the list
+	* add in a loading sprite
 * friends
 	* friend detail view
 * collections
