@@ -2,7 +2,7 @@ class CollectionLocationsController < ApplicationController
 	
 	def destroy
 		@collection_location = CollectionLocation.find(params[:id])
-		@collection_location.destroy
+		@collection_location.destroy!
 		respond_to do |format|
 			format.json { render json: @collection_location.to_json }
 		end

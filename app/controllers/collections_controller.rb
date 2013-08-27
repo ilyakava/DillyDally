@@ -65,27 +65,19 @@ class CollectionsController < ApplicationController
 			]
 		)
 
-		@tags_json = Tag.all.to_json
-
-		@page_header = "Viewing Locations in the #{Collection.find(params[:id]).name.capitalize} Collection"
-
 		respond_to do |format|
 			format.json { render json: @collections_json}
-			format.html { render :show }
 		end
 	end
 
 	def index
-		@collections = current_user.collections.includes(:locations)
+		@collections = current_user.collections.includes(locations: :categories)
 		@collections_json = @collections.to_json(
 			include: [{locations: { methods: :categories_as_array, include: :categories }}]
 		)
 
-		@page_header = "Viewing All of Your Collections"
-
 		respond_to do |format|
 			format.json { render json: @collections_json}
-			format.html { render :index }
 		end
 	end
 

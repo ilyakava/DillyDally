@@ -53,13 +53,9 @@ class LocationsController < ApplicationController
 				:categories_as_array
 			]	
 		)
-		@tags_json = Tag.all.to_json
-
-		@page_header = "Viewing Locations Across All of Your Collections"
 
 		respond_to do |format|
 			format.json { render json: @locations_json}
-			format.html { render :index }
 		end
 	end
 
@@ -107,7 +103,6 @@ class LocationsController < ApplicationController
 		)
 		respond_to do |format|
 			format.json { render json: @locations_json}
-			# format.html { render :index }
 		end
 	end
 
@@ -121,6 +116,9 @@ class LocationsController < ApplicationController
 				user_id: current_user.id,
 				location_id: @location.id
 			)
+			# If searching nearyby within the collections view, should
+			# the user's location be added to a collection automatically?
+			
 			# if params[:collection_id]
 			# 	@collectionlocation = CollectionLocation.create(
 			# 		collection_id: params[:collection_id],

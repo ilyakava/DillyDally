@@ -4,11 +4,8 @@ class FriendsController < ApplicationController
 		@friends = current_user.friends.includes(:locations, :collections)
 		@friends_json = @friends.to_json(include: [:locations, :collections])
 
-		@users_json = User.all.to_json
-
 		respond_to do |format|
 			format.json { render json: @friends_json}
-			format.html { render :index }
 		end		
 	end
 
@@ -74,11 +71,8 @@ class FriendsController < ApplicationController
 			]
 		)
 
-		@users_json = User.all.to_json
-		
 		respond_to do |format|
 			format.json { render json: @friend_json}
-			format.html { render :index }
 		end		
 	end
 
@@ -112,11 +106,8 @@ class FriendsController < ApplicationController
 			]
 		)
 
-		@users_json = User.all.to_json
-		
 		respond_to do |format|
 			format.json { render json: @friend_json}
-			format.html { render :index }
 		end		
 	end
 end

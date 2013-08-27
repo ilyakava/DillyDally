@@ -2,7 +2,7 @@ class UserVisitsController < ApplicationController
 
 	def destroy
 		@visit = UserVisit.find(params[:id])
-		@visit.destroy
+		@visit.destroy!
 		respond_to do |format|
 			format.json { render json: @visit.to_json }
 		end

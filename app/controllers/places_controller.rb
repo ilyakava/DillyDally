@@ -12,9 +12,6 @@ class PlacesController < ApplicationController
       "keyword" => params[:keyword]
     }
 
-    p "A"*40
-    p params
-
     api_call = ::Addressable::URI.new(
       :scheme => "https",
       :host => "maps.googleapis.com",
@@ -23,11 +20,8 @@ class PlacesController < ApplicationController
      ).to_s
 
     json = JSON.parse(RestClient.get(api_call))
-    p "Rails call to google STATUS: " + json["status"]
+    # p "Rails call to google STATUS: " + json["status"]
 
-    # json["results"].each do |result|
-    #   result["categories_as_array"] = result["types"]
-    # end
 
     respond_to do |format|
     	format.json { render :json => json["results"] }

@@ -2,7 +2,7 @@ class LocationTagsController < ApplicationController
 	
 	def destroy
 		@user_tag = LocationTag.find(params[:id])
-		@user_tag.destroy
+		@user_tag.destroy!
 		respond_to do |format|
 			format.json { render json: @user_tag.to_json }
 		end
