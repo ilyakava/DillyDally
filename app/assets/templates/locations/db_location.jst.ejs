@@ -35,9 +35,13 @@
 		<dl class="group">
 			<% (location.get("collection_locations")).each(function (collection_location) { %>
 				<dt class="single-collection">
-					<span><%= _.humanize(collection_location.get("collection").get("name")) %></span>
+					<span>
+						<%= _.humanize(collection_location.get("collection").get("name")) %>
+					</span>
 					<% if (collection_location.get("collection").get("user_id") == current_user.id) { %>
 						<%= '<button data-id="' + collection_location.get("id") + '" class="delete-collection">X</button>' %>
+					<% } else { %>
+						<div class="others-collection"><div>This is another user's collection, you may not delete it.</div></div>
 					<% } %>
 				</dt>
 			<% }) %>

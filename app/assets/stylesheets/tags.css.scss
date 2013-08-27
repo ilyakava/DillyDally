@@ -26,7 +26,8 @@ dt.single-collection > span {
 }
 
 dt.single-tag > button.delete-tag,
-dt.single-collection > button.delete-collection {
+dt.single-collection > button.delete-collection,
+dt.single-collection > div.others-collection {
 	position: absolute;
 	top: 6px;
 	right: 4px;
@@ -36,6 +37,33 @@ dt.single-collection > button.delete-collection {
 	background: image-url("chosen-sprite.png") -42px 1px no-repeat;
 	font-size: 1px;
 	cursor: pointer;
+}
+
+// Another's collection
+
+dt.single-collection > div.others-collection {
+	background: image-url("chosen-sprite.png") -18px -4px no-repeat;
+}
+
+dt.single-collection > div.others-collection > div {
+	display: none;
+}
+
+dt.single-collection > div.others-collection:hover > div {
+	display:block;
+	z-index:1000;
+	width: 200px;
+	position:relative;
+	color:rgb(15, 52, 54);
+	background-color: rgb(241,241,241);
+	font-size: 18px;
+	top:-51px;
+	left: 2px;
+	padding: 5px;
+	border-radius: 5px;
+	opacity: .85;
+	text-align:center;
+	border: solid rgb(26,79,83) 1px;
 }
 
 dt.single-tag > button.delete-tag:hover,
