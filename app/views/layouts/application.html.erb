@@ -47,7 +47,10 @@
 <% if params[:controller].match(/devise/) %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <div class="devise"><%= yield %></div>
+  <div class="devise">
+    <div class="about-dillydally"><%= render 'layouts/about' %></div>
+    <div class="devise-generated"><%= yield %></div>
+  </div>
 <% else %>
   <%= yield %>
   <%= render 'layouts/footer' %>

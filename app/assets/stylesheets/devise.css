@@ -1,5 +1,37 @@
 .devise {
-    text-align: center;
     margin: 100px auto;
     color: rgb(130,206,209);
+}
+
+.devise-generated {
+    text-align: center;
+	width: 100%;
+	display: block;
+}
+
+.about-dillydally {
+	float: left;
+	margin-left: 100px;
+	widows: 400px;
+	text-align: left;
+	padding-bottom: 150px;
+}
+
+.about-dillydally > h2 {
+    font-size: 41px;
+
+}
+
+.about-dillydally > h4 {
+    color: white;
+    font-size: 16px;
+}
+
+.about-dillydally > ul {
+	
+}
+
+.about-dillydally > ul > li {
+    padding: 3px 18px;
+	
 }
