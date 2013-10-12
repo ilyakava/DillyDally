@@ -122,9 +122,14 @@ By the end of this phase:
 
 
 ##Fix later
+* When looking at your list of collections, and then the collection's contents, and then switching over to location detail view, the tab to get back to the locations in the collection dissapears
+* Is it necessarry to have redundancy between the top menu bar and the sidebar menu ("Your Collections" and "Your Locations")?
+* Be able to Delete collections
+* Have a button to copy another's collection
+* Fast add a location to a collection when searching for it
+* Buttons to add a location all the time!
 * Center map search tab highlighting
 * Change chosen highlight color to be teal
-* SQL queries! not just in to_json!
 * set up collection listeners, to reload when there was a change, and adding to collection every time something has been saved
 * Update titles of the webpage when navigating SPAs
 	* [Helper](https://github.com/pwhisenhunt/Backbonejs-Router-Title-Helper)
