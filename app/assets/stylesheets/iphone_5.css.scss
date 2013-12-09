@@ -1,0 +1,147 @@
+@mixin iphone-5 {
+	nav {
+
+		ul.user {
+			position: absolute;
+			top: 51px;
+			right: 0px;
+			background-color: $teal;
+			width: 160px;
+			z-index: 15;
+			display: none;
+
+			li {
+				width: 100%;
+				border-bottom: solid 1px $dark-teal;
+
+				&:first-child {
+					border-top: solid 1px $dark-teal;
+				}
+
+				a {
+					border-right: none;
+				}
+			}
+		}
+
+		ul.global {
+			padding-left: none;
+
+			li {
+
+				&:first-child {
+					// logo
+					border-left: none;
+				}
+
+				&#mobile-menu-expansion {
+					display: block;
+					border: solid 2px $dark-teal;
+					position: absolute;
+					right: 0px;
+					margin-top: 5px;
+					padding: 8px;
+					border: solid;
+					margin-right: 8px;
+					cursor: pointer;
+				}
+
+				&#mobile-toggle-map {
+					display: block;
+					border: solid 2px $dark-teal;
+					position: absolute;
+					right: 75px;
+					margin-top: 5px;
+					padding: 8px;
+					border: solid;
+					margin-right: 8px;
+					cursor: pointer;
+
+					&.off {
+
+						div.turn-map-off {
+							display: none;
+						}
+
+						div.turn-map-on {
+							display: block;
+						}
+					}
+
+					&.on {
+
+						div.turn-map-on {
+							display: none;
+						}
+
+						div.turn-map-off {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.devise {
+		margin: 20px auto;
+
+		div.about-dillydally {
+			padding-bottom: 0;
+			margin: auto;
+			text-align: center;
+
+			ul {
+				display: none;
+			}
+		}
+	}
+
+	div#side-bar {
+		width: 100%;
+		min-width: 0;
+		left: 0;
+
+		div#side-bar-navigation {
+
+			ul.tabs {
+				left: 0;
+
+				li {
+
+					text-align: center;
+					a {
+						width: 68px;
+						max-height: 17px;
+						font-size: 11px;
+						padding: 16px 4px;
+					}
+				}
+			}
+
+			// On the mobile version, map options overlay everything and are toggled on
+
+			div.searcharea.group.recenter {
+				display: none;
+				z-index: 1001;
+				width: 100%;
+				left: 0;
+			}
+		}
+	}
+
+	// On the mobile version, map overlays everything and is toggled on
+
+	#map {
+		display: none;
+		z-index: 1000;
+		width: 100%;
+		right: 0;
+	}
+
+	footer {
+		display: none;
+		z-index: 1001;
+	}
+
+}

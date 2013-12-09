@@ -280,6 +280,8 @@ DD.Routers.Main = Backbone.Router.extend({
   },
 
   navBarResetClass: function (newClass) {
+    // close the mobile menu
+    if ($('#mobile-menu-expansion').is(':visible')) { $('nav > ul.user').hide() }
     $('nav').
       find('ul.user>li').
       attr('class', newClass);

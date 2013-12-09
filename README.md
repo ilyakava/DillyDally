@@ -122,6 +122,7 @@ By the end of this phase:
 
 
 ##Fix later
+* move vendor libraries into vendor folders
 * When looking at your list of collections, and then the collection's contents, and then switching over to location detail view, the tab to get back to the locations in the collection dissapears
 * Is it necessarry to have redundancy between the top menu bar and the sidebar menu ("Your Collections" and "Your Locations")?
 * Be able to Delete collections

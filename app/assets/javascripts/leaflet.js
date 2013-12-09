@@ -1,5 +1,26 @@
 myMap = (function () {
 
+  var mapItems = [
+    '#map',
+    '.searcharea.group.recenter',
+    'footer'
+  ];
+
+  var toggleDisplay = function () {
+    // used in the mobile version of the app, where the map overlays everything
+    myMap.mapItems.forEach(function (domNode) { $(domNode).toggle(); });
+    var $toggleSwitch = $('#mobile-toggle-map');
+    $toggleSwitch.toggleClass('on');
+    $toggleSwitch.toggleClass('off');
+  };
+
+  var ensureDisplay = function () {
+    // acts as a before filter for the mobile version, where the map is
+    // hidden until needed
+    myMap.mapItems.forEach(function (domNode) { $(domNode).show(); });
+    $('#mobile-toggle-map').attr('class', 'on');
+  }
+
   var zoomOut = function () {
     if (map.getZoom() >= 13) {
       map.zoomOut();
@@ -7,6 +28,7 @@ myMap = (function () {
   };
 
   var getRadius = function () {
+    myMap.ensureDisplay();
     console.log("getting radius from the map on the page!");
     var mapBounds = map.getBounds();
     var degreeRadius = Math.abs(mapBounds.getCenter().lat) -
@@ -21,6 +43,7 @@ myMap = (function () {
   };
 
   var moveMap = function (locModel) {
+    myMap.ensureDisplay();
     // expects BB location object
     var lng = locModel.get("lng");
     var lat = locModel.get("lat");
@@ -238,6 +261,9 @@ myMap = (function () {
   };
 
   return {
+    mapItems: mapItems,
+    ensureDisplay: ensureDisplay,
+    toggleDisplay: toggleDisplay,
     getRadius: getRadius,
     moveMap: moveMap,
     zoomOut: zoomOut,

@@ -1,0 +1,16 @@
+@mixin ipad-mini-portrait {
+	nav {
+		ul.global {
+			padding-left: 0px;
+
+			li {
+
+				&:last-child {
+					// menu-expansion
+					display: none;
+					background-color: red;
+				}
+			}
+		}
+	}
+}

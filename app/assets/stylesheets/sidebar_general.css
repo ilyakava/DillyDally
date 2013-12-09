@@ -50,7 +50,6 @@
     padding: 6px 6px;
     width: 58%;
     font-size: 15px;
-    font-family: 'Lato', sans-serif;
 }
 
 .searcharea > button {
@@ -116,7 +115,6 @@
     background-color: #fff;
     height: 26px;
     text-decoration: none;
-    font-family: 'Lato', sans-serif;
     font-size: 15px;
     font-weight: 900;
     text-align: center;
@@ -130,7 +128,7 @@
     font-size: 12px;
     width: 550px;
     position: fixed;
-    top: 70px;
+    top: 71px;
     right: 20px;
     overflow-x: hidden;
     z-index: 10;
@@ -176,19 +174,11 @@
 }
 
 #side-bar #data-list > ul > li > h3 {
-
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    
-
     font-size: 23px;
-    
-
     font-weight: 200;
-
     padding: 10px;
-
     font-style: italic;
-
 }
 
 

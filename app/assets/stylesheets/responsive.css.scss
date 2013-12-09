@@ -1,0 +1,21 @@
+// Defining conditions
+$iphone-5: "only screen and (max-width : 599px)";
+$ipad-mini-portrait: "only screen and (min-width : 600px) and (max-width : 768px)";
+$ipad-mini-landscape: "only screen and (min-width : 769px) and (max-width : 1024px)";
+$ipad-retina-portrait: "only screen and (min-width : 1024px) and (max-width : 1536px)";
+$ipad-retina-landscape: "only screen and (min-width : 1536px) and (max-width : 2048px)";
+
+// Sequence of "if" statements
+
+@media #{$iphone-5} {
+  @include iphone-5;
+}
+
+@media #{$ipad-mini-portrait} {
+  @include ipad-mini-portrait;
+}
+
+@media #{$ipad-mini-landscape} {
+  @include ipad-mini-landscape;
+}
+

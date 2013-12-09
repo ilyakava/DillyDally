@@ -6,12 +6,22 @@ h1, h2, h3, a, li, ul, p, body, img, dl, button, span, dt, div, html{
 	border: none;
 	background: none;
 	background-color: none;
-	
 }
+
 a {
 	color: white;
 }
 
 body {
-    background-color: rgb(26, 80, 82);
+    background-color: $dark-teal;
+}
+
+* {
+    font-family: $slick-font;
+}
+
+.group {
+    content: "";
+    clear: both;
+    display: table;
 }
